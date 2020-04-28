@@ -8,7 +8,8 @@ var y = 100;
 // Create the app
 var app = express();
 // Set up the server
-var server = app.listen(7200, '0.0.0.0');
+//var server = app.listen(7200, '0.0.0.0');
+var server = app.listen(7200, '192.168.68.105');
 
 app.use(express.static('public'));
 
@@ -36,9 +37,7 @@ function newConnection(socket) {
 
 		x = data.x;
 		y = data.y;	
-
-		// Ibland laggar Pd sönder, hänger sig, varpå porten inte längre går att använda.
-		// Kanske tror Pd att porten är upptagen? 
+		
 		fetch("http://localhost:7200", {
 			method: "PUT", 
 			body: ";slider1 " + x + "; slider2 " + y + ";"

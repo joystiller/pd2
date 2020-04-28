@@ -50,6 +50,7 @@ function setup() {
   // Vad gör den här egentligen? 
   //
   socket = io.connect(url + ':7200');
+  //socket = io.connect('http://localhost:7200');
   
   // We make a named event called 'mouse' and write an
   // anonymous callback function
