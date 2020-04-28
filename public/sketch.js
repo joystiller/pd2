@@ -17,6 +17,9 @@ var sliderMX;
 let valFX;
 let valMX;
 
+//Kan man fetcha 'url' på något sätt så att den inte behöver hårdkodas? 
+const url = '192.168.68.105';
+
 
 
 function setup() {
@@ -45,7 +48,8 @@ function setup() {
   // Start a socket connection to the server
   // Some day we would run this server somewhere else
   // Vad gör den här egentligen? 
-  socket = io.connect('http://localhost:4001');
+  //
+  socket = io.connect(url + ':7200');
   
   // We make a named event called 'mouse' and write an
   // anonymous callback function

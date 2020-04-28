@@ -8,7 +8,7 @@ var y = 100;
 // Create the app
 var app = express();
 // Set up the server
-var server = app.listen(4001, '0.0.0.0');
+var server = app.listen(7200, '0.0.0.0');
 
 app.use(express.static('public'));
 
@@ -39,7 +39,7 @@ function newConnection(socket) {
 
 		// Ibland laggar Pd sönder, hänger sig, varpå porten inte längre går att använda.
 		// Kanske tror Pd att porten är upptagen? 
-		fetch("http://localhost:5001", {
+		fetch("http://localhost:7200", {
 			method: "PUT", 
 			body: ";slider1 " + x + "; slider2 " + y + ";"
 		});	
@@ -54,15 +54,12 @@ function newConnection(socket) {
 		temp = data.temp;
 		currentWeather = 'symbol ' + data.currentWeather;
 
-		fetch("http://localhost:5001", {
+		fetch("http://localhost:7200", {
 			method: "PUT", 
 			body: ";temp " + temp + "; weather " + currentWeather + ";"
 		});
 	}
 }
-
-
-
 
 
 
