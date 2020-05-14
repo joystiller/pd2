@@ -9,7 +9,7 @@ var y = 100;
 var app = express();
 // Set up the server
 //var server = app.listen(7200, '0.0.0.0');
-var server = app.listen(7200, '192.168.68.105');
+var server = app.listen(7300, '192.168.1.219');
 
 app.use(express.static('public'));
 
@@ -38,7 +38,7 @@ function newConnection(socket) {
 		x = data.x;
 		y = data.y;	
 		
-		fetch("http://localhost:7200", {
+		fetch("http://192.168.1.219:3558", {
 			method: "PUT", 
 			body: ";slider1 " + x + "; slider2 " + y + ";"
 		});	
@@ -53,10 +53,10 @@ function newConnection(socket) {
 		temp = data.temp;
 		currentWeather = 'symbol ' + data.currentWeather;
 
-		fetch("http://localhost:7200", {
-			method: "PUT", 
-			body: ";temp " + temp + "; weather " + currentWeather + ";"
-		});
+		//fetch("http://localhost:7200", {
+		//	method: "PUT", 
+		//	body: ";temp " + temp + "; weather " + currentWeather + ";"
+		//});
 	}
 }
 

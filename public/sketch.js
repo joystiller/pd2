@@ -18,7 +18,7 @@ let valFX;
 let valMX;
 
 //Kan man fetcha 'url' på något sätt så att den inte behöver hårdkodas? 
-const url = '192.168.68.105';
+const url = '192.168.1.219';
 
 
 
@@ -49,7 +49,7 @@ function setup() {
   // Some day we would run this server somewhere else
   // Vad gör den här egentligen? 
   //
-  socket = io.connect(url + ':7200');
+  socket = io.connect(url + ':7300');
   //socket = io.connect('http://localhost:7200');
   
   // We make a named event called 'mouse' and write an
