@@ -1,4 +1,4 @@
-#N canvas 390 133 1050 582 12;
+#N canvas 125 154 1050 605 12;
 #X obj 1165 432 *~;
 #X obj 1195 436 *~;
 #X obj 1225 436 *~;
@@ -107,8 +107,7 @@
 #X obj 465 979 bng 27 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 2039 11 r openFile\$1;
-#X msg 1281 173 open /Users/antonsoderberg/MUSIK/day_scene_take2.wav
-\;, f 37;
+#X msg 1281 173 open /home/pi/jungle/day_scene_5.wav \;;
 #X msg 428 216 5000;
 #X obj 428 183 loadbang;
 #X obj 2732 112 r stopPlayer\$1;
@@ -310,8 +309,7 @@
 #X msg 1390 134 set;
 #X obj 2039 49 t a b;
 #X msg 2144 125 set;
-#X msg 2038 166 open /Users/antonsoderberg/MUSIK/day_scene_take2.wav
-\;, f 37;
+#X msg 2038 166 open /home/pi/jungle/day_scene_5.wav \;;
 #X obj 1290 272 bng 25 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 2021 264 bng 25 250 50 0 empty empty empty 17 7 0 10 -262144
