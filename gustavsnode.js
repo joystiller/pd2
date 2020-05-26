@@ -1,22 +1,23 @@
 // Using express: http://expressjs.com/
 var express = require('express');
+var socket = require('socket.io');
 // Gustavs Pd-fetch
 const fetch = require("node-fetch");
+var ip = '192.168.9.89';
+var port = '7300';
+
 var x = 60;
 var y = 100;
 
 // Create the app
 var app = express();
 // Set up the server
-//var server = app.listen(7200, '0.0.0.0');
-var server = app.listen(7300, '192.168.1.219');
+var server = app.listen(port, + ip);
 
+//Tell server to look in the public folder for the html file
 app.use(express.static('public'));
 
-
-console.log("My socket server is running!!!??");
-
-var socket = require('socket.io');
+console.log("Server up and running!");
 
 var io = socket(server);
 
@@ -38,7 +39,8 @@ function newConnection(socket) {
 		x = data.x;
 		y = data.y;	
 		
-		fetch("http://192.168.1.219:3558", {
+		//fetch("http://192.168.1.219:3558", {
+		fetch("http://" + ip + ":" + port, {
 			method: "PUT", 
 			body: ";slider1 " + x + "; slider2 " + y + ";"
 		});	
@@ -53,14 +55,18 @@ function newConnection(socket) {
 		temp = data.temp;
 		currentWeather = 'symbol ' + data.currentWeather;
 
-		//fetch("http://localhost:7200", {
-		//	method: "PUT", 
-		//	body: ";temp " + temp + "; weather " + currentWeather + ";"
-		//});
+		fetch("http://" + ip + ":" + port, {
+			method: "PUT", 
+			body: ";temp " + temp + "; weather " + currentWeather + ";"
+		});
+	}
+
+	socket.on('toggle', mute);
+
+	function mute(data) {
+		console.log(data);
 	}
 }
-
-//testedits
 
 
 

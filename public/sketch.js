@@ -17,8 +17,11 @@ var sliderMX;
 let valFX;
 let valMX;
 
+var toggle;
+var txt;
+
 //Kan man fetcha 'url' på något sätt så att den inte behöver hårdkodas? 
-const url = '192.168.1.219';
+const url = '192.168.9.89';
 
 
 
@@ -37,20 +40,32 @@ function setup() {
   setTimeout(updateweather, 1000);
   angleMode(DEGREES);
   let d = createDiv();
-  d.style('transform: rotate(' + 90 + 'deg);');
+  //d.style('transform: rotate(' + 90 + 'deg);');
+
+
+  // The hashtag selects the toggle in the html file
+  toggle = select("#toggle");
+  txt = createP(toggle.checked());
+  toggle.changed(changeToggle);
+
+
+
+
   sliderFX = createSlider();
   sliderMX = createSlider();
+  //sliderFX.position(100,100);
   sliderFX.input(updateslider);
   sliderMX.input(updateslider);
   d.child(sliderFX);
   d.child(sliderMX);
+  sliderFX.style("align-self", "right");
+  button.style("position", "center");
+
   
   // Start a socket connection to the server
   // Some day we would run this server somewhere else
-  // Vad gör den här egentligen? 
-  //
+
   socket = io.connect(url + ':7300');
-  //socket = io.connect('http://localhost:7200');
   
   // We make a named event called 'mouse' and write an
   // anonymous callback function
@@ -89,8 +104,7 @@ function updateweather() {
 
     console.log(data);
     socket.emit('stockholm', data); 
-  }
-  
+  }  
 }
 
 
@@ -115,14 +129,6 @@ function updateslider() {
   //console.log(sliderMX.value());
 //}
 
-//function mouseDragged() {
-//  // Draw some white circles
-//  fill(255);
-//  noStroke();
-//  ellipse(mouseX,mouseY,20,20);
-//  // Send the mouse coordinates
-//  sendmouse(mouseX,mouseY);
-//}
 
 function sendslider(fxval, mxval) {
   console.log("sendslider: " + fxval +" " + mxval);
@@ -136,6 +142,12 @@ function sendslider(fxval, mxval) {
   // Send that object to the socket
   socket.emit('mouse',data);
 
+}
+
+function changeToggle() {
+  txt.html(toggle.checked());
+  var data = toggle.checked();
+  socket.emit('toggle', data);
 }
 
 // Function for sending to the socket
