@@ -6,7 +6,7 @@ var app = express();
 
 // Gustavs Pd-fetch
 const fetch = require("node-fetch");
-var ip = '192.168.1.13';
+var ip = '192.168.9.89';
 var port = '3000';
 
 var x = 60;
@@ -75,7 +75,7 @@ function newConnection(socket) {
 	socket.on('checkboxToggle', mute);
 
 	function mute(data) {
-		console.log(data);
+		console.log('return checkbox data: ' + data);
 
 		fetch("http://" + ip + ":" + 3558, {
 			method: "PUT", 

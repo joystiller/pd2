@@ -3,10 +3,7 @@
 // https://github.com/shiffman/itp-networked-media
 // Daniel Shiffman
 
-// Keep track of our socket connection
 var socket;
-
-
 var data;
 var weather;
 var api;
@@ -18,10 +15,7 @@ let valFX;
 let valMX;
 var toggle;
 var txt;
-
-//Kan man fetcha 'url' på något sätt så att den inte behöver hårdkodas? 
-const url = '192.168.1.13';
-
+const url = '192.168.9.89';
 
 
 function setup() {
@@ -52,7 +46,6 @@ function setup() {
 
   sliderFX = createSlider();
   sliderMX = createSlider();
-  //sliderFX.position(100,100);
   sliderFX.input(updateslider);
   sliderMX.input(updateslider);
   d.child(sliderFX);
@@ -60,11 +53,12 @@ function setup() {
   sliderFX.style("align-self", "right");
   //button.style("position", "center");
 
-  
   // Start a socket connection to the server
 
-  socket = io.connect('192.168.1.13:3000');
-  
+  socket = io.connect('192.168.9.89:3000');
+
+  var timer = createP("");
+  timer.id('demo');
 }
 
 function gotData(data) {
@@ -119,13 +113,11 @@ function updateslider() {
 function sendslider(fxval, mxval) {
   console.log("sendslider: " + fxval +" " + mxval);
 
-    // Make a little object with fxval and mxval
-    var data = {
-      x: fxval,
-      y: mxval
-    };
+  var data = {
+    x: fxval,
+    y: mxval
+  };
 
-  // Send that object to the socket
   socket.emit('mouse',data);
 
 }
@@ -134,21 +126,34 @@ function changeToggle() {
   txt.html(toggle.checked());
   var data = toggle.checked();
   socket.emit('checkboxToggle', data);
+  if (data){
+    return stopCountdown();
+  } else startCountdown();
 }
 
-// Function for sending to the socket
+function startCountdown() {
+  var counter = 0;
+  var distance = 6000;
+  document.getElementById("demo").innerHTML = "00:00:06";
+  var i = setInterval(function() { 
+    
+    distance = distance - 1000;
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+    // Display the result in the element with id="demo"
+    document.getElementById("demo").innerHTML = (hours).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":"
+    + (minutes).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":" + (seconds).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
 
-//function sendmouse(xpos, ypos) {
-  // We are sending!
-//  console.log("sendmouse: " + xpos + " " + ypos);
-  
-  // Make a little object with  and y
-//  var data = {
-//    x: xpos,
-//    y: ypos
-//  };
+    counter++;
+    if (counter === 6) {
+      clearInterval(i);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+      document.getElementById("toggle").checked = true;
+      socket.emit('checkboxToggle', toggle.checked());
+      console.log('toggle position: ' + toggle.checked());
+    }
+  }, 1000);
+}
 
-  // Send that object to the socket
-//  socket.emit('mouse',data);
-//}

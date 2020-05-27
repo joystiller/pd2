@@ -7,14 +7,14 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
   <script type="text/javascript" src="sketch.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var checkbox = document.querySelector('input[type="checkbox"]');
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var checkbox = document.querySelector('input[type="checkbox"]');
 
-      checkbox.checked = true;
+    checkbox.checked = true;
 
-      checkbox.addEventListener('change', function () {
-        if (checkbox.checked) {
+    checkbox.addEventListener('change', function () {
+      if (checkbox.checked) {
       // do this
       console.log('Checked');
     } else {
@@ -22,76 +22,76 @@
       console.log('Not checked');
     }
   });
-    });
-  </script>
+  });
+</script>
 
-  <style>
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 60px;
-      height: 34px;
-    }
+<style>
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
 
-    .switch input { 
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
 
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      -webkit-transition: .4s;
-      transition: .4s;
-    }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
 
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 26px;
-      width: 26px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      -webkit-transition: .4s;
-      transition: .4s;
-    }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
 
-    input:checked + .slider {
-      background-color: #2196F3;
-    }
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
 
-    input:focus + .slider {
-      box-shadow: 0 0 1px #2196F3;
-    }
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
 
-    input:checked + .slider:before {
-      -webkit-transform: translateX(26px);
-      -ms-transform: translateX(26px);
-      transform: translateX(26px);
-    }
-
-
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
 
 
 
-  </style>
 
-  <label class="switch">
-    <input id="toggle" type="checkbox">
-    <span class="slider"></span>
-  </label>
 
-  <p>Feedback
-  </p>
-  <p>Thanks to: </p>
-  <p></p>
+</style>
+
+<label class="switch">
+  <input id="toggle" type="checkbox">
+  <span class="slider"></span>
+</label>
+
+<p>Feedback
+</p>
+<p>Thanks to: </p>
+<p></p>
 
 </head>
 <body>
