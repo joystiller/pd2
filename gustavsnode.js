@@ -1,23 +1,34 @@
 // Using express: http://expressjs.com/
 var express = require('express');
-var socket = require('socket.io');
+// Create the app
+var app = express();
+
+
 // Gustavs Pd-fetch
 const fetch = require("node-fetch");
-var ip = '192.168.9.89';
-var port = '7300';
+var ip = '192.168.1.13';
+var port = '3000';
 
 var x = 60;
 var y = 100;
 
-// Create the app
-var app = express();
-// Set up the server
-var server = app.listen(port, + ip);
 
-//Tell server to look in the public folder for the html file
+
+// Set up the server
+var server = app.listen(process.env.PORT || 3000, listen);
+
+// This call back just tells us that the server has started
+function listen() {
+  var host = server.address().address;
+  var port = server.address().port;
+  console.log('Example app listening at http://' + host + ':' + port);
+}
+
 app.use(express.static('public'));
 
 console.log("Server up and running!");
+
+var socket = require('socket.io');
 
 var io = socket(server);
 
@@ -40,7 +51,7 @@ function newConnection(socket) {
 		y = data.y;	
 		
 		//fetch("http://192.168.1.219:3558", {
-		fetch("http://" + ip + ":" + port, {
+		fetch("http://" + ip + ":" + 3558, {
 			method: "PUT", 
 			body: ";slider1 " + x + "; slider2 " + y + ";"
 		});	
@@ -55,16 +66,21 @@ function newConnection(socket) {
 		temp = data.temp;
 		currentWeather = 'symbol ' + data.currentWeather;
 
-		fetch("http://" + ip + ":" + port, {
+		fetch("http://" + ip + ":" + 3558, {
 			method: "PUT", 
 			body: ";temp " + temp + "; weather " + currentWeather + ";"
 		});
 	}
 
-	socket.on('toggle', mute);
+	socket.on('checkboxToggle', mute);
 
 	function mute(data) {
 		console.log(data);
+
+		fetch("http://" + ip + ":" + 3558, {
+			method: "PUT", 
+			body: ";toggle " + 'symbol ' + data + ";"
+		});	
 	}
 }
 

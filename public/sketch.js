@@ -16,12 +16,11 @@ var sliderFX;
 var sliderMX;
 let valFX;
 let valMX;
-
 var toggle;
 var txt;
 
 //Kan man fetcha 'url' på något sätt så att den inte behöver hårdkodas? 
-const url = '192.168.9.89';
+const url = '192.168.1.13';
 
 
 
@@ -59,26 +58,13 @@ function setup() {
   d.child(sliderFX);
   d.child(sliderMX);
   sliderFX.style("align-self", "right");
-  button.style("position", "center");
+  //button.style("position", "center");
 
   
   // Start a socket connection to the server
-  // Some day we would run this server somewhere else
 
-  socket = io.connect(url + ':7300');
+  socket = io.connect('192.168.1.13:3000');
   
-  // We make a named event called 'mouse' and write an
-  // anonymous callback function
-  //socket.on('mouse',
-  //  // When we receive data
-  //  function(data) {
-  //    console.log("Got: " + data.x + " " + data.y);
-  //   // Draw a blue circle
-  //    fill(0,0,255);
-  //    noStroke();
-  //    ellipse(data.x, data.y, 20, 20);
-  //  }
-  //);
 }
 
 function gotData(data) {
@@ -147,7 +133,7 @@ function sendslider(fxval, mxval) {
 function changeToggle() {
   txt.html(toggle.checked());
   var data = toggle.checked();
-  socket.emit('toggle', data);
+  socket.emit('checkboxToggle', data);
 }
 
 // Function for sending to the socket
