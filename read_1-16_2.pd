@@ -1,4 +1,4 @@
-#N canvas 125 154 1050 605 12;
+#N canvas 127 184 1050 605 12;
 #X obj 1165 432 *~;
 #X obj 1195 436 *~;
 #X obj 1225 436 *~;
@@ -107,7 +107,7 @@
 #X obj 465 979 bng 27 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 2039 11 r openFile\$1;
-#X msg 1281 173 open /home/pi/jungle/day_scene_5.wav \;;
+#X msg 1281 173 open /home/pi/jungle/day_scene_1.wav \;;
 #X msg 428 216 5000;
 #X obj 428 183 loadbang;
 #X obj 2732 112 r stopPlayer\$1;
@@ -309,7 +309,7 @@
 #X msg 1390 134 set;
 #X obj 2039 49 t a b;
 #X msg 2144 125 set;
-#X msg 2038 166 open /home/pi/jungle/day_scene_5.wav \;;
+#X msg 2038 166 open /home/pi/jungle/day_scene_1.wav \;;
 #X obj 1290 272 bng 25 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 2021 264 bng 25 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -334,10 +334,10 @@
 #X obj 1123 612 env~;
 #X floatatom 1123 641 5 0 0 0 - - -, f 5;
 #X msg 1448 1089 100;
-#X msg 1546 1093 \$1 20000;
 #X text 1307 1166 Very important. Line goes to 100 \, then bangs stop
 if it drops to 0 lineINIT is sent along with the startup sequence from
 qlist., f 31;
+#X msg 1546 1093 \$1 60000;
 #X connect 0 0 245 0;
 #X connect 0 0 316 0;
 #X connect 1 0 246 0;
@@ -908,9 +908,9 @@ qlist., f 31;
 #X connect 308 0 309 0;
 #X connect 309 0 311 0;
 #X connect 311 0 310 0;
-#X connect 312 0 319 0;
+#X connect 312 0 320 0;
 #X connect 313 0 318 0;
 #X connect 314 0 315 0;
 #X connect 316 0 317 0;
 #X connect 318 0 308 0;
-#X connect 319 0 308 0;
+#X connect 320 0 308 0;
