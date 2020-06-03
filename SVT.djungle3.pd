@@ -1,10 +1,6 @@
-#N canvas 30 258 1040 747 12;
-#N canvas 467 66 813 773 mixer 1;
+#N canvas 16 196 1040 770 12;
+#N canvas 467 96 813 773 mixer 0;
 #X obj 253 454 dac~ 1 2 3 4;
-#X obj 162 341 *~;
-#X obj 243 338 *~;
-#X obj 323 338 *~;
-#X obj 403 337 *~;
 #X obj 45 234 vsl 36 137 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 13600 1;
 #X obj 162 392 *~;
@@ -17,7 +13,7 @@
 #X obj 323 281 catch~ fx3;
 #X obj 403 280 catch~ fx4;
 #X obj 47 508 vsl 36 137 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7866 1;
+-1 -1 7861 1;
 #X obj 188 679 *~;
 #X obj 221 679 *~;
 #X obj 253 679 *~;
@@ -43,53 +39,49 @@
 #X floatatom 47 659 5 0 0 0 - - -, f 5;
 #X obj 47 436 loadbang;
 #X msg 47 470 0.578;
-#X connect 1 0 6 0;
-#X connect 2 0 7 0;
-#X connect 3 0 8 0;
-#X connect 4 0 9 0;
-#X connect 5 0 6 1;
-#X connect 5 0 7 1;
-#X connect 5 0 8 1;
-#X connect 5 0 9 1;
-#X connect 6 0 0 0;
-#X connect 7 0 0 1;
-#X connect 8 0 0 2;
-#X connect 9 0 0 3;
-#X connect 11 0 1 0;
-#X connect 12 0 2 0;
-#X connect 13 0 3 0;
-#X connect 14 0 4 0;
-#X connect 15 0 16 1;
-#X connect 15 0 17 1;
-#X connect 15 0 18 1;
-#X connect 15 0 19 1;
-#X connect 15 0 36 0;
-#X connect 16 0 20 0;
-#X connect 17 0 20 1;
-#X connect 18 0 20 2;
-#X connect 19 0 20 3;
-#X connect 22 0 23 0;
-#X connect 23 0 5 0;
-#X connect 23 0 28 0;
-#X connect 24 0 25 0;
-#X connect 25 0 26 0;
-#X connect 25 0 30 0;
-#X connect 25 1 27 0;
-#X connect 25 1 29 0;
-#X connect 28 0 5 0;
-#X connect 29 0 28 0;
-#X connect 30 0 28 0;
-#X connect 31 0 32 0;
-#X connect 31 1 33 0;
-#X connect 32 0 16 0;
-#X connect 32 0 18 0;
-#X connect 33 0 17 0;
-#X connect 33 0 19 0;
-#X connect 34 0 33 1;
-#X connect 34 0 32 1;
-#X connect 35 0 34 0;
-#X connect 37 0 38 0;
-#X connect 38 0 15 0;
+#X connect 1 0 2 1;
+#X connect 1 0 3 1;
+#X connect 1 0 4 1;
+#X connect 1 0 5 1;
+#X connect 2 0 0 0;
+#X connect 3 0 0 1;
+#X connect 4 0 0 2;
+#X connect 5 0 0 3;
+#X connect 7 0 2 0;
+#X connect 8 0 3 0;
+#X connect 9 0 4 0;
+#X connect 10 0 5 0;
+#X connect 11 0 12 1;
+#X connect 11 0 13 1;
+#X connect 11 0 14 1;
+#X connect 11 0 15 1;
+#X connect 11 0 32 0;
+#X connect 12 0 16 0;
+#X connect 13 0 16 1;
+#X connect 14 0 16 2;
+#X connect 15 0 16 3;
+#X connect 18 0 19 0;
+#X connect 19 0 1 0;
+#X connect 19 0 24 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 21 0 26 0;
+#X connect 21 1 23 0;
+#X connect 21 1 25 0;
+#X connect 24 0 1 0;
+#X connect 25 0 24 0;
+#X connect 26 0 24 0;
+#X connect 27 0 28 0;
+#X connect 27 1 29 0;
+#X connect 28 0 12 0;
+#X connect 28 0 14 0;
+#X connect 29 0 13 0;
+#X connect 29 0 15 0;
+#X connect 30 0 29 1;
+#X connect 30 0 28 1;
+#X connect 31 0 30 0;
+#X connect 33 0 34 0;
+#X connect 34 0 11 0;
 #X restore -2878 533 pd mixer;
 #X obj -2879 233 loadbang;
 #X msg -2879 375 \; pd dsp \$1;
@@ -103,14 +95,14 @@
 #X obj -2873 747 loadbang;
 #X obj -2873 776 t b b;
 #X text -3014 1362 ...;
-#N canvas 289 92 991 793 makenumbers 0;
+#N canvas 289 122 991 793 makenumbers 0;
 #X obj 1337 596 bng 62 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 1763 1496 f;
 #X msg 1364 702 clear;
-#X msg 1195 1412 1;
+#X msg 1195 1412 3;
 #X msg 1565 693 add2 \$1;
-#X msg 1565 743 1;
+#X msg 1565 743 3;
 #X obj 1565 772 list length;
 #X obj 1565 830 select 1;
 #X msg 1512 707 set;
@@ -140,8 +132,8 @@
 #X obj 1393 2085 qlist;
 #X msg 1249 2032 bang;
 #X obj 1763 2073 qlist;
-#X msg 1761 1951 add2 fadeout2 \, add \$1 \, add 120000;
-#X msg 1393 1954 add2 fadein1 \, add \$1 \, add 120000;
+#X msg 1761 1951 add2 fadeout1 \, add \$1 \, add 120000;
+#X msg 1393 1954 add2 fadein3 \, add \$1 \, add 120000;
 #X obj 936 577 t b b;
 #X obj 940 1477 delay 100;
 #X msg 936 453 stop;
@@ -164,7 +156,7 @@
 #X text 1056 1694 Randomize 12 numbers. Send to "turn on" and "turn
 off"., f 30;
 #X msg 1036 1954 add2 \$1;
-#X msg 1036 2056 3 0 5 9 10 8 4 11 2 7 6 1;
+#X msg 1036 2056 9 1 3 2 0 5 10 8 11 4 7 6;
 #X text 915 2026 This is the order in which the faders fade, f 15
 ;
 #X obj 1063 1986 r rSET;
@@ -229,6 +221,8 @@ played, f 15;
 #X msg 446 2113 add2 openFile5 \, add2 symbol \, add /home/pi/jungle/day_scene_5.wav
 \, add2 lineINIT5 \, add bang \, add 1000 \, add2 strtPLAYER_A5 start
 \;, f 50;
+#X obj 1302 2149 print message;
+#X obj 1346 2198 print qlist bang;
 #X connect 0 0 91 0;
 #X connect 1 0 74 0;
 #X connect 2 0 91 0;
@@ -273,8 +267,10 @@ played, f 15;
 #X connect 30 2 60 0;
 #X connect 32 0 31 0;
 #X connect 32 0 33 0;
+#X connect 32 0 102 0;
 #X connect 34 0 33 0;
 #X connect 35 0 31 0;
+#X connect 35 0 101 0;
 #X connect 36 0 37 0;
 #X connect 36 1 0 0;
 #X connect 37 0 30 0;
@@ -592,7 +588,7 @@ played, f 15;
 #X text -2447 980 Consider changing to Pd Vanilla;
 #X text -2449 825 Change weather API;
 #X text -2448 793 Update html GUI/CSS;
-#N canvas 0 24 1148 855 faders 0;
+#N canvas 89 749 1148 878 faders 0;
 #X obj -924 341 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj -848 340 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -624,7 +620,7 @@ played, f 15;
 #X obj 129 334 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 202 331 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 337 1;
+-1 -1 0 1;
 #X obj -923 297 r f1 \$2;
 #X obj -849 270 r f2 \$2;
 #X obj -784 296 r f3 \$2;
@@ -700,23 +696,23 @@ played, f 15;
 #X obj 1842 332 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1913 334 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 22393 1;
 #X obj 1982 335 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 2053 332 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 29700 1;
 #X obj 2122 331 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 29700 1;
 #X obj 2196 334 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 29700 1;
 #X obj 2259 333 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 2329 336 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 2401 336 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 16500 1;
 #X obj 2473 335 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 11788 1;
 #X obj 2541 334 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 2612 334 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
