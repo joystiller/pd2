@@ -11,17 +11,32 @@ var cityID;
 var key;
 var sliderFX;
 var sliderMX;
-let valFX;
 let valMX;
 var toggle;
-var txt;
-const url = '192.168.9.89';
+const url = '192.168.68.107';
+
+
 
 
 function setup() {
-  createCanvas(400, 400);
-  //noCanvas();
-  background(100);
+  noCanvas();
+
+  /*
+   //following steps on: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON
+  let requestURL = 'https://www.yr.no/place/Sweden/Stockholm/Stockholm/external_box_stripe.js'
+  let request = new XMLHttpRequest();
+  request.open('GET', requestURL);
+  request.responseType = 'json';
+  request.send();
+  request.onload = function() {
+    const yrWeather = request.response;
+    populateHeader(yrWeather);
+    showHeroes(yrWeather);
+    console.log('yrweather loading complete!')
+    }
+    */
+    
+
 
   api = "https://api.openweathermap.org/data/2.5/forecast?id=";
   cityID = 2673722;
@@ -33,32 +48,23 @@ function setup() {
   setTimeout(updateweather, 1000);
   angleMode(DEGREES);
   let d = createDiv();
-  //d.style('transform: rotate(' + 90 + 'deg);');
+  d.style('transform: rotate(' + 90 + 'deg);');
 
 
   // The hashtag selects the toggle in the html file
   toggle = select("#toggle");
-  txt = createP(toggle.checked());
   toggle.changed(changeToggle);
-
-
-
-
-  sliderFX = createSlider();
-  sliderMX = createSlider();
-  sliderFX.input(updateslider);
+  sliderMX = createSlider(0, 127, 0);
   sliderMX.input(updateslider);
-  d.child(sliderFX);
-  d.child(sliderMX);
-  sliderFX.style("align-self", "right");
+  //d.child(sliderMX);
   //button.style("position", "center");
 
   // Start a socket connection to the server
 
-  socket = io.connect('192.168.9.89:3000');
+  socket = io.connect('192.168.68.107:3000');
 
-  var timer = createP("");
-  timer.id('demo');
+  //var timer = createP("");
+  //timer.id('demo');
 }
 
 function gotData(data) {
@@ -68,6 +74,7 @@ function gotData(data) {
 function refresh() {
   cleartext();
   var url = api + cityID + APIkey;
+  //var url = 'https://www.yr.no/place/Sweden/Stockholm/Stockholm/external_box_stripe.js'
   loadJSON(url, gotData);
   updateweather();
 }
@@ -87,9 +94,7 @@ function updateweather() {
   }  
 }
 
-
 function cleartext() {
-  //Write something that clear all text before printing new
 }
 
 function draw() {
@@ -101,29 +106,21 @@ function draw() {
 }
 
 function updateslider() {
-  // How do I not both sliders? How to use .this() function? 
-  sendslider(sliderFX.value(), sliderMX.value());
+  sendslider(sliderMX.value());
 }
 
-//function updateMX() {
-  //console.log(sliderMX.value());
-//}
-
-
-function sendslider(fxval, mxval) {
-  console.log("sendslider: " + fxval +" " + mxval);
+function sendslider(mxval) {
+  console.log("sendslider: " + mxval);
 
   var data = {
-    x: fxval,
-    y: mxval
+    x: mxval
   };
 
-  socket.emit('mouse',data);
+  socket.emit('Slider',data);
 
 }
 
 function changeToggle() {
-  txt.html(toggle.checked());
   var data = toggle.checked();
   socket.emit('checkboxToggle', data);
   if (data){
@@ -136,11 +133,14 @@ function startCountdown() {
   var distance = 6000;
   document.getElementById("demo").innerHTML = "00:00:06";
   var i = setInterval(function() { 
-    
-    distance = distance - 1000;
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if (toggle.checked()) {
+      clearInterval(i);
+    } else {
+
+      distance = distance - 1000;
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in the element with id="demo"
     document.getElementById("demo").innerHTML = (hours).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":"
@@ -149,11 +149,16 @@ function startCountdown() {
     counter++;
     if (counter === 6) {
       clearInterval(i);
-      document.getElementById("demo").innerHTML = "EXPIRED";
-      document.getElementById("toggle").checked = true;
-      socket.emit('checkboxToggle', toggle.checked());
-      console.log('toggle position: ' + toggle.checked());
+      stopCountdown();
     }
-  }, 1000);
+  }
+}, 1000);
+}
+
+function stopCountdown () {
+  document.getElementById("toggle").checked = true;
+  socket.emit('checkboxToggle', toggle.checked());
+  document.getElementById("demo").innerHTML = "Click toggle to mute";
+
 }
 
