@@ -11,7 +11,7 @@ var app = express();
 // Gustavs Pd-fetch
 const fetch = require("node-fetch");
 
-var ip = '192.168.68.107';
+var ip = '192.168.1.219';
 var port = '3000';
 
 var x = 0;

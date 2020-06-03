@@ -13,7 +13,7 @@ var sliderFX;
 var sliderMX;
 let valMX;
 var toggle;
-const url = '192.168.68.107';
+const url = '192.168.1.219';
 
 
 
@@ -61,7 +61,7 @@ function setup() {
 
   // Start a socket connection to the server
 
-  socket = io.connect('192.168.68.107:3000');
+  socket = io.connect('192.168.1.219:3000');
 
   //var timer = createP("");
   //timer.id('demo');
@@ -130,8 +130,8 @@ function changeToggle() {
 
 function startCountdown() {
   var counter = 0;
-  var distance = 6000;
-  document.getElementById("demo").innerHTML = "00:00:06";
+  var distance = 3600000;
+  document.getElementById("demo").innerHTML = "01:00:00";
   var i = setInterval(function() { 
     if (toggle.checked()) {
       clearInterval(i);
@@ -147,7 +147,7 @@ function startCountdown() {
     + (minutes).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":" + (seconds).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
 
     counter++;
-    if (counter === 6) {
+    if (counter === 3600) {
       clearInterval(i);
       stopCountdown();
     }
