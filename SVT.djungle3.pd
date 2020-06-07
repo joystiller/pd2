@@ -584,7 +584,7 @@ played, f 15;
 #X text -2447 980 Consider changing to Pd Vanilla;
 #X text -2449 825 Change weather API;
 #X text -2448 793 Update html GUI/CSS;
-#N canvas 89 749 1148 878 faders 0;
+#N canvas 91 123 1148 878 faders 1;
 #X obj -924 341 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj -848 340 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -650,7 +650,7 @@ played, f 15;
 #X obj 759 333 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 958 339 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 27818 1;
+-1 -1 24279 1;
 #X obj 1025 338 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1095 337 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -658,11 +658,11 @@ played, f 15;
 #X obj 1165 336 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1235 337 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4239 1;
+-1 -1 0 1;
 #X obj 1305 336 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3066 1;
+-1 -1 0 1;
 #X obj 1370 335 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1298 1;
+-1 -1 0 1;
 #X obj 1444 335 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 275 289 r f17 \$2;
@@ -682,11 +682,11 @@ played, f 15;
 #X obj 1369 291 r f31 \$2;
 #X obj 1445 266 r f32 \$2;
 #X obj 1513 332 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3987 1;
+-1 -1 454 1;
 #X obj 1585 333 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 123 1;
+-1 -1 0 1;
 #X obj 1650 332 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3304 1;
+-1 -1 5165 1;
 #X obj 1724 332 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1842 332 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -720,23 +720,23 @@ played, f 15;
 #X obj 2882 331 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 7071 1;
 #X obj 2958 333 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2061 1;
+-1 -1 2548 1;
 #X obj 3023 334 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 3756 1;
 #X obj 3092 334 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 6080 1;
 #X obj 3158 332 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 2121 1;
 #X obj 3231 331 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3302 331 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 2055 1;
 #X obj 3373 330 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3104 1;
+-1 -1 3246 1;
 #X obj 3442 329 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3514 329 vsl 35 298 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 471 1;
+-1 -1 58 1;
 #X obj 1514 289 r f33 \$2;
 #X obj 1584 263 r f34 \$2;
 #X obj 1649 287 r f35 \$2;
@@ -1010,10 +1010,10 @@ played, f 15;
 #X obj 760 980 s add24;
 #X floatatom 954 661 5 0 0 0 - - -, f 5;
 #X msg 954 730 set \$1;
-#X msg 955 858 167;
+#X msg 955 858 103;
 #X floatatom 954 691 5 0 0 0 - - -, f 5;
 #X msg 954 827 set \$1;
-#X msg 955 890 83;
+#X msg 955 890 30;
 #X obj 954 919 -;
 #X obj 954 795 t b b;
 #X floatatom 1026 661 5 0 127 0 - - -, f 5;
