@@ -39,7 +39,7 @@ function listen() {
 }
 
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 
 console.log("Server up and running!");
