@@ -1,4 +1,4 @@
-#N canvas 655 55 1012 792 12;
+#N canvas 810 23 597 752 12;
 #X obj 813 216 inlet;
 #X obj 1259 172 inlet;
 #X text 811 184 Fadein;

@@ -13,7 +13,9 @@ var sliderFX;
 var sliderMX;
 let valMX;
 var toggle;
-const url = '192.168.1.219';
+const url = '192.168.0.102';
+var Wsymb2;
+var pcat;
 
 
 
@@ -21,31 +23,148 @@ const url = '192.168.1.219';
 function setup() {
   noCanvas();
 
-  /*
-   //following steps on: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON
-  let requestURL = 'https://www.yr.no/place/Sweden/Stockholm/Stockholm/external_box_stripe.js'
-  let request = new XMLHttpRequest();
-  request.open('GET', requestURL);
-  request.responseType = 'json';
-  request.send();
-  request.onload = function() {
-    const yrWeather = request.response;
-    populateHeader(yrWeather);
-    showHeroes(yrWeather);
-    console.log('yrweather loading complete!')
+  // Start a socket connection to the server
+  socket = io.connect(url + ':3000');
+  
+  const api_url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.102919/lat/59.336600/data.json';
+  const sun_url = 'https://api.sunrise-sunset.org/json?lat=59.336600&lng=18.102919'
+  
+  async function getSun() {
+    var dtRise = new Date();
+    var dtSet = new Date();
+
+    const response = await fetch(sun_url);
+    var hms = await response.json();
+
+    // Calculations for sunrise
+    var a = hms.results.sunrise.split(':');
+    var b = a[2].split(' ');
+
+    var hoursRise = parseInt(a[0]) + 2;
+    var minutesRise = parseInt(a[1]);
+    var secondsRise = parseInt(b[0]);
+
+    if (b[1] == 'PM') {
+      hoursRise = hoursRise + 12;
+    } else if (b[1] == 'AM') {
     }
-    */
+
+    dtRise.setHours(hoursRise);
+    dtRise.setMinutes(minutesRise);
+    dtRise.setSeconds(secondsRise);
+
+    console.log('Sun rises at: ' + dtRise);
+
+    // Calculations for sunset
+    var c = hms.results.sunset.split(':');
+    var d = c[2].split(' ');
+
+    var hoursSet = parseInt(c[0]) + 2;
+    var minutesSet = parseInt(c[1]);
+    var secondsSet = parseInt(d[0]);
+
+    if (d[1] == 'PM') {
+      hoursSet = hoursSet + 12;
+    } else if (d[1] == 'AM') {
+    }
+
+    dtSet.setHours(hoursSet);
+    dtSet.setMinutes(minutesSet);
+    dtSet.setSeconds(secondsSet);
+    console.log('Sun sets at: ' + dtSet);
+
+    
+    var sunData = {
+      hoursRise: hoursRise,
+      minutesRise: minutesRise,
+      hoursSet: hoursSet,
+      minutesSet: minutesSet
+    };
+    socket.emit('sunToPd', sunData); 
+
+  }
+
+  async function getISS() {
+    const response = await fetch(api_url);
+    const data = await response.json();
+    console.log(data.timeSeries[2].validTime);
+
+    var smhiData = {
+      pcat: data.timeSeries[2].parameters[2].level,
+      sunUp: 6,
+      sunDown: 20
+    };
+    socket.emit('smhiToPd', smhiData); 
+
+    Wsymb2 = data.timeSeries[2].parameters[18].values;
+    if (Wsymb2 == 1) {
+      document.getElementById('Wsymb2').innerHTML = 'Clear sky';  
+    } else if (Wsymb2 == 2) {
+      document.getElementById('Wsymb2').innerHTML = 'Nearly clear sky'; 
+    } else if (Wsymb2 == 3) {
+      document.getElementById('Wsymb2').innerHTML = 'Variable cloudiness'; 
+    } else if (Wsymb2 == 4) {
+      document.getElementById('Wsymb2').innerHTML = 'Halfclear sky';   
+    } else if (Wsymb2 == 5) {
+      document.getElementById('Wsymb2').innerHTML = 'Cloudy sky'; 
+    } else if (Wsymb2 == 6) {
+      document.getElementById('Wsymb2').innerHTML = 'Overcast'; 
+    } else if (Wsymb2 == 7) {
+      document.getElementById('Wsymb2').innerHTML = 'Fog';   
+    } else if (Wsymb2 == 8) {
+      document.getElementById('Wsymb2').innerHTML = 'Light rain showers'; 
+    } else if (Wsymb2 == 9) {
+      document.getElementById('Wsymb2').innerHTML = 'Moderate rain showers'; 
+    } else if (Wsymb2 == 10) {
+      document.getElementById('Wsymb2').innerHTML = 'Heavy rain showers';   
+    } else if (Wsymb2 == 11) {
+      document.getElementById('Wsymb2').innerHTML = 'Thunderstorm'; 
+    } else if (Wsymb2 == 12) {
+      document.getElementById('Wsymb2').innerHTML = 'Light sleet showers'; 
+    } else if (Wsymb2 == 13) {
+      document.getElementById('Wsymb2').innerHTML = 'Moderate sleet showers';   
+    } else if (Wsymb2 == 14) {
+      document.getElementById('Wsymb2').innerHTML = 'Heavy sleet showers'; 
+    } else if (Wsymb2 == 15) {
+      document.getElementById('Wsymb2').innerHTML = 'Light snow showers'; 
+    } else if (Wsymb2 == 16) {
+      document.getElementById('Wsymb2').innerHTML = 'Moderate snow showers';   
+    } else if (Wsymb2 == 17) {
+      document.getElementById('Wsymb2').innerHTML = 'Heavy snow showers'; 
+    } else if (Wsymb2 == 18) {
+      document.getElementById('Wsymb2').innerHTML = 'Light rain'; 
+    } else if (Wsymb2 == 19) {
+      document.getElementById('Wsymb2').innerHTML = 'Moderate rain';   
+    } else if (Wsymb2 == 20) {
+      document.getElementById('Wsymb2').innerHTML = 'Heavy rain'; 
+    } else if (Wsymb2 == 21) {
+      document.getElementById('Wsymb2').innerHTML = 'Thunder';   
+    } else if (Wsymb2 == 22) {
+      document.getElementById('Wsymb2').innerHTML = 'Light sleet'; 
+    } else if (Wsymb2 == 23) {
+      document.getElementById('Wsymb2').innerHTML = 'Moderate sleet'; 
+    } else if (Wsymb2 == 24) {
+      document.getElementById('Wsymb2').innerHTML = 'Heavy sleet';   
+    } else if (Wsymb2 == 25) {
+      document.getElementById('Wsymb2').innerHTML = 'Light snowfall'; 
+    } else if (Wsymb2 == 26) {
+      document.getElementById('Wsymb2').innerHTML = 'Moderate snowfall'; 
+    } else if (Wsymb2 == 27) {
+      document.getElementById('Wsymb2').innerHTML = 'Heavy snowfall';   
+    } 
     
 
+  }
 
-  api = "https://api.openweathermap.org/data/2.5/forecast?id=";
-  cityID = 2673722;
-  APIkey = "&units=metric&APPID=76754a491ae0cc7508163183ec8cd32a";
+  getISS();
+  getSun();
+  // setInterval(getISS, 60000);
+  setInterval(function () {
+    getISS();
+    getSun();
+}, 60000);
+  
 
-  refresh();
-  setInterval(refresh, 600000);
-  // Finns det bättre sätt att kalla på updateweather än med setTimeout?
-  setTimeout(updateweather, 1000);
   angleMode(DEGREES);
   let d = createDiv();
   d.style('transform: rotate(' + 90 + 'deg);');
@@ -56,53 +175,9 @@ function setup() {
   toggle.changed(changeToggle);
   sliderMX = createSlider(0, 127, 0);
   sliderMX.input(updateslider);
-  //d.child(sliderMX);
-  //button.style("position", "center");
 
-  // Start a socket connection to the server
 
-  socket = io.connect('192.168.1.219:3000');
 
-  //var timer = createP("");
-  //timer.id('demo');
-}
-
-function gotData(data) {
-  weather = data;
-}
-
-function refresh() {
-  cleartext();
-  var url = api + cityID + APIkey;
-  //var url = 'https://www.yr.no/place/Sweden/Stockholm/Stockholm/external_box_stripe.js'
-  loadJSON(url, gotData);
-  updateweather();
-}
-
-function updateweather() {
-  if (weather) {
-    console.log('Temperature Stockholm: ' + weather.list[0].main.temp);
-    console.log('Weather: ' + weather.list[0].weather[0].main);
-
-    var data = {
-      temp: weather.list[0].main.temp,
-      currentWeather: weather.list[0].weather[0].main
-    };
-
-    console.log(data);
-    socket.emit('stockholm', data); 
-  }  
-}
-
-function cleartext() {
-}
-
-function draw() {
-  if (weather) {
-    textSize(24);
-    text('Temperature Stockholm: ' + weather.list[0].main.temp + ' C', 10, 50);
-    text('Weather: ' + weather.list[0].weather[0].main, 10, 100);
-  }
 }
 
 function updateslider() {
@@ -131,7 +206,7 @@ function changeToggle() {
 function startCountdown() {
   var counter = 0;
   var distance = 3600000;
-  document.getElementById("demo").innerHTML = "01:00:00";
+  document.getElementById("demo").innerHTML = "Commencing countdown...";
   var i = setInterval(function() { 
     if (toggle.checked()) {
       clearInterval(i);
@@ -143,7 +218,7 @@ function startCountdown() {
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in the element with id="demo"
-    document.getElementById("demo").innerHTML = (hours).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":"
+    document.getElementById("demo").innerHTML = "Muted - Fade in begins in: " + (hours).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":"
     + (minutes).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":" + (seconds).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
 
     counter++;
