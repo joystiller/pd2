@@ -1,4 +1,4 @@
-#N canvas 415 23 609 561 12;
+#N canvas 417 66 609 561 12;
 #X obj 293 27 loadbang;
 #X obj 293 104 time;
 #X floatatom 294 203 5 0 0 0 - - -, f 5;
@@ -31,6 +31,7 @@
 #X obj 398 468 s startMetro;
 #X obj 32 513 print Sun is setting...;
 #X obj 342 519 print Sun is rising!;
+#X obj 267 336 loadbang;
 #X connect 0 0 17 0;
 #X connect 1 0 2 0;
 #X connect 1 1 3 0;
@@ -64,3 +65,4 @@
 #X connect 25 0 22 0;
 #X connect 26 0 23 0;
 #X connect 26 0 27 0;
+#X connect 30 0 23 0;

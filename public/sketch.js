@@ -13,7 +13,7 @@ var sliderFX;
 var sliderMX;
 let valMX;
 var toggle;
-const url = '192.168.0.102';
+const url = '192.168.1.219';
 var Wsymb2;
 var pcat;
 
