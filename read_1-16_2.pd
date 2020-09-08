@@ -1,4 +1,4 @@
-#N canvas 2 118 1022 605 12;
+#N canvas 358 94 1022 605 12;
 #X obj 1165 432 *~;
 #X obj 1195 436 *~;
 #X obj 1225 436 *~;
@@ -105,7 +105,7 @@
 #X obj 465 979 bng 27 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 2039 11 r openFile\$1;
-#X msg 1281 173 open /home/pi/jungle/nighttrack.wav \;;
+#X msg 1281 173 open /home/pi/jungle/day_scene_1.wav \;;
 #X msg 428 216 5000;
 #X obj 428 183 loadbang;
 #X obj 2732 112 r stopPlayer\$1;
@@ -305,7 +305,7 @@
 #X msg 1390 134 set;
 #X obj 2039 49 t a b;
 #X msg 2144 125 set;
-#X msg 2038 166 open /home/pi/jungle/nighttrack.wav \;;
+#X msg 2038 166 open /home/pi/jungle/day_scene_1.wav \;;
 #X obj 1290 272 bng 25 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 2021 264 bng 25 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -330,6 +330,8 @@ if it drops to 0 lineINIT is sent along with the startup sequence from
 qlist., f 31;
 #X msg 1546 1403 \$1 60000;
 #X obj 1546 1330 env~;
+#X obj 3165 91 inlet;
+#X obj 3165 130 switch~;
 #X connect 0 0 242 0;
 #X connect 1 0 243 0;
 #X connect 2 0 244 0;
@@ -900,3 +902,4 @@ qlist., f 31;
 #X connect 310 0 304 0;
 #X connect 312 0 304 0;
 #X connect 313 0 308 0;
+#X connect 314 0 315 0;
