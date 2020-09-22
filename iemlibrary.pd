@@ -1,0 +1,7 @@
+#N canvas 206 193 450 300 12;
+#X declare -lib iemlib;
+#X declare -path /usr/local/lib/pd/extra/iemlib;
+#X declare -path ~/.local/lib/pd/extra/iemlib;
+#X obj 182 185 declare -lib iemlib;
+#X obj 82 218 declare -path /usr/local/lib/pd/extra/iemlib;
+#X obj 104 246 declare -path ~/.local/lib/pd/extra/iemlib;
