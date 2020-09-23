@@ -60,4 +60,6 @@ toggle;
 #X connect 25 1 26 0;
 #X connect 25 1 30 0;
 #X connect 27 0 29 0;
+#X connect 27 0 31 0;
 #X connect 28 0 26 0;
+#X connect 28 0 30 0;
