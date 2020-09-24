@@ -61,8 +61,12 @@
 #X obj 172 319 / 2;
 #X msg 302 161 1;
 #X msg 519 198 1;
-#X obj 460 580 env~;
-#X floatatom 460 605 5 0 0 0 - - -;
+#X obj 482 604 env~;
+#X floatatom 482 629 5 0 0 0 - - -;
+#X obj 379 665 f;
+#X obj 379 690 print Current volume:;
+#X obj 379 605 metro 300000;
+#X obj 378 571 loadbang;
 #X connect 1 0 8 0;
 #X connect 1 0 55 0;
 #X connect 2 0 9 0;
@@ -131,6 +135,10 @@
 #X connect 53 0 47 0;
 #X connect 54 0 7 0;
 #X connect 55 0 56 0;
+#X connect 56 0 57 1;
+#X connect 57 0 58 0;
+#X connect 59 0 57 0;
+#X connect 60 0 59 0;
 #X restore 25 321 pd mixer;
 #X obj 26 25 loadbang;
 #X msg 27 164 \; pd dsp \$1;
@@ -185,7 +193,7 @@
 #X obj 342 124 t b b b b b;
 #X obj 398 305 s trackDuration;
 #X obj 338 476 s startAutomation;
-#N canvas 26 155 848 514 faders 1;
+#N canvas 26 155 848 514 faders 0;
 #X obj -923 297 r f1 \$2;
 #X obj -849 270 r f2 \$2;
 #X obj -784 296 r f3 \$2;
@@ -1263,11 +1271,11 @@
 #X obj 1317 420 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1388 422 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 47 1;
 #X obj 1462 421 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1515 419 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 122 1;
 #X obj 1589 418 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1660 420 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -1315,7 +1323,7 @@
 #X obj 3241 431 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3294 429 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 269 1;
+-1 -1 0 1;
 #X obj 3368 428 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3439 430 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -2703,14 +2711,14 @@
 #X connect 1013 0 1011 1;
 #X connect 1013 0 1015 0;
 #X restore 27 434 pd faders;
-#N canvas 120 132 897 563 makenumbers 1;
+#N canvas 120 132 897 563 makenumbers 0;
 #X obj 1337 596 bng 62 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 1763 1649 f;
 #X msg 1364 702 clear;
-#X msg 1195 1552 4;
+#X msg 1195 1552 2;
 #X msg 1565 693 add2 \$1;
-#X msg 1565 743 2 4;
+#X msg 1565 743 3 1 2;
 #X obj 1565 772 list length;
 #X obj 1565 830 select 1;
 #X msg 1512 707 set;
@@ -2739,8 +2747,8 @@
 #X obj 1393 2225 qlist;
 #X msg 1249 2172 bang;
 #X obj 1763 2213 qlist;
-#X msg 1761 2091 add2 fadeout2 \, add \$1 \, add 120000;
-#X msg 1393 2094 add2 fadein4 \, add \$1 \, add 120000;
+#X msg 1761 2091 add2 fadeout1 \, add \$1 \, add 120000;
+#X msg 1393 2094 add2 fadein2 \, add \$1 \, add 120000;
 #X obj 936 577 t b b;
 #X obj 940 1617 delay 100;
 #X msg 936 453 stop;
@@ -2811,9 +2819,9 @@ outputted five numbers., f 10;
 #X obj 1060 350 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X msg 1194 1663 set \$1;
-#X msg 1194 1692 2;
+#X msg 1194 1692 1;
 #X msg 1800 1706 set \$1;
-#X msg 1800 1735 2;
+#X msg 1800 1735 1;
 #X text 1798 1637 Bangs previous number. Counts from 0, f 21;
 #X obj 2532 1797 r mixDuration;
 #X msg 2555 1883 set \$1;
@@ -2922,10 +2930,10 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 -1 -1;
 #X obj 2696 2212 qlist;
 #X obj 2697 1557 list append;
-#X msg 2737 1643 1;
+#X msg 2737 1643 3;
 #X obj 2697 1584 list split 3;
 #X msg 2737 1615 set \$3;
-#X msg 2697 2087 add2 fadeout1 \, add \$1 \, add 120000;
+#X msg 2697 2087 add2 fadeout3 \, add \$1 \, add 120000;
 #X obj 2156 2084 r rSET;
 #X msg 2156 2118 clear;
 #X obj 2721 1867 r mixDuration;
@@ -2958,13 +2966,13 @@ during a fade #;
 -1 -1;
 #X msg 1123 697 6;
 #X msg 1549 1671 set \$1;
-#X msg 1549 1700 4;
+#X msg 1549 1700 2;
 #X obj 1004 632 t b b;
 #X msg 1036 677 3;
 #X obj 1004 603 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X msg 1413 856 set \$1;
-#X msg 1413 885 4;
+#X msg 1413 885 2;
 #X obj 1044 547 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 2378 2107 spigot;

@@ -63,7 +63,7 @@ function newConnection(socket) {
 		fetch("http://" + ip + ":" + 3558, {
 			method: "PUT", 
 			body: ";slider1 " + x + ";"
-		});	
+		}).catch(err => console.error(err));	
 	}
 
 	socket.on('smhiToPd', smhi);
@@ -74,7 +74,7 @@ function newConnection(socket) {
 		fetch("http://" + ip + ":" + 3558, {
 			method: "PUT", 
 			body: ";pcat " + pcat + ";"
-		});
+		}).catch(err => console.error(err));
 	}
 
 	socket.on('sunToPd', sunData); 
@@ -88,7 +88,7 @@ function newConnection(socket) {
 		fetch("http://" + ip + ":" + 3558, {
 			method: "PUT", 
 			body: ";hoursRise " + hoursRise + "; minutesRise " + minutesRise + "; hoursSet " + hoursSet + "; minutesSet " + minutesSet + ";"
-		});
+		}).catch(err => console.error(err));
 	}
 
 
@@ -102,7 +102,7 @@ function newConnection(socket) {
 			method: "PUT", 
 			//body: ";toggle " + 'symbol ' + data + ";"
 			body: ";toggle " + data + ";"
-		});	
+		}).catch(err => console.error(err));
 	}
 
 	
