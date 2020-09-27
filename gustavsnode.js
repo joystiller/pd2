@@ -1,5 +1,5 @@
 var ip = '192.168.0.102';
-var port = '3000';
+var port = '8080';
 var PDport = '3558'
 
 var express = require('express')
@@ -13,7 +13,7 @@ dt.setHours(dt.getHours() + 2);
 const fetch = require("node-fetch");
 
 // Set up the server
-var server = app.listen(process.env.PORT || 3000, listen);
+var server = app.listen(process.env.PORT || port, listen);
 
 // This call back just tells us that the server has started
 function listen() {
@@ -138,3 +138,16 @@ function newConnection(socket) {
 		console.error(err)
 	}
 }
+
+const OSC = require('osc-js')
+
+const config = {
+	udpClient: {
+		port: 9129
+	}
+}
+const osc = new OSC({
+	plugin: new OSC.BridgePlugin(config)
+})
+
+osc.open() // start a WebSocket server on port 8080

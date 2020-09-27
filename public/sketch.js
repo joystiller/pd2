@@ -13,6 +13,7 @@
   let valMX;
   var toggle;
   const url = '192.168.0.102';
+  const sketchPORT = '8080'
   var Wsymb2;
   var pcat;
 
@@ -23,7 +24,7 @@
     noCanvas();
 
     // Start a socket connection to the server
-    socket = io.connect(url + ':3000');
+    socket = io.connect(url + sketchPORT;
 
     const api_url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.102919/lat/59.336600/data.json';
     const sun_url = 'https://api.sunrise-sunset.org/json?lat=59.336600&lng=18.102919'
