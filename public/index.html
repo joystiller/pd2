@@ -9,6 +9,7 @@
   <script type="text/javascript" src="sketch.js"></script>
 
   <script>
+<<<<<<< HEAD
     document.addEventListener('DOMContentLoaded', function () {
       // var checkbox = document.querySelector('input[type="checkbox"]');
       var checkbox = document.querySelector('#toggle');
@@ -112,24 +113,128 @@
     <input id="toggle" type="checkbox">
     <span class="slider"></span>
   </label>
+=======
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var checkbox = document.querySelector('input[type="checkbox"]');
+
+      checkbox.checked = true;
+
+      checkbox.addEventListener('change', function () {
+        if (checkbox.checked) {
+          // do this
+          console.log('Checked');
+        } else {
+          // Mute audio and display a countdown timer
+          console.log('Not checked');
+        }
+      });
+    });
+  </script>
+
+<button id="send">Send Message</button>
+<script type="text/javascript" src="lib/osc.browser.min.js"></script>
+<script type="text/javascript">
+  var osc = new OSC();
+  osc.open(); // connect by default to ws://localhost:8080
+
+  document.getElementById('send').addEventListener('click', () => {
+    var message = new OSC.Message('/test/random', Math.random());
+    osc.send(message);
+  });
+</script>
+
+  <p id="demo"> Click the toggle to mute weather installation</p>
 
 
 
+
+  <style>
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+>>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked+.slider {
+      background-color: #2196F3;
+    }
+
+<<<<<<< HEAD
   <p> </p>
 
 
   <h1>Current weather</h1>
 
   <p><span style='font-size:28px;' id='Wsymb2'></span></p>
+=======
+    input:focus+.slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+  </style>
+
+  <label class="switch">
+    <input id="toggle" type="checkbox">
+    <span class="slider"></span>
+  </label>
+
+  <p> </p>
+>>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
 
   <p>To play music, plug in the cable to your phone or computer and move the slider to adjust the volume. </p>
 
+<<<<<<< HEAD
   <label class="switch">
     <input id="musictoggle" type="checkbox">
     <span class="slider"></span>
   </label>
 
 
+=======
+  <h1>Current weather</h1>
+
+  <p><span style='font-size:28px;' id='Wsymb2'></span></p>
+
+  <p>To play music, plug in the cable to your phone or computer and move the slider to adjust the volume. </p>
+>>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
   <!--
 
 <p>Thanks to: 

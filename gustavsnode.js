@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 // TODO:
 // Is there a way to sort of "run sketch.js" on server startup? Otherwise the user 
 // have to manually hit the refresh button on the html page. 
 
 // Replace slider to another checkbox. 
+=======
+var ip = '192.168.0.102';
+var port = '8080';
+var PDport = '3558'
+>>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
 
 var ip = '192.168.8.219';
 // var os = require('os')
@@ -22,7 +28,7 @@ const fetch = require("node-fetch");
 
 
 // Set up the server
-var server = app.listen(process.env.PORT || 3000, listen);
+var server = app.listen(process.env.PORT || port, listen);
 
 // This call back just tells us that the server has started
 function listen() {
@@ -36,7 +42,6 @@ app.use(express.static(__dirname + '/public'));
 console.log("Server up and running!");
 
 var socket = require('socket.io');
-
 var io = socket(server, {
 	handlePreflightRequest: (req, res) => {
 		const headers = {
@@ -54,12 +59,13 @@ var io = socket(server, {
 // This is run for each individual user that connects
 io.sockets.on('connection', newConnection);
 
-// We are given a websocket object in our function
-function newConnection(socket) {
-	console.log('We have a new client: ' + socket.id);
+// When this user emits, client side: socket.emit('otherevent',some data);
+function sliderData(data) {
+	//socket.broadcast.emit('mouse', data);
+	console.log(data);
+	console.log(dt);
 
-	socket.on('Slider', sliderData);
-
+<<<<<<< HEAD
 	// When this user emits, client side: socket.emit('otherevent',some data);
 	async function sliderData(data) {
 		//socket.broadcast.emit('mouse', data);
@@ -73,10 +79,28 @@ function newConnection(socket) {
 		// 	method: "PUT", 
 		// 	body: ";slider1 " + x + ";"
 		// }).catch(err => console.error(err));	
+=======
+	x = data.x;
+
+	try {
+		//fetch("http://192.168.1.219:3558", {
+		fetch("http://" + ip + ":" + PDport, {
+			method: "PUT",
+			body: ";slider1 " + x + ";"
+		})
+		// .then(res =>
+		// 	onResponse('PD-SLIDER', res)
+		// ).catch(err => onError('PD-SLIDER', err))
+
+
+	} catch (err) {
+		console.error(err)
+>>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
 	}
 
-	socket.on('smhiToPd', smhi);
+}
 
+<<<<<<< HEAD
 	async function smhi(data) {
 		pcat = data.pcat;
 
@@ -84,8 +108,27 @@ function newConnection(socket) {
 		// 	method: "PUT", 
 		// 	body: ";pcat " + pcat + ";"
 		// }).catch(err => console.error(err));
-	}
+=======
+function smhi(data) {
+	console.log('Function smhi has been called, plus we have axios');
+	pcat = data.pcat;
 
+	try {
+		fetch("http://" + ip + ":" + 3558, {
+			method: "PUT",
+			body: ";pcat " + pcat + ";"
+		})
+		//.then(res =>
+		// 	onResponse('PD-PUT-PCAT', res)
+		// ).catch(err => console.error(err))
+
+	} catch (err) {
+		console.error(err)
+>>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
+	}
+}
+
+<<<<<<< HEAD
 
 	socket.on('sunToPd', sunData);
 
@@ -98,10 +141,26 @@ function newConnection(socket) {
 		console.log('sending sundata to pd')
 
 		fetch("http://" + ip + ":" + 3558, {
+=======
+function sunData(data) {
+	hoursRise = data.hoursRise;
+	minutesRise = data.minutesRise;
+	hoursSet = data.hoursSet;
+	minutesSet = data.minutesSet;
+
+	try {
+		fetch("http://" + ip + ":" + PDport, {
+>>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
 			method: "PUT",
 			body: ";hoursRise " + hoursRise + "; minutesRise " + minutesRise + "; hoursSet " + hoursSet + "; minutesSet " + minutesSet + ";"
-		}).catch(err => console.error(err));
+		})
+		// .then(res =>
+		// 	onResponse('PD-SUN-DATA', res)
+		// ).catch(err => console.error(err))
+	} catch (err) {
+		console.error(err)
 	}
+<<<<<<< HEAD
 	// require('os');
 	// var os = new 
 
@@ -109,8 +168,15 @@ function newConnection(socket) {
 	// 	os.system("echo '" + 3 + "' | pdsend 3000 localhost udp");
 	// }
 
+=======
+}
+>>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
 
+function mute(data) {
+	console.log('return checkbox data: ' + data);
+	console.log(dt);
 
+<<<<<<< HEAD
 	socket.on('checkboxToggle', mute);
 	socket.on('musicboxToggle', activateMusic);
 
@@ -125,10 +191,19 @@ function newConnection(socket) {
 
 		fetch("http://" + ip + ":" + 3558, {
 			method: "PUT",
+=======
+	try {
+		fetch("http://" + ip + ":" + PDport, {
+			method: "PUT",
+			//body: ";toggle " + 'symbol ' + data + ";"
+>>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
 			body: ";toggle " + data + ";"
-		}).catch(err => console.error(err));
-	}
+		})
+		// .then(res =>
+		// 	onResponse('PD-PUT-TOGGLE', res)
+		// ).catch(err => console.error(err))
 
+<<<<<<< HEAD
 	async function activateMusic(data) {
 		console.log('Music checkbox was set to ' + data + ' at ' + dt);
 
@@ -161,6 +236,11 @@ function newConnection(socket) {
 	// });
 
 	// closeSockets();
+=======
+	} catch (err) {
+		console.error(err)
+	}
+>>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
 }
 
 //now we just need to fix this closeSockets-function so that it actually closes the sockets in Pd. is that the main connection above?
@@ -189,6 +269,7 @@ function timeout(ms, promise) {
 //         interfaces = os.networkInterfaces(),
 //         ipAddresses = [];
 
+<<<<<<< HEAD
 //     for (var deviceName in interfaces) {
 //         var addresses = interfaces[deviceName];
 //         for (var i = 0; i < addresses.length; i++) {
@@ -238,3 +319,30 @@ function timeout(ms, promise) {
 // 		client.close();
 // 	});
 // });
+=======
+// We are given a websocket object in our function
+function newConnection(socket) {
+	console.log('We have a new client: ' + socket.id);
+	try {
+		socket.on('Slider', sliderData);
+		socket.on('smhiToPd', smhi);
+		socket.on('sunToPd', sunData);
+		socket.on('checkboxToggle', mute);
+	} catch (err) {
+		console.error(err)
+	}
+}
+
+const OSC = require('osc-js')
+
+const config = {
+	udpClient: {
+		port: 9129
+	}
+}
+const osc = new OSC({
+	plugin: new OSC.BridgePlugin(config)
+})
+
+osc.open() // start a WebSocket server on port 8080
+>>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6

@@ -1,0 +1,5 @@
+#N canvas 598 175 450 300 12;
+#X obj 77 151 print UDPRECEIVER:;
+#X obj 324 154 netreceive 3558;
+#X obj 77 127 udpreceive 9129;
+#X connect 2 0 0 0;
