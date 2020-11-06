@@ -1,0 +1,36 @@
+#N canvas 347 65 450 300 12;
+#X obj 126 69 loadbang;
+#X obj 125 138 counter;
+#X obj 125 167 == 5;
+#X obj 123 205 select 1, f 7;
+#X obj 126 273 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 173 286 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 125 109 metro 500;
+#X obj 22 267 s switchOFF\$1;
+#X obj 300 167 osc~ 220;
+#X obj 300 196 env~;
+#X floatatom 300 225 5 0 0 0 - - -, f 5;
+#X floatatom 302 109 5 0 0 0 - - -, f 5;
+#X obj 222 41 inlet;
+#X obj 223 108 switch~;
+#X msg 12 12;
+#X obj 308 76 print inlet;
+#X obj 210 262 s switchON\$1;
+#X msg 74 50 bang;
+#X connect 0 0 6 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 0 1 2;
+#X connect 3 0 7 0;
+#X connect 3 1 5 0;
+#X connect 3 1 16 0;
+#X connect 6 0 1 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 11 0 8 0;
+#X connect 12 0 13 0;
+#X connect 12 0 15 0;
+#X connect 17 0 1 2;

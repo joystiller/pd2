@@ -3,10 +3,6 @@
   // Daniel Shiffman
 
   var socket;
-<<<<<<< HEAD
-=======
-  var data;
->>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
   var weather;
   var api;
   var cityID;
@@ -15,29 +11,20 @@
   var sliderMX;
   let valMX;
   var toggle;
-<<<<<<< HEAD
   var musictoggle;
-  const url = '192.168.8.219';
+  const url = '192.168.1.13';
   var Wsymb2;
   var pcat;
 
   // var os = require('os')
   // console.log(os.networkInterfaces())
 
-=======
-  const url = '192.168.0.102';
-  const sketchPORT = '8080'
-  var Wsymb2;
-  var pcat;
-
->>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
 
 
 
   function setup() {
     noCanvas();
 
-<<<<<<< HEAD
     //   oscWebSocket = new osc.WebSocketPort({
     //     url: "172.20.10.2:12345",
     //     metadata: true
@@ -62,10 +49,6 @@
 
     // Start a socket connection to the server
     socket = io.connect(url + ':3000');
-=======
-    // Start a socket connection to the server
-    socket = io.connect(url + sketchPORT;
->>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
 
     const api_url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.102919/lat/59.336600/data.json';
     const sun_url = 'https://api.sunrise-sunset.org/json?lat=59.336600&lng=18.102919'
@@ -105,7 +88,6 @@
 
       if (d[1] == 'PM') {
         hoursSet = hoursSet + 12;
-<<<<<<< HEAD
       } else if (d[1] == 'AM') {
         // Do nothing
       }
@@ -119,15 +101,6 @@
 
       var hoursSet = dtSet.getHours();
       var minutesSet = dtSet.getMinutes();
-=======
-      } else if (d[1] == 'AM') {}
-
-      dtSet.setHours(hoursSet);
-      dtSet.setMinutes(minutesSet);
-      dtSet.setSeconds(secondsSet);
-      console.log('Sun sets at: ' + dtSet);
-
->>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
 
       var sunData = {
         hoursRise: hoursRise,
@@ -135,7 +108,6 @@
         hoursSet: hoursSet,
         minutesSet: minutesSet
       };
-<<<<<<< HEAD
       socket.emit('sunToPd', sunData);
 
     }
@@ -220,116 +192,11 @@
     //Then, getSun updates once every 24 hours. 
     //getISS should update once every hour, but it should only send data to Pd
     //whenever it starts or stops raining.
-=======
-      try {
-        socket.emit('sunToPd', sunData);
-      } catch (err) {
-        console.error(err)
-      }
-    }
-
-    async function getISS() {
-      const response = await fetch(api_url);
-      const data = await response.json();
-      console.log(data.timeSeries[2].validTime);
-
-      var smhiData = {
-        pcat: data.timeSeries[2].parameters[2].level,
-        sunUp: 6,
-        sunDown: 20
-      };
-      try {
-        socket.emit('smhiToPd', smhiData);
-      } catch (err) {
-        console.error(err)
-      }
-
-      Wsymb2 = data.timeSeries[2].parameters[18].values;
-      if (Wsymb2 == 1) {
-        document.getElementById('Wsymb2').innerHTML = 'Clear sky';
-      } else if (Wsymb2 == 2) {
-        document.getElementById('Wsymb2').innerHTML = 'Nearly clear sky';
-      } else if (Wsymb2 == 3) {
-        document.getElementById('Wsymb2').innerHTML = 'Variable cloudiness';
-      } else if (Wsymb2 == 4) {
-        document.getElementById('Wsymb2').innerHTML = 'Halfclear sky';
-      } else if (Wsymb2 == 5) {
-        document.getElementById('Wsymb2').innerHTML = 'Cloudy sky';
-      } else if (Wsymb2 == 6) {
-        document.getElementById('Wsymb2').innerHTML = 'Overcast';
-      } else if (Wsymb2 == 7) {
-        document.getElementById('Wsymb2').innerHTML = 'Fog';
-      } else if (Wsymb2 == 8) {
-        document.getElementById('Wsymb2').innerHTML = 'Light rain showers';
-      } else if (Wsymb2 == 9) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate rain showers';
-      } else if (Wsymb2 == 10) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy rain showers';
-      } else if (Wsymb2 == 11) {
-        document.getElementById('Wsymb2').innerHTML = 'Thunderstorm';
-      } else if (Wsymb2 == 12) {
-        document.getElementById('Wsymb2').innerHTML = 'Light sleet showers';
-      } else if (Wsymb2 == 13) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate sleet showers';
-      } else if (Wsymb2 == 14) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy sleet showers';
-      } else if (Wsymb2 == 15) {
-        document.getElementById('Wsymb2').innerHTML = 'Light snow showers';
-      } else if (Wsymb2 == 16) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate snow showers';
-      } else if (Wsymb2 == 17) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy snow showers';
-      } else if (Wsymb2 == 18) {
-        document.getElementById('Wsymb2').innerHTML = 'Light rain';
-      } else if (Wsymb2 == 19) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate rain';
-      } else if (Wsymb2 == 20) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy rain';
-      } else if (Wsymb2 == 21) {
-        document.getElementById('Wsymb2').innerHTML = 'Thunder';
-      } else if (Wsymb2 == 22) {
-        document.getElementById('Wsymb2').innerHTML = 'Light sleet';
-      } else if (Wsymb2 == 23) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate sleet';
-      } else if (Wsymb2 == 24) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy sleet';
-      } else if (Wsymb2 == 25) {
-        document.getElementById('Wsymb2').innerHTML = 'Light snowfall';
-      } else if (Wsymb2 == 26) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate snowfall';
-      } else if (Wsymb2 == 27) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy snowfall';
-      }
-
-
-    }
-
-    getISS();
-    getSun();
-    // setInterval(getISS, 60000);
-    setInterval(function () {
-      getISS();
-      getSun();
-    }, 60000);
-
-
-    angleMode(DEGREES);
-    let d = createDiv();
-    d.style('transform: rotate(' + 90 + 'deg);');
-
-
-    // The hashtag selects the toggle in the html file
-    toggle = select("#toggle");
-    toggle.changed(changeToggle);
-    sliderMX = createSlider(0, 127, 0);
-    sliderMX.input(updateslider);
->>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
 
     setInterval(function () {
       getSun();
     }, 86400000);
 
-<<<<<<< HEAD
     setInterval(function () {
       getISS();
     }, 3600000)
@@ -368,43 +235,11 @@
     var data = toggle.checked();
     //console.log("calling the changeToggle function " + data);
     socket.emit('checkboxToggle', data);
-=======
-
-  }
-
-  function updateslider() {
-    sendslider(sliderMX.value());
-  }
-
-  function sendslider(mxval) {
-    console.log("sendslider: " + mxval);
-
-    var data = {
-      x: mxval
-    };
-
-    try {
-      socket.emit('Slider', data);
-    } catch (err) {
-      console.error(err)
-    }
-
-  }
-
-  function changeToggle() {
-    var data = toggle.checked();
-    try {
-      socket.emit('checkboxToggle', data);
-    } catch (err) {
-      console.error(err)
-    }
->>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
     if (data) {
       return stopCountdown();
     } else startCountdown();
   }
 
-<<<<<<< HEAD
   function changeMusicToggle() {
     var data = musictoggle.checked();
     //console.log("calling the changeMusicToggle function " + data);
@@ -454,51 +289,4 @@
   function stopCountdown() {
     //console.log('pringing from stopCountdown() function')
     document.getElementById("demo").innerHTML = "Click toggle to mute";
-=======
-  function startCountdown() {
-    var counter = 0;
-    var distance = 3600000;
-    document.getElementById("demo").innerHTML = "Commencing countdown...";
-    var i = setInterval(function () {
-      if (toggle.checked()) {
-        clearInterval(i);
-      } else {
-
-        distance = distance - 1000;
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Display the result in the element with id="demo"
-        document.getElementById("demo").innerHTML = "Muted - Fade in begins in: " + (hours).toLocaleString('en-US', {
-            minimumIntegerDigits: 2,
-            useGrouping: false
-          }) + ":" +
-          (minutes).toLocaleString('en-US', {
-            minimumIntegerDigits: 2,
-            useGrouping: false
-          }) + ":" + (seconds).toLocaleString('en-US', {
-            minimumIntegerDigits: 2,
-            useGrouping: false
-          });
-
-        counter++;
-        if (counter === 3600) {
-          clearInterval(i);
-          stopCountdown();
-        }
-      }
-    }, 1000);
-  }
-
-  function stopCountdown() {
-    document.getElementById("toggle").checked = true;
-    try {
-      socket.emit('checkboxToggle', toggle.checked());
-    } catch (err) {
-      console.error(err)
-    }
-    document.getElementById("demo").innerHTML = "Click toggle to mute";
-
->>>>>>> a63ed0b8864438d989fadbbca16574f2247b64a6
   }

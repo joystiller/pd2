@@ -1,0 +1,92 @@
+#N canvas 254 121 911 452 12;
+#X obj 293 27 loadbang;
+#X obj 293 104 time;
+#X floatatom 294 203 5 0 0 0 - - -, f 5;
+#X floatatom 307 170 5 0 0 0 - - -, f 5;
+#X floatatom 321 143 5 0 0 0 - - -, f 5;
+#X obj 402 54 r hRise;
+#X obj 471 54 r mRise;
+#X obj 36 62 r hSet;
+#X obj 93 66 r mSet;
+#X floatatom 402 83 5 0 0 0 - - -, f 5;
+#X floatatom 471 83 5 0 0 0 - - -, f 5;
+#X floatatom 36 91 5 0 0 0 - - -, f 5;
+#X floatatom 93 95 5 0 0 0 - - -, f 5;
+#X obj 398 275 ==;
+#X obj 454 275 ==;
+#X obj 398 345 +;
+#X obj 398 404 select 2;
+#X obj 88 279 ==;
+#X obj 144 279 ==;
+#X obj 88 349 +;
+#X obj 88 408 select 2;
+#X msg 228 448 0;
+#X msg 266 448 1;
+#X obj 247 482 s sunStatus;
+#X obj 180 389 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 304 378 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 398 468 s startMetro;
+#X obj 32 513 print Sun is setting...;
+#X obj 342 519 print Sun is rising!;
+#X obj 267 336 loadbang;
+#X obj 87 466 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 293 65 metro 60000;
+#X obj 1197 1551 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 351 616 s startHarp;
+#X obj 405 572 s switchONHarp;
+#X obj 465 660 s lineINITHarp;
+#X text 148 25 Once every minute this timer checks for sunrise and
+sunset., f 19;
+#X text 594 114 There is a -24 minutes subtraction in sketch.js that
+is calculated from the 2 minutes it takes for the next fade to reach
+it next value. A total of 12 faders gives 24 minutes before a fade
+from one sound file to another has been completed. Because of the -24
+minutes \, the fade will be completed when the sun has set., f 33
+;
+#X connect 0 0 31 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 1 2 4 0;
+#X connect 2 0 13 0;
+#X connect 2 0 17 0;
+#X connect 3 0 14 0;
+#X connect 3 0 18 0;
+#X connect 5 0 9 0;
+#X connect 6 0 10 0;
+#X connect 7 0 11 0;
+#X connect 8 0 12 0;
+#X connect 9 0 13 1;
+#X connect 10 0 14 1;
+#X connect 11 0 17 1;
+#X connect 12 0 18 1;
+#X connect 13 0 15 0;
+#X connect 14 0 15 1;
+#X connect 15 0 16 0;
+#X connect 16 0 22 0;
+#X connect 16 0 26 0;
+#X connect 16 0 28 0;
+#X connect 16 0 33 0;
+#X connect 16 0 34 0;
+#X connect 16 0 35 0;
+#X connect 17 0 19 0;
+#X connect 18 0 19 1;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 20 0 27 0;
+#X connect 20 0 30 0;
+#X connect 21 0 23 0;
+#X connect 22 0 23 0;
+#X connect 24 0 21 0;
+#X connect 24 0 27 0;
+#X connect 25 0 22 0;
+#X connect 25 0 26 0;
+#X connect 25 0 28 0;
+#X connect 25 0 34 0;
+#X connect 25 0 33 0;
+#X connect 25 0 35 0;
+#X connect 29 0 22 0;
+#X connect 31 0 1 0;

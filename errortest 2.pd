@@ -1,0 +1,19 @@
+#N canvas 487 266 450 300 12;
+#X obj 180 73 osc~;
+#X obj 180 102 env~;
+#X floatatom 180 131 5 0 0 0 - - -, f 5;
+#X floatatom 180 21 5 0 0 0 - - -, f 5;
+#X obj 272 240 print once every 5 min;
+#X obj 293 145 time;
+#X obj 310 29 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 294 187 pack;
+#X obj 309 63 metro 300000;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 3 0 0 0;
+#X connect 5 0 7 0;
+#X connect 5 1 7 1;
+#X connect 6 0 8 0;
+#X connect 7 0 4 0;
+#X connect 8 0 5 0;
