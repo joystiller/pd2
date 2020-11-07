@@ -15,6 +15,10 @@
   const url = '192.168.1.13';
   var Wsymb2;
   var pcat;
+  var startupSunrise;
+  var dtRise = new Date();
+  var dtSet = new Date();
+  var sunStatus;
 
   // var os = require('os')
   // console.log(os.networkInterfaces())
@@ -54,8 +58,7 @@
     const sun_url = 'https://api.sunrise-sunset.org/json?lat=59.336600&lng=18.102919'
 
     async function getSun() {
-      var dtRise = new Date();
-      var dtSet = new Date();
+
 
       const response = await fetch(sun_url);
       var hms = await response.json();
@@ -64,7 +67,7 @@
       var a = hms.results.sunrise.split(':');
       var b = a[2].split(' ');
 
-      var hoursRise = parseInt(a[0]) + 2;
+      var hoursRise = parseInt(a[0]) + 1;
       var minutesRise = parseInt(a[1]);
       var secondsRise = parseInt(b[0]);
 
@@ -78,11 +81,24 @@
 
       console.log('Sun rises at: ' + dtRise);
 
+      var dt2 = new Date();
+      if (dtRise > dt2.getTime()) {
+        console.log('dtRise is bigger than current time, which means that the sun has not risen yet');
+        sunStatus = true;
+        //console.log('variable x: ' + x)
+        //socket.emit('sunSocket', x);
+      } else {
+        console.log('dtRise is not bigger than current time, which means that the program was started after sunrine');
+        sunStatus = false;
+        //console.log('variable x: ' + x)
+        //socket.emit('sunSocket', x);
+      }
+
       // Calculations for sunset
       var c = hms.results.sunset.split(':');
       var d = c[2].split(' ');
 
-      var hoursSet = parseInt(c[0]) + 2;
+      var hoursSet = parseInt(c[0]) + 1;
       var minutesSet = parseInt(c[1]);
       var secondsSet = parseInt(d[0]);
 
@@ -106,24 +122,63 @@
         hoursRise: hoursRise,
         minutesRise: minutesRise,
         hoursSet: hoursSet,
-        minutesSet: minutesSet
+        minutesSet: minutesSet,
+        sunStatus: sunStatus
       };
       socket.emit('sunToPd', sunData);
+    }
 
+    async function updatePcat() {
+      const response = await fetch(api_url);
+      const data = await response.json();
+      pcat = data.timeSeries[2].parameters[15].level;
+      // If there's rain on startup, send rain on. Otherwise, do nothing.
+      if (pcat != 0) {
+        var smhiData = {
+          pcat: data.timeSeries[2].parameters[15].level,
+        }
+        socket.emit('smhiToPd', smhiData);
+        console.log('emitting to gustavsnode, pcat not equal to 0');
+      }
+      console.log('printing from updatePcat, pcat = ' + data.timeSeries[2].parameters[15].level)
     }
 
     async function getISS() {
       const response = await fetch(api_url);
       const data = await response.json();
-      console.log(data.timeSeries[2].validTime);
+      console.log('Current time series is: ' + data.timeSeries[2].validTime);
 
-      var smhiData = {
-        pcat: data.timeSeries[2].parameters[2].level,
-        sunUp: 6,
-        sunDown: 20
-      };
+      if (pcat != data.timeSeries[2].parameters[15].level) {
+        var smhiData = {
+          pcat: data.timeSeries[2].parameters[15].level,
+        };
+        console.log('this should only be called if there is a change in pcat');
+        socket.emit('smhiToPd', smhiData);
+        pcat = data.timeSeries[2].parameters[15].level;
+      }
+
+
+      console.log('pcat value from list: ' + data.timeSeries[2].parameters[15].level)
+
+      if (data.timeSeries[2].parameters[15].level != 0) {
+        console.log('it is raining, call the socket.emit!');
+      }
+
+      // '.' First, store pcat in a variable. Then, once every hour, call the API, 
+      // compare the pcat value from the API with the one stored in the variable. 
+      // If they do not equal, call the socket.emit. 
+
       //commenting out the socket.emit to Pd because I will change it to 
       //the radar images. 
+
+      // Problem: Pd netreceive gets crammed with data. It opens up too many ports. 
+      // --> That's why: I need to send data only when it starts raining. 
+      // Or only send if it stops raining. 
+
+      // If pcat changes value from 0 to 1-6, do socket.emit. 
+      // Also, if it changes from values 1-6 to 0, do socket.emit. 
+      // At server startup, it should only emit data if pcat = 1-6. 
+      // Then, if pcat 
       //socket.emit('smhiToPd', smhiData);
 
       Wsymb2 = data.timeSeries[2].parameters[18].values;
@@ -185,6 +240,7 @@
 
     }
 
+    updatePcat();
     getISS();
     getSun();
 

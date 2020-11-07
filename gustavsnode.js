@@ -80,11 +80,21 @@ function newConnection(socket) {
 	async function smhi(data) {
 		pcat = data.pcat;
 
-		// fetch("http://" + ip + ":" + 3558, {
-		// 	method: "PUT", 
-		// 	body: ";pcat " + pcat + ";"
-		// }).catch(err => console.error(err));
+		fetch("http://" + ip + ":" + 3558, {
+			method: "PUT",
+			body: ";pcat " + pcat + ";"
+		}).catch(err => console.error(err));
 	}
+
+	// socket.on('sunSocket', sendSun);
+
+	// async function sendSun(data) {
+	// 	console.log('printing from sunSocket, sunStatus = ' + data)
+	// 	fetch("http://" + ip + ":" + 3558, {
+	// 		method: "PUT",
+	// 		body: ";pcat " + pcat + ";"
+	// 	}).catch(err => console.error(err));
+	// }
 
 
 	socket.on('sunToPd', sunData);
@@ -94,12 +104,13 @@ function newConnection(socket) {
 		minutesRise = data.minutesRise;
 		hoursSet = data.hoursSet;
 		minutesSet = data.minutesSet;
+		sunStatus = data.sunStatus;
 
 		console.log('sending sundata to pd')
 
 		fetch("http://" + ip + ":" + 3558, {
 			method: "PUT",
-			body: ";hoursRise " + hoursRise + "; minutesRise " + minutesRise + "; hoursSet " + hoursSet + "; minutesSet " + minutesSet + ";"
+			body: ";hoursRise " + hoursRise + "; minutesRise " + minutesRise + "; hoursSet " + hoursSet + "; minutesSet " + minutesSet + "; sunStatus " + sunStatus + ";"
 		}).catch(err => console.error(err));
 	}
 	// require('os');
