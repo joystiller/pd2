@@ -1,4 +1,4 @@
-#N canvas 160 152 1003 608 12;
+#N canvas 160 152 1003 585 12;
 #X declare -lib zexy;
 #N canvas 326 123 1022 493 mixer 1;
 #X obj 558 591 dac~ 1 2 3 4;
@@ -1357,21 +1357,21 @@ the mp3.player on or off., f 26;
 #X obj 4480 430 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4620 451 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1330 1;
+-1 -1 504 1;
 #X obj 4694 450 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1310 1;
+-1 -1 1459 1;
 #X obj 4765 452 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3387 1;
+-1 -1 2193 1;
 #X obj 4839 451 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1411 1;
+-1 -1 2661 1;
 #X obj 4905 456 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2217 1;
+-1 -1 3931 1;
 #X obj 4979 455 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2056 1;
+-1 -1 171 1;
 #X obj 5050 457 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2923 1;
+-1 -1 403 1;
 #X obj 5106 457 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4304 1;
+-1 -1 4491 1;
 #X connect 0 0 920 0;
 #X connect 0 0 1016 0;
 #X connect 1 0 921 0;
@@ -3726,7 +3726,7 @@ f 14;
 #X obj 814 443 r switchOFF3;
 #X obj 484 445 r switchON2;
 #X obj 491 475 r switchOFF2;
-#N canvas 382 117 682 726 readHarp 1;
+#N canvas 382 117 682 726 readHarp 0;
 #X obj 175 123 t b b;
 #X obj 175 80 r startHarp;
 #X msg 175 249 start;

@@ -1,0 +1,25 @@
+[Unit]
+Description=Systemd node service.
+
+# Wait until network services are ready
+After=network.target
+
+[Service]
+User=pi
+
+Type=simple
+
+# Path assumes node.js is installed via nvm https://github.com/nvm-sh/nvm
+# You'll need to change the path based on the Node.js version you have installed.
+# You can check with: $ ls /home/pi/.nvm/versions/node.
+# Or type 'which node' in the terminal.
+ExecStart=/home/pi/.config/nvm/versions/node/v12.16.3/bin/node /home/pi/Documents/pd2_repository/gustavsnode.js
+
+# Automatically Restart after crash
+Restart=on-failure
+
+# Wait x seconds before restarting
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

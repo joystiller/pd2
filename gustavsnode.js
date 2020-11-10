@@ -4,7 +4,7 @@
 
 // Replace slider to another checkbox. 
 
-var ip = '192.168.1.13';
+var ip = '192.168.68.157';
 // var os = require('os')
 // console.log(os.networkInterfaces())
 var port = '3000';
@@ -84,6 +84,7 @@ function newConnection(socket) {
 			method: "PUT",
 			body: ";pcat " + pcat + ";"
 		}).catch(err => console.error(err));
+		console.log('Sending pcat value "' + pcat + '" from Node server to Pd.');
 	}
 
 	// socket.on('sunSocket', sendSun);

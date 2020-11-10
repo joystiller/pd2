@@ -12,7 +12,7 @@
   let valMX;
   var toggle;
   var musictoggle;
-  const url = '192.168.1.13';
+  const url = '192.168.68.157';
   var Wsymb2;
   var pcat;
   var startupSunrise;
@@ -131,16 +131,20 @@
     async function updatePcat() {
       const response = await fetch(api_url);
       const data = await response.json();
-      pcat = data.timeSeries[2].parameters[15].level;
+      pcat = data.timeSeries[2].parameters[2].level;
+      console.log('approved time: ' + data.approvedTime);
+      console.log('referenceTime: ' + data.referenceTime);
+      console.log('geometry' + data.geometry.coordinates);
+      console.log('pcat again....: ' + data.timeSeries[0].parameters[2].level);
       // If there's rain on startup, send rain on. Otherwise, do nothing.
       if (pcat != 0) {
         var smhiData = {
-          pcat: data.timeSeries[2].parameters[15].level,
+          pcat: data.timeSeries[2].parameters[2].level,
         }
         socket.emit('smhiToPd', smhiData);
         console.log('emitting to gustavsnode, pcat not equal to 0');
       }
-      console.log('printing from updatePcat, pcat = ' + data.timeSeries[2].parameters[15].level)
+      console.log('printing from updatePcat, pcat = ' + data.timeSeries[2].parameters[2].level)
     }
 
     async function getISS() {
@@ -148,19 +152,19 @@
       const data = await response.json();
       console.log('Current time series is: ' + data.timeSeries[2].validTime);
 
-      if (pcat != data.timeSeries[2].parameters[15].level) {
+      if (pcat != data.timeSeries[2].parameters[2].level) {
         var smhiData = {
-          pcat: data.timeSeries[2].parameters[15].level,
+          pcat: data.timeSeries[2].parameters[2].level,
         };
         console.log('this should only be called if there is a change in pcat');
         socket.emit('smhiToPd', smhiData);
-        pcat = data.timeSeries[2].parameters[15].level;
+        pcat = data.timeSeries[2].parameters[2].level;
       }
 
 
-      console.log('pcat value from list: ' + data.timeSeries[2].parameters[15].level)
+      console.log('pcat value from list: ' + data.timeSeries[2].parameters[2].level)
 
-      if (data.timeSeries[2].parameters[15].level != 0) {
+      if (data.timeSeries[2].parameters[2].level != 0) {
         console.log('it is raining, call the socket.emit!');
       }
 
