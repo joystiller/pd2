@@ -1,4 +1,4 @@
-#N canvas 180 32 911 696 12;
+#N canvas 180 32 1222 696 12;
 #X obj 293 27 loadbang;
 #X obj 293 104 time;
 #X floatatom 294 203 5 0 0 0 - - -, f 5;
@@ -30,7 +30,7 @@
 #X obj 398 528 s startMetro;
 #X obj 32 513 print Sun is setting...;
 #X obj 342 579 print Sun is rising!;
-#X obj 603 351 loadbang;
+#X obj 412 426 loadbang;
 #X obj 87 466 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 293 65 metro 60000;
@@ -40,7 +40,7 @@
 #X obj 405 632 s switchONHarp;
 #X text 148 25 Once every minute this timer checks for sunrise and
 sunset., f 19;
-#X text 594 114 There is a -24 minutes subtraction in sketch.js that
+#X text 564 33 There is a -24 minutes subtraction in sketch.js that
 is calculated from the 2 minutes it takes for the next fade to reach
 it next value. A total of 12 faders gives 24 minutes before a fade
 from one sound file to another has been completed. Because of the -24
@@ -48,22 +48,23 @@ minutes \, the fade will be completed when the sun has set., f 33
 ;
 #X text 145 351 Test night time;
 #X text 284 353 Test day time;
-#X text 602 387 Currently \, daytime is automatically enabled on startup.
-However \, Pd needs to check this before starting everything., f 24
-;
-#X text 605 514 Use socket.emit to make this calculation: If current
-time is smaller than sunrise \, send "sun not yet up on startup".,
-f 32;
-#X text 606 604 Then \, make something to bypassses the original startup
-sequence., f 28;
+#X obj 579 273 == 22;
+#X obj 650 272 == 36;
+#X obj 578 314 +;
+#X obj 578 357 select 2;
+#X obj 578 394 s turnOff;
+#X text 674 356 This fades out Pd before computer reboot and shutdown
+at 23:00, f 27;
 #X connect 0 0 31 0;
 #X connect 1 0 2 0;
 #X connect 1 1 3 0;
 #X connect 1 2 4 0;
 #X connect 2 0 13 0;
 #X connect 2 0 17 0;
+#X connect 2 0 39 0;
 #X connect 3 0 14 0;
 #X connect 3 0 18 0;
+#X connect 3 0 40 0;
 #X connect 5 0 9 0;
 #X connect 6 0 10 0;
 #X connect 7 0 11 0;
@@ -97,3 +98,7 @@ sequence., f 28;
 #X connect 25 0 33 0;
 #X connect 29 0 22 0;
 #X connect 31 0 1 0;
+#X connect 39 0 41 0;
+#X connect 40 0 41 0;
+#X connect 41 0 42 0;
+#X connect 42 0 43 0;

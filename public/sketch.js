@@ -12,7 +12,7 @@
   let valMX;
   var toggle;
   var musictoggle;
-  const url = '192.168.68.157';
+  const url = '192.168.8.215';
   var Wsymb2;
   var pcat;
   var startupSunrise;
@@ -57,135 +57,165 @@
     const api_url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.102919/lat/59.336600/data.json';
     const sun_url = 'https://api.sunrise-sunset.org/json?lat=59.336600&lng=18.102919'
 
-    async function getSun() {
+    // async function getSun() {
+
+    //   const response = await fetch(sun_url);
+    //   var hms = await response.json();
+
+    //   // Calculations for sunrise
+    //   var a = hms.results.sunrise.split(':');
+    //   var b = a[2].split(' ');
+
+    //   var hoursRise = parseInt(a[0]) + 1;
+    //   var minutesRise = parseInt(a[1]);
+    //   var secondsRise = parseInt(b[0]);
+
+    //   if (b[1] == 'PM') {
+    //     hoursRise = hoursRise + 12;
+    //   } else if (b[1] == 'AM') {}
+
+    //   dtRise.setHours(hoursRise);
+    //   dtRise.setMinutes(minutesRise);
+    //   dtRise.setSeconds(secondsRise);
+
+    //   console.log('Sun rises at: ' + dtRise);
+
+    //   var dt2 = new Date();
+    //   if (dtRise > dt2.getTime()) {
+    //     console.log('dtRise is bigger than current time, which means that the sun has not risen yet');
+    //     sunStatus = true;
+    //     //console.log('variable x: ' + x)
+    //     //socket.emit('sunSocket', x);
+    //   } else {
+    //     console.log('dtRise is not bigger than current time, which means that the program was started after sunrine');
+    //     sunStatus = false;
+    //     //console.log('variable x: ' + x)
+    //     //socket.emit('sunSocket', x);
+    //   }
+
+    //   // Calculations for sunset
+    //   var c = hms.results.sunset.split(':');
+    //   var d = c[2].split(' ');
+
+    //   var hoursSet = parseInt(c[0]) + 1;
+    //   var minutesSet = parseInt(c[1]);
+    //   var secondsSet = parseInt(d[0]);
+
+    //   if (d[1] == 'PM') {
+    //     hoursSet = hoursSet + 12;
+    //   } else if (d[1] == 'AM') {
+    //     // Do nothing
+    //   }
+
+    //   dtSet.setHours(hoursSet);
+    //   dtSet.setMinutes(minutesSet - 24);
+    //   // The -24 is 24 minutes from Pd's 2 minutes per fader movement * 12 faders. 
+    //   // Because of this, The fade will be completed by the time the sun has set.
+    //   dtSet.setSeconds(secondsSet);
+    //   console.log('Sun sets at: ' + dtSet);
+
+    //   var hoursSet = dtSet.getHours();
+    //   var minutesSet = dtSet.getMinutes();
+
+    //   var sunData = {
+    //     hoursRise: hoursRise,
+    //     minutesRise: minutesRise,
+    //     hoursSet: hoursSet,
+    //     minutesSet: minutesSet,
+    //     sunStatus: sunStatus
+    //   };
+    //   socket.emit('sunToPd', sunData);
+    // }
+
+    // async function updatePcat() {
+    //   const response = await fetch(api_url);
+    //   const data = await response.json();
+    //   pcat = data.timeSeries[2].parameters[2].level;
+    //   console.log('approved time: ' + data.approvedTime);
+    //   console.log('referenceTime: ' + data.referenceTime);
+    //   console.log('geometry' + data.geometry.coordinates);
+    //   console.log('pcat again....: ' + data.timeSeries[0].parameters[2].level);
+    //   // If there's rain on startup, send rain on. Otherwise, do nothing.
+    //   if (pcat != 0) {
+    //     var smhiData = {
+    //       pcat: data.timeSeries[2].parameters[2].level,
+    //     }
+    //     socket.emit('smhiToPd', smhiData);
+    //     console.log('emitting to gustavsnode, pcat not equal to 0');
+    //   }
+    //   console.log('printing from updatePcat, pcat = ' + data.timeSeries[2].parameters[2].level)
+    // }
+
+    // socket.on('updateWsymb2', data);
+
+    socket.on('hello', (counter) => {
+      console.log(`hello - ${counter}`);
+      getISS();
+    });
+
+    // var counter;
+    // socket.on('hello', (counter));
+
+    // function hello(counter) {
+    //   console.log(counter);
+    //   getISS();
+    // }
+
+    // var data;
+    // socket.on('getISS2', data);
+
+    // function getISS2(data) {
+    //   console.log(data);
+    // }
 
 
-      const response = await fetch(sun_url);
-      var hms = await response.json();
-
-      // Calculations for sunrise
-      var a = hms.results.sunrise.split(':');
-      var b = a[2].split(' ');
-
-      var hoursRise = parseInt(a[0]) + 1;
-      var minutesRise = parseInt(a[1]);
-      var secondsRise = parseInt(b[0]);
-
-      if (b[1] == 'PM') {
-        hoursRise = hoursRise + 12;
-      } else if (b[1] == 'AM') {}
-
-      dtRise.setHours(hoursRise);
-      dtRise.setMinutes(minutesRise);
-      dtRise.setSeconds(secondsRise);
-
-      console.log('Sun rises at: ' + dtRise);
-
-      var dt2 = new Date();
-      if (dtRise > dt2.getTime()) {
-        console.log('dtRise is bigger than current time, which means that the sun has not risen yet');
-        sunStatus = true;
-        //console.log('variable x: ' + x)
-        //socket.emit('sunSocket', x);
-      } else {
-        console.log('dtRise is not bigger than current time, which means that the program was started after sunrine');
-        sunStatus = false;
-        //console.log('variable x: ' + x)
-        //socket.emit('sunSocket', x);
-      }
-
-      // Calculations for sunset
-      var c = hms.results.sunset.split(':');
-      var d = c[2].split(' ');
-
-      var hoursSet = parseInt(c[0]) + 1;
-      var minutesSet = parseInt(c[1]);
-      var secondsSet = parseInt(d[0]);
-
-      if (d[1] == 'PM') {
-        hoursSet = hoursSet + 12;
-      } else if (d[1] == 'AM') {
-        // Do nothing
-      }
-
-      dtSet.setHours(hoursSet);
-      dtSet.setMinutes(minutesSet - 24);
-      // The -24 is 24 minutes from Pd's 2 minutes per fader movement * 12 faders. 
-      // Because of this, The fade will be completed by the time the sun has set.
-      dtSet.setSeconds(secondsSet);
-      console.log('Sun sets at: ' + dtSet);
-
-      var hoursSet = dtSet.getHours();
-      var minutesSet = dtSet.getMinutes();
-
-      var sunData = {
-        hoursRise: hoursRise,
-        minutesRise: minutesRise,
-        hoursSet: hoursSet,
-        minutesSet: minutesSet,
-        sunStatus: sunStatus
-      };
-      socket.emit('sunToPd', sunData);
-    }
-
-    async function updatePcat() {
-      const response = await fetch(api_url);
-      const data = await response.json();
-      pcat = data.timeSeries[2].parameters[2].level;
-      console.log('approved time: ' + data.approvedTime);
-      console.log('referenceTime: ' + data.referenceTime);
-      console.log('geometry' + data.geometry.coordinates);
-      console.log('pcat again....: ' + data.timeSeries[0].parameters[2].level);
-      // If there's rain on startup, send rain on. Otherwise, do nothing.
-      if (pcat != 0) {
-        var smhiData = {
-          pcat: data.timeSeries[2].parameters[2].level,
-        }
-        socket.emit('smhiToPd', smhiData);
-        console.log('emitting to gustavsnode, pcat not equal to 0');
-      }
-      console.log('printing from updatePcat, pcat = ' + data.timeSeries[2].parameters[2].level)
+    function updateWsymb2(data) {
+      console.log('printing from updateWsymb2' + data);
     }
 
     async function getISS() {
+      console.log('printing from getISS');
+
       const response = await fetch(api_url);
       const data = await response.json();
-      console.log('Current time series is: ' + data.timeSeries[2].validTime);
 
-      if (pcat != data.timeSeries[2].parameters[2].level) {
-        var smhiData = {
-          pcat: data.timeSeries[2].parameters[2].level,
-        };
-        console.log('this should only be called if there is a change in pcat');
-        socket.emit('smhiToPd', smhiData);
-        pcat = data.timeSeries[2].parameters[2].level;
-      }
+      //   console.log('Current time series is: ' + data.timeSeries[2].validTime);
+
+      //   if (pcat != data.timeSeries[2].parameters[2].level) {
+      //     var smhiData = {
+      //       pcat: data.timeSeries[2].parameters[2].level,
+      //     };
+      //     console.log('this should only be called if there is a change in pcat');
+      //     socket.emit('smhiToPd', smhiData);
+      //     pcat = data.timeSeries[2].parameters[2].level;
+      //   }
 
 
-      console.log('pcat value from list: ' + data.timeSeries[2].parameters[2].level)
+      //   console.log('pcat value from list: ' + data.timeSeries[2].parameters[2].level)
 
-      if (data.timeSeries[2].parameters[2].level != 0) {
-        console.log('it is raining, call the socket.emit!');
-      }
+      //   if (data.timeSeries[2].parameters[2].level != 0) {
+      //     console.log('it is raining, call the socket.emit!');
+      //   }
 
-      // '.' First, store pcat in a variable. Then, once every hour, call the API, 
-      // compare the pcat value from the API with the one stored in the variable. 
-      // If they do not equal, call the socket.emit. 
+      //   // '.' First, store pcat in a variable. Then, once every hour, call the API, 
+      //   // compare the pcat value from the API with the one stored in the variable. 
+      //   // If they do not equal, call the socket.emit. 
 
-      //commenting out the socket.emit to Pd because I will change it to 
-      //the radar images. 
+      //   //commenting out the socket.emit to Pd because I will change it to 
+      //   //the radar images. 
 
-      // Problem: Pd netreceive gets crammed with data. It opens up too many ports. 
-      // --> That's why: I need to send data only when it starts raining. 
-      // Or only send if it stops raining. 
+      //   // Problem: Pd netreceive gets crammed with data. It opens up too many ports. 
+      //   // --> That's why: I need to send data only when it starts raining. 
+      //   // Or only send if it stops raining. 
 
-      // If pcat changes value from 0 to 1-6, do socket.emit. 
-      // Also, if it changes from values 1-6 to 0, do socket.emit. 
-      // At server startup, it should only emit data if pcat = 1-6. 
-      // Then, if pcat 
-      //socket.emit('smhiToPd', smhiData);
+      //   // If pcat changes value from 0 to 1-6, do socket.emit. 
+      //   // Also, if it changes from values 1-6 to 0, do socket.emit. 
+      //   // At server startup, it should only emit data if pcat = 1-6. 
+      //   // Then, if pcat 
+      //   //socket.emit('smhiToPd', smhiData);
 
       Wsymb2 = data.timeSeries[2].parameters[18].values;
+      console.log('Updating weather symbol to: ' + Wsymb2);
       if (Wsymb2 == 1) {
         document.getElementById('Wsymb2').innerHTML = 'Clear sky';
       } else if (Wsymb2 == 2) {
@@ -244,9 +274,12 @@
 
     }
 
-    updatePcat();
+    // updatePcat();
+
+    // figure out how to call getISS function with a socket from node server...
+
     getISS();
-    getSun();
+    // getSun();
 
     //At first, getISS (that is, get the weather) and getSun is called. 
     //Then, getSun updates once every 24 hours. 

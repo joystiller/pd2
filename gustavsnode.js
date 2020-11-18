@@ -4,7 +4,7 @@
 
 // Replace slider to another checkbox. 
 
-var ip = '192.168.68.157';
+var ip = '192.168.8.215';
 // var os = require('os')
 // console.log(os.networkInterfaces())
 var port = '3000';
@@ -13,6 +13,45 @@ var app = express()
 var x = 0;
 var dt = new Date();
 dt.setHours(dt.getHours() + 2);
+
+// SMHIs api_url
+const api_url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.102919/lat/59.336600/data.json';
+const sun_url = 'https://api.sunrise-sunset.org/json?lat=59.336600&lng=18.102919'
+
+var socket;
+var weather;
+var api;
+var cityID;
+var key;
+var sliderFX;
+var sliderMX;
+let valMX;
+var toggle;
+var musictoggle;
+const url = '192.168.8.215';
+var Wsymb2;
+var pcat;
+var startupSunrise;
+var dtRise = new Date();
+var dtSet = new Date();
+var sunStatus;
+var pcatIndex;
+
+
+
+// const io2 = require('socket.io')(3001);
+// io2.on('connect', socket => {
+// 	// either with send()
+// 	socket.send('Hello!');
+
+
+// 	socket.on('message', (data) => {
+// 		console.log(data);
+// 	});
+// });
+
+
+
 
 const AbortController = require("abort-controller")
 
@@ -35,13 +74,15 @@ app.use(express.static(__dirname + '/public'));
 
 console.log("Server up and running!");
 
+
+
 var socket = require('socket.io');
 
 var io = socket(server, {
 	handlePreflightRequest: (req, res) => {
 		const headers = {
 			"Access-Control-Allow-Headers": "Content-Type, Authorization",
-			"Access-Control-Allow-Origin": req.headers.origin, //or the specific origin you want to give access to,
+			"Access-Control-Allow-Origin": req.headers.origin,
 			"Access-Control-Allow-Credentials": true
 		};
 		res.writeHead(200, headers);
@@ -50,15 +91,245 @@ var io = socket(server, {
 });
 
 
+
+
+
+
 // Register a callback function to run when we have an individual connection
 // This is run for each individual user that connects
 io.sockets.on('connection', newConnection);
+
+
+
+
+
+
+async function getSun() {
+
+	const response = await fetch(sun_url);
+	var hms = await response.json();
+
+	// Calculations for sunrise
+	var a = hms.results.sunrise.split(':');
+	var b = a[2].split(' ');
+
+	var hoursRise = parseInt(a[0]) + 1;
+	var minutesRise = parseInt(a[1]);
+	var secondsRise = parseInt(b[0]);
+
+	if (b[1] == 'PM') {
+		hoursRise = hoursRise + 12;
+	} else if (b[1] == 'AM') {}
+
+	dtRise.setHours(hoursRise);
+	dtRise.setMinutes(minutesRise);
+	dtRise.setSeconds(secondsRise);
+
+	console.log('Sun rises at: ' + dtRise);
+
+	var dt2 = new Date();
+	if (dtRise > dt2.getTime()) {
+		console.log('dtRise is bigger than current time, which means that the sun has not risen yet');
+		sunStatus = true;
+		//console.log('variable x: ' + x)
+		//socket.emit('sunSocket', x);
+	} else {
+		console.log('dtRise is not bigger than current time, which means that the program was started after sunrine');
+		sunStatus = false;
+		//console.log('variable x: ' + x)
+		//socket.emit('sunSocket', x);
+	}
+
+	// Calculations for sunset
+	var c = hms.results.sunset.split(':');
+	var d = c[2].split(' ');
+
+	var hoursSet = parseInt(c[0]) + 1;
+	var minutesSet = parseInt(c[1]);
+	var secondsSet = parseInt(d[0]);
+
+	if (d[1] == 'PM') {
+		hoursSet = hoursSet + 12;
+	} else if (d[1] == 'AM') {
+		// Do nothing
+	}
+
+	dtSet.setHours(hoursSet);
+	dtSet.setMinutes(minutesSet - 24);
+	// The -24 is 24 minutes from Pd's 2 minutes per fader movement * 12 faders. 
+	// Because of this, The fade will be completed by the time the sun has set.
+	dtSet.setSeconds(secondsSet);
+	console.log('Sun sets at: ' + dtSet);
+
+	var hoursSet = dtSet.getHours();
+	var minutesSet = dtSet.getMinutes();
+
+	var sunData = {
+		hoursRise: hoursRise,
+		minutesRise: minutesRise,
+		hoursSet: hoursSet,
+		minutesSet: minutesSet,
+		sunStatus: sunStatus
+	};
+	sunData2(sunData);
+
+}
+
+// const alligator = ["thick scales", 80, "4 foot tail", "rounded snout"];
+
+// alligator.indexOf("rounded snout"); // returns 3
+
+// Idea: Make a "for loop", go through every index, search for "pcat", if true, then 
+// return the number of the index.
+
+
+
+
+
+async function updatePcat() {
+	const response = await fetch(api_url);
+	const data = await response.json();
+
+	var i;
+	for (i = 0; i < data.timeSeries[2].parameters.length; i++) {
+		const param = data.timeSeries[2].parameters[i];
+		if (param.name === 'pcat') {
+			pcatIndex = i;
+		}
+	}
+	// Updating pcat with the new updated pcatIndex.
+	pcat = data.timeSeries[2].parameters[pcatIndex].level;
+
+	console.log('pcat index is: ' + pcatIndex);
+	console.log('pcat value is: ' + pcat);
+	console.log('approved time: ' + data.approvedTime);
+	console.log('referenceTime: ' + data.referenceTime);
+
+	// If there's rain on startup, send rain on. Otherwise, do nothing.
+	if (pcat != 0) {
+		var smhiData = {
+			pcat: data.timeSeries[2].parameters[pcatIndex].level,
+		}
+		smhi(smhiData);
+		console.log('emitting to gustavsnode, pcat not equal to 0');
+	}
+}
+
+async function getISS() {
+	const response = await fetch(api_url);
+	const data = await response.json();
+
+	var i;
+	for (i = 0; i < data.timeSeries[2].parameters.length; i++) {
+		const param = data.timeSeries[2].parameters[i];
+		if (param.name === 'pcat') {
+			pcatIndex = i;
+		}
+	}
+	// Updating pcat with the new updated pcatIndex.
+	pcat = data.timeSeries[2].parameters[pcatIndex].level;
+
+	console.log('Current time series is: ' + data.timeSeries[2].validTime);
+
+	console.log('pcatIndex = ' + pcatIndex);
+	if (pcat != data.timeSeries[2].parameters[pcatIndex].level) {
+		var smhiData = {
+			pcat: data.timeSeries[2].parameters[pcatIndex].level,
+		};
+		console.log('this should only be called if there is a change in pcat');
+		smhi(smhiData);
+		pcat = data.timeSeries[2].parameters[pcatIndex].level;
+	}
+
+	if (data.timeSeries[2].parameters[pcatIndex].level != 0) {
+		console.log('it is raining, call the socket.emit!');
+		// Does it ever start raining? getISS() is called once every hour,
+		// but this function should only be called on server startup, 
+		// then if pcat changes. Need to write a new global function. 
+	}
+
+	// '.' First, store pcat in a variable. Then, once every hour, call the API, 
+	// compare the pcat value from the API with the one stored in the variable. 
+	// If they do not equal, call the socket.emit. 
+
+
+
+}
+
+updatePcat();
+getISS();
+getSun();
+
+//At first, getISS (that is, get the weather) and getSun is called. 
+//Then, getSun updates once every 24 hours. 
+//getISS should update once every hour, but it should only send data to Pd
+//whenever it starts or stops raining.
+
+setInterval(function () {
+	getSun();
+}, 86400000);
+
+setInterval(function () {
+	getISS();
+}, 3600000)
+
+
+
+
+
+
+
+// Moving this function out of newConnection(socket)
+async function sunData2(data) {
+	hoursRise = data.hoursRise;
+	minutesRise = data.minutesRise;
+	hoursSet = data.hoursSet;
+	minutesSet = data.minutesSet;
+	sunStatus = data.sunStatus;
+
+	console.log('sending sundata to pd')
+
+	fetch("http://" + ip + ":" + 3558, {
+		method: "PUT",
+		body: ";hoursRise " + hoursRise + "; minutesRise " + minutesRise + "; hoursSet " + hoursSet + "; minutesSet " + minutesSet + "; sunStatus " + sunStatus + ";"
+	}).catch(err => console.error(err));
+}
+
+
+
+
+
+// Moving this function out of newConnection(socket)
+async function smhi(data) {
+	pcat = data.pcat;
+
+	fetch("http://" + ip + ":" + 3558, {
+		method: "PUT",
+		body: ";pcat " + pcat + ";"
+	}).catch(err => console.error(err));
+	console.log('Sending pcat value "' + pcat + '" from Node server to Pd.');
+}
+
+
+
+
+
 
 // We are given a websocket object in our function
 function newConnection(socket) {
 	console.log('We have a new client: ' + socket.id);
 
+	let counter = 0;
+	setInterval(() => {
+		socket.emit('hello', ++counter);
+	}, 3000);
+
+	// socket.emit('getISS');
+
 	socket.on('Slider', sliderData);
+	// var y = 3;
+	// socket.emit('updateWsymb2');
+	// //socket.emit('checkboxToggle', data);
 
 	// When this user emits, client side: socket.emit('otherevent',some data);
 	async function sliderData(data) {
@@ -77,15 +348,7 @@ function newConnection(socket) {
 
 	socket.on('smhiToPd', smhi);
 
-	async function smhi(data) {
-		pcat = data.pcat;
 
-		fetch("http://" + ip + ":" + 3558, {
-			method: "PUT",
-			body: ";pcat " + pcat + ";"
-		}).catch(err => console.error(err));
-		console.log('Sending pcat value "' + pcat + '" from Node server to Pd.');
-	}
 
 	// socket.on('sunSocket', sendSun);
 
@@ -98,22 +361,9 @@ function newConnection(socket) {
 	// }
 
 
-	socket.on('sunToPd', sunData);
+	socket.on('sunToPd', sunData2);
 
-	async function sunData(data) {
-		hoursRise = data.hoursRise;
-		minutesRise = data.minutesRise;
-		hoursSet = data.hoursSet;
-		minutesSet = data.minutesSet;
-		sunStatus = data.sunStatus;
 
-		console.log('sending sundata to pd')
-
-		fetch("http://" + ip + ":" + 3558, {
-			method: "PUT",
-			body: ";hoursRise " + hoursRise + "; minutesRise " + minutesRise + "; hoursSet " + hoursSet + "; minutesSet " + minutesSet + "; sunStatus " + sunStatus + ";"
-		}).catch(err => console.error(err));
-	}
 	// require('os');
 	// var os = new 
 

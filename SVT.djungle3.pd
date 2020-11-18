@@ -1,37 +1,36 @@
-#N canvas 160 152 1003 585 12;
+#N canvas 337 44 1003 758 12;
 #X declare -lib zexy;
-#N canvas 326 123 1022 516 mixer 1;
-#X obj 558 591 dac~ 1 2 3 4;
-#X obj 537 487 *~;
-#X obj 573 487 *~;
-#X obj 607 488 *~;
-#X obj 644 488 *~;
-#X msg 731 445 1;
-#X obj 730 410 loadbang;
-#X obj 488 367 vsl 36 137 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+#N canvas 306 89 1022 516 mixer 0;
+#X obj 667 573 dac~ 1 2 3 4;
+#X obj 646 469 *~;
+#X obj 682 469 *~;
+#X obj 716 470 *~;
+#X obj 753 470 *~;
+#X msg 840 427 1;
+#X obj 839 392 loadbang;
+#X obj 597 349 vsl 36 137 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 13600 1;
-#X obj 537 543 *~;
-#X obj 573 543 *~;
-#X obj 610 544 *~;
-#X obj 647 544 *~;
-#X text 567 300 Volume Ambience;
-#X obj 535 332 catch~ fx1;
-#X obj 572 365 catch~ fx2;
-#X obj 606 392 catch~ fx3;
-#X obj 644 421 catch~ fx4;
-#X obj 591 708 catch~ mx1;
-#X obj 628 746 catch~ mx2;
-#X obj 668 777 catch~ mx3;
-#X obj 702 810 catch~ mx4;
-#X obj 545 708 vsl 36 137 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+#X obj 646 525 *~;
+#X obj 682 525 *~;
+#X obj 719 526 *~;
+#X obj 756 526 *~;
+#X text 676 282 Volume Ambience;
+#X obj 644 314 catch~ fx1;
+#X obj 681 347 catch~ fx2;
+#X obj 715 374 catch~ fx3;
+#X obj 753 403 catch~ fx4;
+#X obj 700 690 catch~ mx1;
+#X obj 737 728 catch~ mx2;
+#X obj 777 759 catch~ mx3;
+#X obj 811 792 catch~ mx4;
+#X obj 654 690 vsl 36 137 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 8160 1;
-#X obj 592 885 *~;
-#X obj 629 885 *~;
-#X obj 667 885 *~;
-#X obj 701 885 *~;
-#X obj 609 932 dac~ 1 2 3 4;
-#X text 634 674 Volume Music;
-#X obj 519 169 loadbang;
+#X obj 701 867 *~;
+#X obj 738 867 *~;
+#X obj 776 867 *~;
+#X obj 810 867 *~;
+#X obj 718 914 dac~ 1 2 3 4;
+#X text 743 656 Volume Music;
 #X obj 140 354 vsl 36 137 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 6800 1;
 #X obj 193 524 *~;
@@ -45,8 +44,8 @@
 #X obj 265 417 catch~ rain3;
 #X obj 303 443 catch~ rain4;
 #X text 201 321 Volume Rain;
-#X obj 145 88 loadbang;
-#X msg 144 195 0.5;
+#X obj 141 87 loadbang;
+#X msg 141 196 0.5;
 #X obj 358 17 r toggle;
 #X obj 358 49 route true false;
 #X obj 368 84 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -54,29 +53,30 @@
 #X obj 420 80 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 359 198 line;
-#X msg 414 160 0 5000;
+#X msg 414 153 0 5000;
 #X msg 359 128 1 30000;
-#X obj 545 642 loadbang;
-#X msg 544 677 0.6;
+#X obj 654 624 loadbang;
+#X msg 653 659 0.6;
 #X obj 172 319 / 2;
 #X msg 302 161 1;
-#X msg 519 198 1;
-#X obj 482 604 env~;
-#X floatatom 482 629 5 0 0 0 - - -, f 5;
-#X obj 379 665 f;
-#X obj 379 690 print Current volume:;
-#X obj 379 605 metro 300000;
-#X obj 378 571 loadbang;
+#X obj 591 586 env~;
+#X floatatom 591 611 5 0 0 0 - - -, f 5;
+#X obj 488 647 f;
+#X obj 488 672 print Current volume:;
+#X obj 488 587 metro 300000;
+#X obj 487 553 loadbang;
 #X text 493 16 This is incoming data from "netreceiver" and mutes the
 sound installation temporarily., f 30;
+#X obj 478 124 r turnOff;
+#X msg 478 159 0 1.44e+06;
 #X connect 1 0 8 0;
-#X connect 1 0 55 0;
+#X connect 1 0 53 0;
 #X connect 2 0 9 0;
-#X connect 2 0 55 0;
+#X connect 2 0 53 0;
 #X connect 3 0 10 0;
-#X connect 3 0 55 0;
+#X connect 3 0 53 0;
 #X connect 4 0 11 0;
-#X connect 4 0 55 0;
+#X connect 4 0 53 0;
 #X connect 5 0 1 1;
 #X connect 5 0 2 1;
 #X connect 5 0 3 1;
@@ -106,41 +106,41 @@ sound installation temporarily., f 30;
 #X connect 23 0 26 1;
 #X connect 24 0 26 2;
 #X connect 25 0 26 3;
-#X connect 28 0 54 0;
-#X connect 29 0 30 1;
-#X connect 29 0 31 1;
-#X connect 29 0 32 1;
-#X connect 29 0 33 1;
-#X connect 30 0 34 0;
-#X connect 31 0 34 1;
-#X connect 32 0 34 2;
-#X connect 33 0 34 3;
+#X connect 28 0 29 1;
+#X connect 28 0 30 1;
+#X connect 28 0 31 1;
+#X connect 28 0 32 1;
+#X connect 29 0 33 0;
+#X connect 30 0 33 1;
+#X connect 31 0 33 2;
+#X connect 32 0 33 3;
+#X connect 35 0 29 0;
 #X connect 36 0 30 0;
 #X connect 37 0 31 0;
 #X connect 38 0 32 0;
-#X connect 39 0 33 0;
-#X connect 41 0 53 0;
-#X connect 41 0 42 0;
-#X connect 42 0 29 0;
+#X connect 40 0 52 0;
+#X connect 40 0 41 0;
+#X connect 41 0 28 0;
+#X connect 42 0 43 0;
 #X connect 43 0 44 0;
-#X connect 44 0 45 0;
-#X connect 44 0 49 0;
-#X connect 44 1 46 0;
-#X connect 44 1 48 0;
-#X connect 47 0 7 0;
-#X connect 47 0 52 0;
-#X connect 48 0 47 0;
-#X connect 49 0 47 0;
-#X connect 50 0 51 0;
-#X connect 51 0 21 0;
-#X connect 52 0 29 0;
-#X connect 53 0 47 0;
-#X connect 54 0 7 0;
+#X connect 43 0 48 0;
+#X connect 43 1 45 0;
+#X connect 43 1 47 0;
+#X connect 46 0 7 0;
+#X connect 46 0 51 0;
+#X connect 47 0 46 0;
+#X connect 48 0 46 0;
+#X connect 49 0 50 0;
+#X connect 50 0 21 0;
+#X connect 51 0 28 0;
+#X connect 52 0 46 0;
+#X connect 53 0 54 0;
+#X connect 54 0 55 1;
 #X connect 55 0 56 0;
-#X connect 56 0 57 1;
-#X connect 57 0 58 0;
-#X connect 59 0 57 0;
-#X connect 60 0 59 0;
+#X connect 57 0 55 0;
+#X connect 58 0 57 0;
+#X connect 60 0 61 0;
+#X connect 61 0 46 0;
 #X restore 25 321 pd mixer;
 #X obj 26 25 loadbang;
 #X msg 27 164 \; pd dsp \$1;
@@ -180,21 +180,21 @@ the mp3.player on or off., f 26;
 #X connect 14 0 4 0;
 #X connect 14 0 6 0;
 #X restore 24 248 pd mp3player;
-#X obj 416 210 s mixDuration;
-#X obj 727 116 s mixStop;
-#X obj 728 26 bng 70 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 627 210 s mixDuration;
+#X obj 938 116 s mixStop;
+#X obj 939 26 bng 70 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 379 370 s MP;
-#X obj 341 28 bng 73 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 590 370 s MP;
+#X obj 552 28 bng 73 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X text 728 145 Stop all automation, f 11;
-#X obj 360 437 s bringZero;
-#X obj 381 400 bng 30 250 50 0 empty empty empty 17 7 0 10 -262144
+#X text 939 145 Stop all automation, f 11;
+#X obj 571 437 s bringZero;
+#X obj 592 400 bng 30 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X text 246 403 Bring all faders to 0, f 12;
-#X obj 342 124 t b b b b b;
-#X obj 398 305 s trackDuration;
-#X obj 338 476 s startAutomation;
+#X text 457 403 Bring all faders to 0, f 12;
+#X obj 553 124 t b b b b b;
+#X obj 609 305 s trackDuration;
+#X obj 406 339 s startAutomation;
 #N canvas 26 23 1414 537 faders 0;
 #X obj -923 297 r f1 \$2;
 #X obj -849 270 r f2 \$2;
@@ -1215,27 +1215,27 @@ the mp3.player on or off., f 26;
 #X obj -924 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj -850 397 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 7012 1;
 #X obj -779 399 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 10269 1;
 #X obj -705 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 9247 1;
 #X obj -639 403 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 3225 1;
 #X obj -565 402 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 11904 1;
 #X obj -494 404 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj -420 403 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 5613 1;
 #X obj -367 401 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 2875 1;
 #X obj -293 400 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 4083 1;
 #X obj -222 402 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj -148 401 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 2520 1;
 #X obj -7 399 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 67 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -1357,21 +1357,21 @@ the mp3.player on or off., f 26;
 #X obj 4480 430 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4620 451 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 863 1;
+-1 -1 0 1;
 #X obj 4694 450 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1931 1;
+-1 -1 0 1;
 #X obj 4765 452 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4185 1;
+-1 -1 0 1;
 #X obj 4839 451 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3516 1;
+-1 -1 0 1;
 #X obj 4905 456 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2721 1;
+-1 -1 0 1;
 #X obj 4979 455 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5644 1;
+-1 -1 0 1;
 #X obj 5050 457 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2117 1;
+-1 -1 0 1;
 #X obj 5106 457 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2637 1;
+-1 -1 0 1;
 #X connect 0 0 920 0;
 #X connect 0 0 1016 0;
 #X connect 1 0 921 0;
@@ -2713,14 +2713,14 @@ the mp3.player on or off., f 26;
 #X connect 1013 0 1011 1;
 #X connect 1013 0 1015 0;
 #X restore 27 434 pd faders;
-#N canvas 433 354 899 585 makenumbers 0;
+#N canvas 377 49 899 786 makenumbers 0;
 #X obj 1337 596 bng 62 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 1763 1649 f;
 #X msg 1364 702 clear;
-#X msg 1195 1552 6;
+#X msg 1195 1552 0;
 #X msg 1565 693 add2 \$1;
-#X msg 1565 743 2 1 4 0;
+#X msg 1565 743;
 #X obj 1565 772 list length;
 #X obj 1565 830 select 1;
 #X msg 1512 707 set;
@@ -2749,8 +2749,8 @@ the mp3.player on or off., f 26;
 #X obj 1393 2225 qlist;
 #X msg 1249 2172 bang;
 #X obj 1763 2213 qlist;
-#X msg 1761 2091 add2 fadeout0 \, add \$1 \, add 1000;
-#X msg 1393 2094 add2 fadein6 \, add \$1 \, add 1000;
+#X msg 1761 2091 add2 fadeout3 \, add \$1 \, add 120000;
+#X msg 1393 2094 add2 fadein0 \, add \$1 \, add 120000;
 #X obj 936 577 t b b;
 #X obj 940 1617 delay 100;
 #X msg 936 453 stop;
@@ -2773,7 +2773,7 @@ the mp3.player on or off., f 26;
 #X text 1056 1834 Randomize 12 numbers. Send to "turn on" and "turn
 off"., f 30;
 #X msg 1036 2094 add2 \$1;
-#X msg 1036 2196 11 3 4 10 2 1 6 7 0 8 9 5;
+#X msg 1036 2196 4 3 9 1 5 11 8 7 2 10 0 6;
 #X text 915 2166 This is the order in which the faders fade, f 15
 ;
 #X obj 1063 2126 r rSET;
@@ -2804,7 +2804,7 @@ the readaf buffer the audio file., f 27;
 #X text 1002 985 This stores number from [urn] and outputs it when
 it receives a new number from [urn]., f 23;
 #X obj 584 1587 list append;
-#X msg 584 1673 6 0 4 1 2 4;
+#X msg 584 1673 2 0 4 3 1 2;
 #X text 688 1673 This keeps a reckord of the last tracks that were
 played, f 15;
 #X obj 584 1614 list split 6;
@@ -2821,14 +2821,14 @@ outputted five numbers., f 10;
 #X obj 1060 350 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X msg 1194 1663 set \$1;
-#X msg 1194 1692 0;
+#X msg 1194 1692 3;
 #X msg 1800 1706 set \$1;
-#X msg 1800 1735 0;
+#X msg 1800 1735 3;
 #X text 1798 1637 Bangs previous number. Counts from 0, f 21;
 #X obj 2532 1797 r mixDuration;
 #X msg 2555 1883 set \$1;
 #X obj 2532 1823 * 12;
-#X msg 2555 1912 12;
+#X msg 2555 1912 1440;
 #X obj 2416 1799 metro 1000;
 #X msg 2355 1766 stop;
 #X obj 2416 1765 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -2932,10 +2932,10 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 -1 -1;
 #X obj 2696 2212 qlist;
 #X obj 2697 1557 list append;
-#X msg 2737 1643 4;
+#X msg 2737 1643 2;
 #X obj 2697 1584 list split 3;
 #X msg 2737 1615 set \$3;
-#X msg 2697 2087 add2 fadeout4 \, add \$1 \, add 1000;
+#X msg 2697 2087 add2 fadeout2 \, add \$1 \, add 120000;
 #X obj 2156 2084 r rSET;
 #X msg 2156 2118 clear;
 #X obj 2721 1867 r mixDuration;
@@ -2967,7 +2967,7 @@ during a fade #;
 -1 -1;
 #X msg 1123 697 6;
 #X msg 1549 1671 set \$1;
-#X msg 1549 1700 6;
+#X msg 1549 1700 0;
 #X obj 1004 632 t b b;
 #X msg 1036 677 3;
 #X obj 1004 603 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -2980,7 +2980,7 @@ during a fade #;
 #X msg 2462 1992 1;
 #X msg 2414 1990 0;
 #X obj 2441 2046 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 2376 2206 spigot;
 #X text 2226 1566 This thing makes sure that the previous previous
 track do not fade out if sunset does NOT happen during a fade., f
@@ -3000,17 +3000,23 @@ track do not fade out if sunset does NOT happen during a fade., f
 #X obj 767 444 r shuffleStart;
 #X obj 767 476 metro 100;
 #X msg 704 481 stop;
-#X obj 767 506 counter 4;
-#X obj 789 545 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 766 551 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 703 1392 spigot;
-#X msg 747 732 0;
-#X msg 706 728 1;
-#X obj 742 655 delay 100;
+#X obj 737 1384 spigot;
+#X msg 767 732 0;
+#X msg 805 732 1;
+#X obj 804 643 delay 100;
 #X text 1374 286 Receiving a 0 from "suntime" subpatch means that the
 sun is setting..., f 17;
 #X obj 1428 448 print stopping metro because the sun is setting.,
 f 20;
+#X obj 1554 972 print number from urn;
+#X obj 767 506 counter 8;
+#X text 1043 234 If sun is not up when program starts \, nothing happens.
+Need to bang night track., f 26;
+#X obj 647 810 route true false;
+#X obj 647 781 r stillNightOut;
+#X msg 143 1604 6;
 #X connect 0 0 84 0;
 #X connect 1 0 73 0;
 #X connect 1 0 93 0;
@@ -3037,7 +3043,7 @@ f 20;
 #X connect 16 0 171 0;
 #X connect 16 0 198 0;
 #X connect 16 0 212 0;
-#X connect 16 0 226 0;
+#X connect 16 0 225 0;
 #X connect 16 1 1 0;
 #X connect 16 2 15 0;
 #X connect 16 3 3 0;
@@ -3113,6 +3119,7 @@ f 20;
 #X connect 84 0 9 0;
 #X connect 84 0 22 0;
 #X connect 84 0 203 0;
+#X connect 84 0 231 0;
 #X connect 87 0 161 0;
 #X connect 87 1 162 0;
 #X connect 87 2 163 0;
@@ -3153,7 +3160,7 @@ f 20;
 #X connect 117 0 36 0;
 #X connect 117 1 89 0;
 #X connect 117 2 116 0;
-#X connect 117 2 231 0;
+#X connect 117 2 230 0;
 #X connect 118 0 106 0;
 #X connect 119 0 39 0;
 #X connect 120 0 88 0;
@@ -3249,27 +3256,30 @@ f 20;
 #X connect 219 0 70 0;
 #X connect 220 0 29 0;
 #X connect 221 0 222 0;
-#X connect 222 0 224 0;
+#X connect 222 0 232 0;
 #X connect 223 0 222 0;
-#X connect 224 0 225 0;
-#X connect 224 2 223 0;
-#X connect 224 2 229 0;
-#X connect 225 0 0 0;
-#X connect 226 0 64 0;
-#X connect 227 0 226 1;
-#X connect 228 0 226 1;
-#X connect 229 0 228 0;
+#X connect 224 0 0 0;
+#X connect 224 0 226 0;
+#X connect 225 0 64 0;
+#X connect 226 0 225 1;
+#X connect 227 0 225 1;
+#X connect 228 0 227 0;
+#X connect 232 0 224 0;
+#X connect 232 2 223 0;
+#X connect 232 2 228 0;
+#X connect 234 0 89 0;
+#X connect 235 0 234 0;
 #X coords 0 0 1 1 1138 1135 0;
 #X restore 27 472 pd makenumbers;
-#X obj 390 331 bng 32 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 601 331 bng 32 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 832 27 bng 68 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 831 102 s stopPlayer1;
-#X obj 831 129 s stopPlayer2;
-#X obj 832 157 s stopPlayer3;
-#X obj 832 185 s stopPlayer4;
-#X text 511 292 Sets how long until next track starts fading in.,
+#X obj 1043 27 bng 68 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1042 102 s stopPlayer1;
+#X obj 1042 129 s stopPlayer2;
+#X obj 1043 157 s stopPlayer3;
+#X obj 1043 185 s stopPlayer4;
+#X text 722 292 Sets how long until next track starts fading in.,
 f 15;
 #N canvas 336 66 918 530 routing 0;
 #X obj 238 217 r fadeout0;
@@ -3570,14 +3580,14 @@ f 15;
 #X connect 100 0 98 0;
 #X connect 101 0 99 0;
 #X restore 26 397 pd routing;
-#X text 433 22 Load duration and mix preset \, then start automation
+#X text 644 22 Load duration and mix preset \, then start automation
 and playback, f 15;
-#X text 832 344 Stop all players, f 10;
-#X text 522 181 Sets the time the fader takes to reach it's next random
+#X text 1043 344 Stop all players, f 10;
+#X text 733 181 Sets the time the fader takes to reach it's next random
 value, f 20;
-#X text 451 432 Save and/or load preset, f 12;
-#X text 1180 129 ...;
-#X text 296 1000 ...;
+#X text 662 432 Save and/or load preset, f 12;
+#X text 1390 129 ...;
+#X text 296 1150 ...;
 #N canvas 276 73 714 881 testmixer 0;
 #X obj 162 141 qlist;
 #X msg 250 -61 clear;
@@ -3617,12 +3627,12 @@ value, f 20;
 #X connect 10 0 0 0;
 #X connect 11 0 0 0;
 #X restore 24 283 pd testmixer;
-#X obj 832 212 s stopPlayer5;
+#X obj 1043 212 s stopPlayer5;
 #X text 265 524 To do:;
 #X obj 28 506 netreceiver;
 #X obj 25 357 suntime;
-#X obj 833 238 s stopPlayer6;
-#X obj 833 265 s stopPlayer7;
+#X obj 1044 238 s stopPlayer6;
+#X obj 1044 265 s stopPlayer7;
 #X text 27 3 comment;
 #N canvas 290 94 910 625 readsf 0;
 #X obj 39 73 r f1 \$2;
@@ -3885,50 +3895,54 @@ and switches off the harps [readsf], f 21;
 #X connect 103 0 104 0;
 #X connect 104 0 100 0;
 #X restore 27 538 pd readsf;
-#X obj 254 25 loadbang;
-#X obj 254 54 delay 5000;
-#X text 264 597 Implementera harpan vid soluppgång;
-#X msg 429 153 120000;
-#X msg 411 239 2.16e+06;
-#X msg 416 179 1000;
-#X msg 398 269 15000;
-#X obj 972 106 s switchOFF1;
-#X obj 973 133 s switchOFF2;
-#X obj 972 160 s switchOFF3;
-#X obj 973 187 s switchOFF4;
-#X obj 972 214 s switchOFF5;
-#X obj 972 240 s switchOFF6;
-#X obj 973 268 s switchOFF7;
-#X msg 955 69 0;
-#X obj 833 294 s stopHarp;
-#X obj 973 297 s switchOFFHarp;
+#X obj 405 25 loadbang;
+#X text 264 643 Implementera harpan vid soluppgång;
+#X msg 640 153 120000;
+#X msg 622 239 2.16e+06;
+#X msg 627 179 1000;
+#X msg 609 269 15000;
+#X obj 1183 106 s switchOFF1;
+#X obj 1184 133 s switchOFF2;
+#X obj 1183 160 s switchOFF3;
+#X obj 1184 187 s switchOFF4;
+#X obj 1183 214 s switchOFF5;
+#X obj 1183 240 s switchOFF6;
+#X obj 1184 268 s switchOFF7;
+#X msg 1166 69 0;
+#X obj 1044 294 s stopHarp;
+#X obj 1184 297 s switchOFFHarp;
 #X obj 26 77 declare -lib zexy;
-#X obj 224 124 s shuffleStart;
-#X text 265 641 Mixa solnedgångstrack och kolla så att den funkar.
+#X obj 405 117 s shuffleStart;
+#X text 265 680 Mixa solnedgångstrack och kolla så att den funkar.
 ;
-#X text 265 683 Gör en fade out från kl 22.36;
-#X text 265 723 Undersök varför installationen ibland blir helt tyst
+#X text 265 762 Undersök varför installationen ibland blir helt tyst
 ;
-#X text 266 761 Ändra javascriptkoden så servern bara skickar regn
-vid väderskifte;
-#X text 265 561 Lägg till en klocka på hemsidan;
-#X text 266 815 Ändra från en-timmasprognos till radarbildsuppdatering
+#X text 265 607 Lägg till en klocka på hemsidan;
+#X text 266 854 Ändra från en-timmasprognos till radarbildsuppdatering
 ;
-#X text 266 851 Lägg till en reboot på scriptet kl 23?;
-#X text 266 887 Lägg till en parameter i Pd som först kollar ifall
+#X text 266 890 Lägg till en reboot på scriptet kl 23?;
+#X text 266 926 Lägg till en parameter i Pd som först kollar ifall
 solen gått upp vid uppstart. Om inte \, kör natt-tracket.;
-#X text 268 942 Gör IP-adressen statisk så att paddan inte plötsligt
+#X text 268 981 Gör IP-adressen statisk så att paddan inte plötsligt
 slutar funka.;
+#X obj 406 301 spigot;
+#X msg 445 270 0, f 1;
+#X msg 465 270 1, f 1;
+#X obj 426 77 delay 20000;
+#X obj 445 216 route true false;
+#X obj 445 187 r stillNightOut;
+#X text 262 20 The delay is necessary for the server to start up and
+download the sun data to check if the sun is up on startup, f 18;
 #X connect 3 0 2 0;
 #X connect 4 0 3 0;
 #X connect 9 0 8 0;
 #X connect 11 0 16 0;
 #X connect 14 0 13 0;
-#X connect 16 0 18 0;
+#X connect 16 0 69 0;
 #X connect 16 1 13 0;
 #X connect 16 2 10 0;
-#X connect 16 3 48 0;
-#X connect 16 4 47 0;
+#X connect 16 3 47 0;
+#X connect 16 4 46 0;
 #X connect 21 0 10 0;
 #X connect 22 0 23 0;
 #X connect 22 0 26 0;
@@ -3937,20 +3951,26 @@ slutar funka.;
 #X connect 22 0 36 0;
 #X connect 22 0 40 0;
 #X connect 22 0 41 0;
-#X connect 22 0 59 0;
 #X connect 22 0 58 0;
-#X connect 44 0 45 0;
-#X connect 44 0 62 0;
-#X connect 45 0 16 0;
-#X connect 47 0 7 0;
-#X connect 48 0 17 0;
-#X connect 49 0 7 0;
-#X connect 50 0 17 0;
-#X connect 58 0 51 0;
-#X connect 58 0 57 0;
-#X connect 58 0 56 0;
-#X connect 58 0 55 0;
-#X connect 58 0 54 0;
-#X connect 58 0 53 0;
-#X connect 58 0 52 0;
-#X connect 58 0 60 0;
+#X connect 22 0 57 0;
+#X connect 44 0 61 0;
+#X connect 44 0 72 0;
+#X connect 46 0 7 0;
+#X connect 47 0 17 0;
+#X connect 48 0 7 0;
+#X connect 49 0 17 0;
+#X connect 57 0 50 0;
+#X connect 57 0 56 0;
+#X connect 57 0 55 0;
+#X connect 57 0 54 0;
+#X connect 57 0 53 0;
+#X connect 57 0 52 0;
+#X connect 57 0 51 0;
+#X connect 57 0 59 0;
+#X connect 69 0 18 0;
+#X connect 70 0 69 1;
+#X connect 71 0 69 1;
+#X connect 72 0 16 0;
+#X connect 73 0 70 0;
+#X connect 73 1 71 0;
+#X connect 74 0 73 0;
