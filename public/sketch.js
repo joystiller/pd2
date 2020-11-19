@@ -12,13 +12,14 @@
   let valMX;
   var toggle;
   var musictoggle;
-  const url = '192.168.8.215';
+  const url = '192.168.1.13';
   var Wsymb2;
   var pcat;
   var startupSunrise;
   var dtRise = new Date();
   var dtSet = new Date();
   var sunStatus;
+  var timeIndex = 0;
 
   // var os = require('os')
   // console.log(os.networkInterfaces())
@@ -214,7 +215,7 @@
       //   // Then, if pcat 
       //   //socket.emit('smhiToPd', smhiData);
 
-      Wsymb2 = data.timeSeries[2].parameters[18].values;
+      Wsymb2 = data.timeSeries[timeIndex].parameters[18].values;
       console.log('Updating weather symbol to: ' + Wsymb2);
       if (Wsymb2 == 1) {
         document.getElementById('Wsymb2').innerHTML = 'Clear sky';

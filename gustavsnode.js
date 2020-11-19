@@ -4,7 +4,7 @@
 
 // Replace slider to another checkbox. 
 
-var ip = '192.168.8.215';
+var ip = '192.168.1.13';
 // var os = require('os')
 // console.log(os.networkInterfaces())
 var port = '3000';
@@ -13,6 +13,7 @@ var app = express()
 var x = 0;
 var dt = new Date();
 dt.setHours(dt.getHours() + 2);
+var timeIndex = 0;
 
 // SMHIs api_url
 const api_url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.102919/lat/59.336600/data.json';
@@ -191,14 +192,14 @@ async function updatePcat() {
 	const data = await response.json();
 
 	var i;
-	for (i = 0; i < data.timeSeries[2].parameters.length; i++) {
-		const param = data.timeSeries[2].parameters[i];
+	for (i = 0; i < data.timeSeries[timeIndex].parameters.length; i++) {
+		const param = data.timeSeries[timeIndex].parameters[i];
 		if (param.name === 'pcat') {
 			pcatIndex = i;
 		}
 	}
 	// Updating pcat with the new updated pcatIndex.
-	pcat = data.timeSeries[2].parameters[pcatIndex].level;
+	pcat = data.timeSeries[timeIndex].parameters[pcatIndex].level;
 
 	console.log('pcat index is: ' + pcatIndex);
 	console.log('pcat value is: ' + pcat);
@@ -208,7 +209,7 @@ async function updatePcat() {
 	// If there's rain on startup, send rain on. Otherwise, do nothing.
 	if (pcat != 0) {
 		var smhiData = {
-			pcat: data.timeSeries[2].parameters[pcatIndex].level,
+			pcat: data.timeSeries[timeIndex].parameters[pcatIndex].level,
 		}
 		smhi(smhiData);
 		console.log('emitting to gustavsnode, pcat not equal to 0');
@@ -220,28 +221,28 @@ async function getISS() {
 	const data = await response.json();
 
 	var i;
-	for (i = 0; i < data.timeSeries[2].parameters.length; i++) {
-		const param = data.timeSeries[2].parameters[i];
+	for (i = 0; i < data.timeSeries[timeIndex].parameters.length; i++) {
+		const param = data.timeSeries[timeIndex].parameters[i];
 		if (param.name === 'pcat') {
 			pcatIndex = i;
 		}
 	}
 	// Updating pcat with the new updated pcatIndex.
-	pcat = data.timeSeries[2].parameters[pcatIndex].level;
+	pcat = data.timeSeries[timeIndex].parameters[pcatIndex].level;
 
-	console.log('Current time series is: ' + data.timeSeries[2].validTime);
+	console.log('Current time series is: ' + data.timeSeries[timeIndex].validTime);
 
 	console.log('pcatIndex = ' + pcatIndex);
-	if (pcat != data.timeSeries[2].parameters[pcatIndex].level) {
+	if (pcat != data.timeSeries[timeIndex].parameters[pcatIndex].level) {
 		var smhiData = {
-			pcat: data.timeSeries[2].parameters[pcatIndex].level,
+			pcat: data.timeSeries[timeIndex].parameters[pcatIndex].level,
 		};
 		console.log('this should only be called if there is a change in pcat');
 		smhi(smhiData);
-		pcat = data.timeSeries[2].parameters[pcatIndex].level;
+		pcat = data.timeSeries[timeIndex].parameters[pcatIndex].level;
 	}
 
-	if (data.timeSeries[2].parameters[pcatIndex].level != 0) {
+	if (data.timeSeries[timeIndex].parameters[pcatIndex].level != 0) {
 		console.log('it is raining, call the socket.emit!');
 		// Does it ever start raining? getISS() is called once every hour,
 		// but this function should only be called on server startup, 
