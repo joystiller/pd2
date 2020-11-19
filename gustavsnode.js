@@ -29,7 +29,7 @@ var sliderMX;
 let valMX;
 var toggle;
 var musictoggle;
-const url = '192.168.8.215';
+const url = '192.168.1.219';
 var Wsymb2;
 var pcat;
 var startupSunrise;
