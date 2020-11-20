@@ -1,6 +1,6 @@
 #N canvas 342 184 1022 671 12;
 #X obj 305 249 s toggle;
-#X text 387 398 pcat 0 = no precipitation;
+#X text 388 425 pcat 0 = no precipitation;
 #X obj 118 186 s hRise;
 #X obj 165 224 s mRise;
 #X obj 210 261 s hSet;
@@ -28,7 +28,7 @@ minutesSet toggle sunStatus;
 is not up \, then it should start to play the night track \, not the
 day tracks., f 27;
 #X obj 75 407 route 0;
-#X text 387 427 pcat anything else but 0 = precipitation;
+#X text 387 397 pcat anything else but 0 = precipitation;
 #X obj 734 249 print Sun was already up on startup;
 #X obj 742 280 print Still night out up on startup;
 #X obj 350 202 s stillNightOut;

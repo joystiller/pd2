@@ -1,4 +1,4 @@
-#N canvas 810 23 597 752 12;
+#N canvas 525 177 597 476 12;
 #X obj 813 216 inlet;
 #X obj 1259 172 inlet;
 #X text 811 184 Fadein;
@@ -32,6 +32,7 @@ value rather than skipping right to the next one., f 21;
 #X obj 923 140 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 938 741 / 126;
+#X obj 692 657 random;
 #X connect 0 0 11 0;
 #X connect 1 0 17 0;
 #X connect 5 0 30 0;
