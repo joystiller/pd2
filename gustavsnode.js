@@ -4,7 +4,7 @@
 
 // Replace slider to another checkbox. 
 
-var ip = '192.168.9.154';
+var ip = '192.168.1.219';
 // var os = require('os')
 // console.log(os.networkInterfaces())
 var port = '3000';
