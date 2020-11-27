@@ -4,7 +4,7 @@
 
 // Replace slider to another checkbox. 
 
-var ip = '192.168.1.219';
+var ip = '192.168.9.154';
 // var os = require('os')
 // console.log(os.networkInterfaces())
 var port = '3000';
@@ -323,7 +323,7 @@ function newConnection(socket) {
 	let counter = 0;
 	setInterval(() => {
 		socket.emit('hello', ++counter);
-	}, 3000);
+	}, 3600000);
 
 	// socket.emit('getISS');
 

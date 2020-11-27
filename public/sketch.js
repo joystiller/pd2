@@ -12,7 +12,7 @@
   let valMX;
   var toggle;
   var musictoggle;
-  const url = '192.168.1.219';
+  const url = '192.168.9.154';
   var Wsymb2;
   var pcat;
   var startupSunrise;
@@ -20,15 +20,22 @@
   var dtSet = new Date();
   var sunStatus;
   var timeIndex = 0;
+  var img;
 
   // var os = require('os')
   // console.log(os.networkInterfaces())
 
 
-
+  // function preload() {
+  //   img = preLoad('https://opendata-download-radar.smhi.se/api/version/latest/area/sweden/product/comp/latest.png');
+  // }
 
   function setup() {
     noCanvas();
+    //createCanvas(600, 400);
+    background(220);
+    console.log('printing from setup');
+
 
     //   oscWebSocket = new osc.WebSocketPort({
     //     url: "172.20.10.2:12345",
@@ -57,6 +64,9 @@
 
     const api_url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.102919/lat/59.336600/data.json';
     const sun_url = 'https://api.sunrise-sunset.org/json?lat=59.336600&lng=18.102919'
+    const api_radar = 'https://opendata-download-radar.smhi.se/api/version/latest/area/sweden/product/comp'
+
+
 
     // async function getSun() {
 
@@ -173,6 +183,40 @@
     function updateWsymb2(data) {
       console.log('printing from updateWsymb2' + data);
     }
+
+    async function getRadar() {
+      // const radarResponse = await fetch(api_radar);
+      // const radarData = await radarResponse.json();
+      // console.log('printing from getRadar: ' + radarData.lastFiles[0].formats[0].link);
+      // img = loadImage(radarData.lastFiles[0].formats[0].link);
+      // createImg(radarData.lastFiles[0].formats[0].link);
+
+      let url;
+      url = 'https://opendata-download-radar.smhi.se/api/version/latest/area/sweden/product/comp/latest.png'
+      loadImage(url, successImageLoad, failureImageLoad);
+
+      function successImageLoad(data) {
+        console.log('successImageLoad!' + data);
+        img = loadImage(data);
+        loadPixels();
+        //image(img, 0, 0);
+        createImage(img);
+      }
+
+      function failureImageLoad() {
+        console.log('failed to load image');
+      }
+
+
+
+    }
+
+
+    //getRadar();
+
+    // function draw() {
+
+    // }
 
     async function getISS() {
       console.log('printing from getISS');

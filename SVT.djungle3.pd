@@ -1220,29 +1220,29 @@ the mp3.player on or off., f 26;
 #X obj 4611 935 s mPrst73;
 #X obj 4612 965 s add73;
 #X obj -924 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 8567 1;
+-1 -1 0 1;
 #X obj -850 397 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6913 1;
+-1 -1 0 1;
 #X obj -779 399 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3813 1;
+-1 -1 0 1;
 #X obj -705 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5053 1;
+-1 -1 0 1;
 #X obj -639 403 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj -565 402 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5570 1;
+-1 -1 0 1;
 #X obj -494 404 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3228 1;
+-1 -1 0 1;
 #X obj -420 403 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4233 1;
+-1 -1 0 1;
 #X obj -367 401 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj -293 400 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5007 1;
+-1 -1 0 1;
 #X obj -222 402 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5524 1;
+-1 -1 0 1;
 #X obj -148 401 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1011 1;
+-1 -1 0 1;
 #X obj -7 399 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 67 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -1320,11 +1320,11 @@ the mp3.player on or off., f 26;
 #X obj 2811 425 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 2882 427 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 83 1;
+-1 -1 0 1;
 #X obj 2956 426 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3022 431 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 806 1;
+-1 -1 0 1;
 #X obj 3096 430 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3167 432 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -1332,7 +1332,7 @@ the mp3.player on or off., f 26;
 #X obj 3241 431 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3294 429 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1610 1;
+-1 -1 0 1;
 #X obj 3368 428 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3439 430 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -2969,7 +2969,7 @@ during a fade #;
 #X msg 2462 1992 1;
 #X msg 2414 1990 0;
 #X obj 2441 2046 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 2376 2206 spigot;
 #X text 2226 1566 This thing makes sure that the previous previous
 track do not fade out if sunset does NOT happen during a fade., f
@@ -3007,7 +3007,7 @@ add 1000 \, add2 strtPLAYER_A7 start \;, f 50;
 #X obj 1431 973 select;
 #X obj 1553 728 random 100;
 #X msg 1553 766 set seed \$1;
-#X msg 1463 702 seed 65, f 9;
+#X msg 1463 702 seed 4, f 9;
 #X obj 1527 601 loadbang;
 #X msg 1585 671 menusave;
 #X obj 1527 636 t b b b;
@@ -3936,7 +3936,7 @@ download the sun data to check if the sun is up on startup, f 18;
 #X text 263 669 Snygga till html-sidan \, översätt allt till svenska
 och lägg till "i samarbete med Gustav Ekberg m. fl";
 #X obj 427 388 hradio 38 0 0 3 empty empty empty 0 -8 0 10 -262144
--1 -1 1;
+-1 -1 2;
 #X obj 426 469 route 0 1;
 #X msg 428 339 set \$1;
 #X obj 426 547 s startNightTrack;
@@ -3950,6 +3950,7 @@ startar \, sen stannar den igen. Formulera fler print-outs.;
 #X text 264 1058 Sänk volym på nattljuden;
 #X text 265 918 Ändra upplösningen för random nummerna så att de
 inte bara landar på heltal \, eller ändra gain strukturen.;
+#X text 264 978 Gör en backup på alla ljudfiler;
 #X connect 3 0 2 0;
 #X connect 4 0 3 0;
 #X connect 9 0 8 0;
