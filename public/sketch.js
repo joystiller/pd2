@@ -7,8 +7,8 @@
   var api;
   var cityID;
   var key;
-  var sliderFX;
-  var sliderMX;
+  // var sliderFX;
+  // var sliderMX;
   let valMX;
   var toggle;
   var musictoggle;
@@ -21,18 +21,15 @@
   var sunStatus;
   var timeIndex = 0;
   var img;
+  let c;
+  let z;
+  var isRaining;
 
-  // var os = require('os')
-  // console.log(os.networkInterfaces())
 
-
-  // function preload() {
-  //   img = preLoad('https://opendata-download-radar.smhi.se/api/version/latest/area/sweden/product/comp/latest.png');
-  // }
 
   function setup() {
-    noCanvas();
-    //createCanvas(600, 400);
+    //noCanvas();
+    createCanvas(471, 887);
     background(220);
     console.log('printing from setup');
 
@@ -159,9 +156,23 @@
 
     // socket.on('updateWsymb2', data);
 
-    socket.on('hello', (counter) => {
+    socket.on('getISS', (counter) => {
       console.log(`hello - ${counter}`);
       getISS();
+    });
+
+    socket.on('getRadar', (data) => {
+      console.log('calling getRadar from node - ' + data);
+      getRadar();
+    });
+
+    // Purpose of this is to send Z if it's raining on startup, otherwise 
+    // z value will be sent to node only if z value changes. 
+    socket.on('getZ', (data) => {
+      console.log('printing from getZ');
+      if (z != null) {
+        socket.emit('rainfall', z);
+      }
     });
 
     // var counter;
@@ -185,38 +196,388 @@
     }
 
     async function getRadar() {
-      // const radarResponse = await fetch(api_radar);
-      // const radarData = await radarResponse.json();
-      // console.log('printing from getRadar: ' + radarData.lastFiles[0].formats[0].link);
-      // img = loadImage(radarData.lastFiles[0].formats[0].link);
-      // createImg(radarData.lastFiles[0].formats[0].link);
+      console.log('z is equal to: ' + z);
 
       let url;
       url = 'https://opendata-download-radar.smhi.se/api/version/latest/area/sweden/product/comp/latest.png'
       loadImage(url, successImageLoad, failureImageLoad);
 
       function successImageLoad(data) {
-        console.log('successImageLoad!' + data);
-        img = loadImage(data);
-        loadPixels();
-        //image(img, 0, 0);
-        createImage(img);
+        img = data; // load the image to a global variable
+        clear();
+        image(img, 0, 0); // this loads the radar-image to the canvas
+        c = data.get(271, 588); // Approximate pixel-coordinate for Stockholm
+        //c = data.get(mouseX, mouseY); // Keep variable for testing. 
+        console.log('Colourcode is: ' + c);
+
+        var rgbArray = [{
+          r: "0",
+          g: "50",
+          b: "255",
+          z: "5",
+        }, {
+          r: "0",
+          g: "70",
+          b: "255",
+          z: "6",
+        }, {
+          r: "0",
+          g: "90",
+          b: "255",
+          z: "7",
+        }, {
+          r: "0",
+          g: "110",
+          b: "255",
+          z: "8",
+        }, {
+          r: "0",
+          g: "130",
+          b: "255",
+          z: "9",
+        }, {
+          r: "0",
+          g: "150",
+          b: "255",
+          z: "10",
+        }, {
+          r: "0",
+          g: "170",
+          b: "255",
+          z: "11",
+        }, {
+          r: "0",
+          g: "128",
+          b: "0",
+          z: "12",
+        }, {
+          r: "0",
+          g: "138",
+          b: "0",
+          z: "13",
+        }, {
+          r: "0",
+          g: "148",
+          b: "0",
+          z: "14",
+        }, {
+          r: "0",
+          g: "158",
+          b: "0",
+          z: "15",
+        }, {
+          r: "0",
+          g: "163",
+          b: "0",
+          z: "16",
+        }, {
+          r: "0",
+          g: "168",
+          b: "0",
+          z: "17",
+        }, {
+          r: "0",
+          g: "173",
+          b: "0",
+          z: "18",
+        }, {
+          r: "0",
+          g: "178",
+          b: "0",
+          z: "19",
+        }, {
+          r: "10",
+          g: "208",
+          b: "10",
+          z: "20",
+        }, {
+          r: "10",
+          g: "218",
+          b: "10",
+          z: "21",
+        }, {
+          r: "10",
+          g: "228",
+          b: "10",
+          z: "22",
+        }, {
+          r: "10",
+          g: "238",
+          b: "10",
+          z: "23",
+        }, {
+          r: "10",
+          g: "248",
+          b: "10",
+          z: "24",
+        }, {
+          r: "255",
+          g: "255",
+          b: "15",
+          z: "25",
+        }, {
+          r: "255",
+          g: "246",
+          b: "15",
+          z: "26",
+        }, {
+          r: "255",
+          g: "238",
+          b: "15",
+          z: "27",
+        }, {
+          r: "255",
+          g: "229",
+          b: "15",
+          z: "28",
+        }, {
+          r: "255",
+          g: "220",
+          b: "15",
+          z: "29",
+        }, {
+          r: "255",
+          g: "200",
+          b: "0",
+          z: "30",
+        }, {
+          r: "255",
+          g: "180",
+          b: "0",
+          z: "31",
+        }, {
+          r: "255",
+          g: "160",
+          b: "0",
+          z: "32",
+        }, {
+          r: "255",
+          g: "140",
+          b: "0",
+          z: "33",
+        }, {
+          r: "255",
+          g: "120",
+          b: "0",
+          z: "34",
+        }, {
+          r: "255",
+          g: "35",
+          b: "35",
+          z: "35",
+        }, {
+          r: "255",
+          g: "15",
+          b: "15",
+          z: "36",
+        }, {
+          r: "255",
+          g: "0",
+          b: "0",
+          z: "37",
+        }, {
+          r: "235",
+          g: "0",
+          b: "0",
+          z: "38",
+        }, {
+          r: "215",
+          g: "0",
+          b: "0",
+          z: "39",
+        }, {
+          r: "195",
+          g: "0",
+          b: "0",
+          z: "40",
+        }, {
+          r: "175",
+          g: "0",
+          b: "0",
+          z: "41",
+        }, {
+          r: "155",
+          g: "0",
+          b: "0",
+          z: "42",
+        }, {
+          r: "135",
+          g: "0",
+          b: "0",
+          z: "43",
+        }, {
+          r: "115",
+          g: "0",
+          b: "0",
+          z: "44",
+        }, {
+          r: "175",
+          g: "0",
+          b: "175",
+          z: "45",
+        }, {
+          r: "184",
+          g: "0",
+          b: "184",
+          z: "46",
+        }, {
+          r: "193",
+          g: "0",
+          b: "193",
+          z: "47",
+        }, {
+          r: "202",
+          g: "0",
+          b: "202",
+          z: "48",
+        }, {
+          r: "211",
+          g: "0",
+          b: "211",
+          z: "49",
+        }, {
+          r: "219",
+          g: "0",
+          b: "219",
+          z: "50",
+        }, {
+          r: "228",
+          g: "0",
+          b: "228",
+          z: "51",
+        }, {
+          r: "237",
+          g: "0",
+          b: "237",
+          z: "52",
+        }, {
+          r: "246",
+          g: "0",
+          b: "246",
+          z: "53",
+        }, {
+          r: "255",
+          g: "0",
+          b: "255",
+          z: "54",
+        }, {
+          r: "0",
+          g: "255",
+          b: "255",
+          z: "55",
+        }, {
+          r: "13",
+          g: "255",
+          b: "255",
+          z: "56",
+        }, {
+          r: "26",
+          g: "255",
+          b: "255",
+          z: "57",
+        }, {
+          r: "39",
+          g: "255",
+          b: "255",
+          z: "58",
+        }, {
+          r: "51",
+          g: "255",
+          b: "255",
+          z: "59",
+        }, {
+          r: "64",
+          g: "255",
+          b: "255",
+          z: "60",
+        }, {
+          r: "77",
+          g: "255",
+          b: "255",
+          z: "61",
+        }, {
+          r: "90",
+          g: "255",
+          b: "255",
+          z: "62",
+        }, {
+          r: "102",
+          g: "255",
+          b: "255",
+          z: "63",
+        }, {
+          r: "115",
+          g: "255",
+          b: "255",
+          z: "64",
+        }, {
+          r: "128",
+          g: "255",
+          b: "255",
+          z: "65",
+        }, {
+          r: "141",
+          g: "255",
+          b: "255",
+          z: "66",
+        }, {
+          r: "154",
+          g: "255",
+          b: "255",
+          z: "67",
+        }, {
+          r: "166",
+          g: "255",
+          b: "255",
+          z: "68",
+        }, {
+          r: "179",
+          g: "255",
+          b: "255",
+          z: "69",
+        }, {
+          r: "192",
+          g: "255",
+          b: "255",
+          z: "70",
+        }]
+
+        for (i = 0; i < rgbArray.length; i++) {
+          if (rgbArray[i].r == c[0] & rgbArray[i].g == c[1] & rgbArray[i].b == c[2]) {
+            isRaining = true;
+            if (z != rgbArray[i].z) { // Overwrite previous Z and sends it to socket.
+              console.log('Z value changed, isRaining set to true, emitting data to node');
+              z = rgbArray[i].z;
+              socket.emit('rainfall', z);
+            }
+            break; // Found a true, breaking out of the loop
+          } else {
+            // is not raining
+            isRaining = false;
+          }
+        }
+
+        if (isRaining) {
+
+        } else {
+          if (z != 0) {
+            console.log('just stopped raining!');
+            z = 0;
+            socket.emit('rainfall', z);
+          }
+        }
       }
 
       function failureImageLoad() {
-        console.log('failed to load image');
+        console.log('Failed to load image');
       }
-
-
-
     }
 
 
-    //getRadar();
+    // setInterval(function () {
+    //   getRadar();
+    // }, 3000);
 
-    // function draw() {
-
-    // }
 
     async function getISS() {
       console.log('printing from getISS');
@@ -319,11 +680,7 @@
 
     }
 
-    // updatePcat();
-
-    // figure out how to call getISS function with a socket from node server...
-
-    getISS();
+    // getISS();
     // getSun();
 
     //At first, getISS (that is, get the weather) and getSun is called. 
@@ -353,6 +710,10 @@
     // sliderMX.input(updateslider);
 
   }
+
+  // function draw() {
+  //   console.log(mouseX, mouseY);
+  // }
 
   // function updateslider() {
   //   sendslider(sliderMX.value());

@@ -29,7 +29,7 @@ var sliderMX;
 let valMX;
 var toggle;
 var musictoggle;
-const url = '192.168.1.219';
+//const url = '172.20.10.2';
 var Wsymb2;
 var pcat;
 var startupSunrise;
@@ -280,7 +280,6 @@ setInterval(function () {
 
 
 
-// Moving this function out of newConnection(socket)
 async function sunData2(data) {
 	hoursRise = data.hoursRise;
 	minutesRise = data.minutesRise;
@@ -301,15 +300,16 @@ async function sunData2(data) {
 
 
 // Moving this function out of newConnection(socket)
-async function smhi(data) {
-	pcat = data.pcat;
 
-	fetch("http://" + ip + ":" + 3558, {
-		method: "PUT",
-		body: ";pcat " + pcat + ";"
-	}).catch(err => console.error(err));
-	console.log('Sending pcat value "' + pcat + '" from Node server to Pd.');
-}
+// async function smhi(data) {
+// 	pcat = data.pcat;
+
+// 	fetch("http://" + ip + ":" + 3558, {
+// 		method: "PUT",
+// 		body: ";pcat " + pcat + ";"
+// 	}).catch(err => console.error(err));
+// 	console.log('Sending pcat value "' + pcat + '" from Node server to Pd.');
+// }
 
 
 
@@ -320,17 +320,26 @@ async function smhi(data) {
 function newConnection(socket) {
 	console.log('We have a new client: ' + socket.id);
 
+	// These functions are called on startup, then they're called with timed events.
+	socket.emit('getISS');
+	socket.emit('getRadar');
+	socket.emit('getZ');
+
 	let counter = 0;
 	setInterval(() => {
-		socket.emit('hello', ++counter);
+		socket.emit('getISS', ++counter);
 	}, 3600000);
 
-	// socket.emit('getISS');
+	setInterval(() => {
+		socket.emit('getRadar', ++counter);
+	}, 60000);
 
-	socket.on('Slider', sliderData);
-	// var y = 3;
-	// socket.emit('updateWsymb2');
-	// //socket.emit('checkboxToggle', data);
+	//socket.emit('getRadar', counter);
+
+
+
+	//socket.on('Slider', sliderData);
+
 
 	// When this user emits, client side: socket.emit('otherevent',some data);
 	async function sliderData(data) {
@@ -347,7 +356,7 @@ function newConnection(socket) {
 		// }).catch(err => console.error(err));	
 	}
 
-	socket.on('smhiToPd', smhi);
+	// socket.on('smhiToPd', smhi);
 
 
 
@@ -376,6 +385,19 @@ function newConnection(socket) {
 
 	socket.on('checkboxToggle', mute);
 	socket.on('musicboxToggle', activateMusic);
+	socket.on('rainfall', sendRainfall);
+
+	async function sendRainfall(data) {
+		if (data > 45) { // Safety measure keeping installation from playing too loud
+			data = 45;
+		}
+		console.log('rainfall updated, z = ' + data);
+
+		fetch("http://" + ip + ":" + 3558, {
+			method: "PUT",
+			body: ";z " + data + ";"
+		}).catch(err => console.error(err));
+	}
 
 	async function mute(data) {
 		if (data) {
