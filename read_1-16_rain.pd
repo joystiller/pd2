@@ -49,9 +49,9 @@
 #X obj 2009 -1830 *~;
 #X obj 467 -1901 soundfile_info;
 #X msg 467 -1927 read \$1;
-#X floatatom 547 -1840 12 0 0 0 - - -, f 12;
+#X floatatom 547 -1840 12 0 0 0 - - -;
 #X obj 545 -1756 /;
-#X floatatom 545 -1697 11 0 0 0 - - -, f 11;
+#X floatatom 545 -1697 11 0 0 0 - - -;
 #X obj 564 -1783 samplerate~;
 #X obj 545 -1727 * 1000;
 #X obj 733 -1819 line 0 1;
@@ -59,12 +59,12 @@
 #X obj 789 -1887 f;
 #X obj 702 -1930 t b b;
 #X msg 734 -1863 0;
-#X floatatom 733 -1790 8 0 0 0 - - -, f 8;
+#X floatatom 733 -1790 8 0 0 0 - - -;
 #X obj 732 -1588 ==;
 #X obj 766 -1704 t b f;
 #X obj 750 -1673 -;
 #X obj 732 -1559 sel 1;
-#X floatatom 784 -1597 11 0 0 0 - - -, f 11;
+#X floatatom 784 -1597 11 0 0 0 - - -;
 #X obj 750 -1644 int;
 #X obj 467 -1875 unpack f s f f f;
 #X msg 672 -1860 stop;
@@ -101,8 +101,7 @@
 #X obj 742 -1368 bng 27 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 2316 -2336 r openFile\$1;
-#X msg 1558 -2174 open /Users/antonsoderberg/MUSIK/ableton/exported_tracks/Eddie_Kirk_Cactus_Set_Up.wav
-\;;
+#X msg 1558 -2174 open /home/pi/jungle/raintrack.wav \;;
 #X msg 705 -2131 5000;
 #X obj 705 -2164 loadbang;
 #X obj 3009 -2235 r stopPlayer\$1;
@@ -116,12 +115,12 @@
 #X obj 3554 -1969 f;
 #X obj 3469 -2015 t b b;
 #X msg 3499 -1945 0;
-#X floatatom 3498 -1872 8 0 0 0 - - -, f 8;
+#X floatatom 3498 -1872 8 0 0 0 - - -;
 #X obj 3498 -1671 ==;
 #X obj 3531 -1786 t b f;
 #X obj 3516 -1756 -;
 #X obj 3498 -1642 sel 1;
-#X floatatom 3550 -1680 11 0 0 0 - - -, f 11;
+#X floatatom 3550 -1680 11 0 0 0 - - -;
 #X obj 3516 -1727 int;
 #X msg 3437 -1942 stop;
 #X obj 3498 -1480 delay 5000;
@@ -302,8 +301,7 @@
 #X msg 1667 -2213 set;
 #X obj 2316 -2298 t a b;
 #X msg 2421 -2222 set;
-#X msg 2315 -2181 open /Users/antonsoderberg/MUSIK/ableton/exported_tracks/Eddie_Kirk_Cactus_Set_Up.wav
-\;;
+#X msg 2315 -2181 open /home/pi/jungle/raintrack.wav \;;
 #X obj 1567 -2075 bng 25 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 2298 -2083 bng 25 250 50 0 empty empty empty 17 7 0 10 -262144
