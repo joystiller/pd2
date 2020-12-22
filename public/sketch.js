@@ -21,6 +21,7 @@
   var sunStatus;
   var timeIndex = 0;
   var img;
+  let imgMap;
   let c;
   let z;
   var isRaining;
@@ -30,7 +31,8 @@
   function setup() {
     //noCanvas();
     createCanvas(471, 887);
-    background(220);
+    //background(220);
+
     console.log('printing from setup');
 
 
@@ -58,6 +60,8 @@
 
     // Start a socket connection to the server
     socket = io.connect(url + ':3000');
+    socket2 = io.connect(url + ':3001');
+
 
     const api_url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.102919/lat/59.336600/data.json';
     const sun_url = 'https://api.sunrise-sunset.org/json?lat=59.336600&lng=18.102919'
@@ -197,16 +201,22 @@
 
     async function getRadar() {
       console.log('z is equal to: ' + z);
-
       let url;
       url = 'https://opendata-download-radar.smhi.se/api/version/latest/area/sweden/product/comp/latest.png'
-      loadImage(url, successImageLoad, failureImageLoad);
 
-      function successImageLoad(data) {
-        img = data; // load the image to a global variable
+      loadImage('basemap.png', successMapLoad, failureMapLoad);
+
+      function successMapLoad(data) {
+        imgMap = data;
         clear();
+        image(imgMap, 0, 0);
+        loadImage(url, successRadarLoad, failureRadarLoad);
+      }
+
+      function successRadarLoad(data) {
+        img = data; // load the image to a global variable
         image(img, 0, 0); // this loads the radar-image to the canvas
-        c = data.get(271, 588); // Approximate pixel-coordinate for Stockholm
+        c = data.get(273, 590); // Approximate pixel-coordinate for Stockholm
         //c = data.get(mouseX, mouseY); // Keep variable for testing. 
         console.log('Colourcode is: ' + c);
 
@@ -568,8 +578,12 @@
         }
       }
 
-      function failureImageLoad() {
-        console.log('Failed to load image');
+      function failureRadarLoad() {
+        console.log('Failed to load map image');
+      }
+
+      function failureMapLoad() {
+        console.log('Failed to load radar image.');
       }
     }
 

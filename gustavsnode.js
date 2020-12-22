@@ -8,6 +8,7 @@ var ip = '192.168.1.219';
 // var os = require('os')
 // console.log(os.networkInterfaces())
 var port = '3000';
+var port2 = '3001';
 var express = require('express')
 var app = express()
 var x = 0;
