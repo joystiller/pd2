@@ -1300,9 +1300,9 @@ the mp3.player on or off., f 26;
 #X obj -7 399 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 67 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 3629 1;
 #X obj 138 400 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 25 1;
 #X obj 212 399 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 278 404 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -1394,17 +1394,17 @@ the mp3.player on or off., f 26;
 #X obj 3513 429 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3704 427 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 302 1;
+-1 -1 775 1;
 #X obj 3778 426 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1601 1;
+-1 -1 0 1;
 #X obj 3849 428 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3851 1;
+-1 -1 38 1;
 #X obj 3923 427 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3989 432 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4063 431 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1058 1;
+-1 -1 0 1;
 #X obj 4134 433 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4208 432 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -2778,7 +2778,7 @@ the mp3.player on or off., f 26;
 #X obj 1337 596 bng 62 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 1763 1649 f;
-#X msg 1195 1552 3;
+#X msg 1195 1552 1;
 #X msg 1198 1458 add2 \$1;
 #X obj 1194 1619 list split 1;
 #X msg 1121 1445 set;
@@ -2803,8 +2803,8 @@ the mp3.player on or off., f 26;
 #X obj 1393 2225 qlist;
 #X msg 1249 2172 bang;
 #X obj 1763 2213 qlist;
-#X msg 1761 2091 add2 fadeout1 \, add \$1 \, add 120000;
-#X msg 1393 2094 add2 fadein3 \, add \$1 \, add 120000;
+#X msg 1761 2091 add2 fadeout3 \, add \$1 \, add 120000;
+#X msg 1393 2094 add2 fadein1 \, add \$1 \, add 120000;
 #X obj 936 577 t b b;
 #X obj 940 1617 delay 100;
 #X msg 936 453 stop;
@@ -2827,7 +2827,7 @@ the mp3.player on or off., f 26;
 #X text 1056 1834 Randomize 12 numbers. Send to "turn on" and "turn
 off"., f 30;
 #X msg 1036 2094 add2 \$1;
-#X msg 1036 2196 5 11 6 0 2 7 8 1 4 9 3 10;
+#X msg 1036 2196 1 2 7 9 4 0 10 5 3 6 8 11;
 #X text 915 2166 This is the order in which the faders fade, f 15
 ;
 #X obj 1063 2126 r rSET;
@@ -2868,9 +2868,9 @@ played, f 15;
 #X obj 1060 350 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X msg 1194 1663 set \$1;
-#X msg 1194 1692 1;
+#X msg 1194 1692 3;
 #X msg 1800 1706 set \$1;
-#X msg 1800 1735 1;
+#X msg 1800 1735 3;
 #X text 1798 1637 Bangs previous number. Counts from 0, f 21;
 #X obj 2532 1797 r mixDuration;
 #X msg 2555 1883 set \$1;
@@ -2991,12 +2991,12 @@ during a fade #;
 #X obj 1768 1577 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X msg 1549 1671 set \$1;
-#X msg 1549 1700 3;
+#X msg 1549 1700 1;
 #X obj 2378 2107 spigot;
 #X msg 2462 1992 1;
 #X msg 2414 1990 0;
 #X obj 2441 2046 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 2376 2206 spigot;
 #X text 2226 1566 This thing makes sure that the previous previous
 track do not fade out if sunset does NOT happen during a fade., f
@@ -3052,7 +3052,7 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 #X obj 1784 932 print Same seed as random;
 #X obj 1764 724 list split 1;
 #X obj 1860 766 print new seed number:;
-#X msg 1764 660 seed 74, f 9;
+#X msg 1764 660 seed 34, f 9;
 #X text 1987 630 This thing generates new seed number on every new
 startup. If the seed number is the same as the random number \, the
 random object is banged one more time \, to make sure a unique seed
@@ -3955,7 +3955,6 @@ and switches off the harps [readsf], f 21;
 #X text 263 679 Lägg till en klocka på hemsidan;
 #X msg 426 293 0, f 1;
 #X msg 475 292 1, f 1;
-#X obj 377 85 delay 20000;
 #X obj 422 221 route true false;
 #X obj 423 186 r stillNightOut;
 #X text 213 28 The delay is necessary for the server to start up and
@@ -3983,6 +3982,7 @@ pd och node.;
 och lägg till i startup-scriptet.;
 #X text 262 629 Lägg till i samarbete med Gustav Ekberg m. fl på
 html-sidan;
+#X obj 377 85 delay 30000;
 #X connect 3 0 2 0;
 #X connect 4 0 3 0;
 #X connect 9 0 8 0;
@@ -4001,9 +4001,9 @@ html-sidan;
 #X connect 21 0 40 0;
 #X connect 21 0 56 0;
 #X connect 21 0 55 0;
-#X connect 43 0 62 0;
-#X connect 43 0 70 0;
+#X connect 43 0 69 0;
 #X connect 43 0 15 0;
+#X connect 43 0 80 0;
 #X connect 44 0 7 0;
 #X connect 45 0 16 0;
 #X connect 46 0 7 0;
@@ -4016,14 +4016,14 @@ html-sidan;
 #X connect 55 0 50 0;
 #X connect 55 0 49 0;
 #X connect 55 0 57 0;
-#X connect 60 0 68 0;
-#X connect 61 0 68 0;
-#X connect 62 0 66 0;
-#X connect 63 0 60 0;
-#X connect 63 1 61 0;
-#X connect 64 0 63 0;
-#X connect 66 0 67 0;
-#X connect 67 0 69 0;
-#X connect 67 1 17 0;
-#X connect 68 0 66 0;
-#X connect 70 0 66 0;
+#X connect 60 0 67 0;
+#X connect 61 0 67 0;
+#X connect 62 0 60 0;
+#X connect 62 1 61 0;
+#X connect 63 0 62 0;
+#X connect 65 0 66 0;
+#X connect 66 0 68 0;
+#X connect 66 1 17 0;
+#X connect 67 0 65 0;
+#X connect 69 0 65 0;
+#X connect 80 0 65 0;
