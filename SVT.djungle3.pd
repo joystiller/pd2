@@ -1,4 +1,4 @@
-#N canvas 1 98 1003 674 12;
+#N canvas 86 90 1003 674 12;
 #X declare -lib zexy;
 #N canvas 29 184 992 539 mixer 0;
 #X obj 909 588 dac~ 1 2 3 4;
@@ -207,7 +207,7 @@ right range., f 19;
 #X restore 25 321 pd mixer;
 #X obj 26 25 loadbang;
 #X msg 27 164 \; pd dsp \$1;
-#X obj 27 135 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 27 135 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 27 102 loadbang;
 #X obj 26 52 import mrpeach;
@@ -1394,17 +1394,17 @@ the mp3.player on or off., f 26;
 #X obj 3513 429 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3704 427 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 302 1;
 #X obj 3778 426 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 1601 1;
 #X obj 3849 428 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 3851 1;
 #X obj 3923 427 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3989 432 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4063 431 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 1058 1;
 #X obj 4134 433 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4208 432 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -2774,11 +2774,11 @@ the mp3.player on or off., f 26;
 #X connect 1013 0 1011 1;
 #X connect 1013 0 1015 0;
 #X restore 27 434 pd faders;
-#N canvas 58 110 1241 601 makenumbers 0;
+#N canvas 418 110 881 601 makenumbers 0;
 #X obj 1337 596 bng 62 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 1763 1649 f;
-#X msg 1195 1552 1;
+#X msg 1195 1552 3;
 #X msg 1198 1458 add2 \$1;
 #X obj 1194 1619 list split 1;
 #X msg 1121 1445 set;
@@ -2803,8 +2803,8 @@ the mp3.player on or off., f 26;
 #X obj 1393 2225 qlist;
 #X msg 1249 2172 bang;
 #X obj 1763 2213 qlist;
-#X msg 1761 2091 add2 fadeout4 \, add \$1 \, add 120000;
-#X msg 1393 2094 add2 fadein1 \, add \$1 \, add 120000;
+#X msg 1761 2091 add2 fadeout1 \, add \$1 \, add 120000;
+#X msg 1393 2094 add2 fadein3 \, add \$1 \, add 120000;
 #X obj 936 577 t b b;
 #X obj 940 1617 delay 100;
 #X msg 936 453 stop;
@@ -2858,7 +2858,7 @@ the readaf buffer the audio file., f 27;
 #X text 1002 985 This stores number from [urn] and outputs it when
 it receives a new number from [urn]., f 23;
 #X obj 584 1587 list append;
-#X msg 584 1673 4 2 3 1 2 4;
+#X msg 584 1673 3 1 3 0 1 2;
 #X text 688 1673 This keeps a reckord of the last tracks that were
 played, f 15;
 #X obj 584 1614 list split 6;
@@ -2868,9 +2868,9 @@ played, f 15;
 #X obj 1060 350 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X msg 1194 1663 set \$1;
-#X msg 1194 1692 4;
+#X msg 1194 1692 1;
 #X msg 1800 1706 set \$1;
-#X msg 1800 1735 4;
+#X msg 1800 1735 1;
 #X text 1798 1637 Bangs previous number. Counts from 0, f 21;
 #X obj 2532 1797 r mixDuration;
 #X msg 2555 1883 set \$1;
@@ -2960,10 +2960,10 @@ add 1000 \, add2 strtPLAYER_A5 start \;, f 50;
 -1 -1;
 #X obj 2696 2212 qlist;
 #X obj 2697 1557 list append;
-#X msg 2737 1643 1;
+#X msg 2737 1643 3;
 #X obj 2697 1584 list split 3;
 #X msg 2737 1615 set \$3;
-#X msg 2697 2087 add2 fadeout1 \, add \$1 \, add 120000;
+#X msg 2697 2087 add2 fadeout3 \, add \$1 \, add 120000;
 #X obj 2156 2084 r rSET;
 #X msg 2156 2118 clear;
 #X obj 2721 1867 r mixDuration;
@@ -2991,7 +2991,7 @@ during a fade #;
 #X obj 1768 1577 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X msg 1549 1671 set \$1;
-#X msg 1549 1700 1;
+#X msg 1549 1700 3;
 #X obj 2378 2107 spigot;
 #X msg 2462 1992 1;
 #X msg 2414 1990 0;
@@ -3029,17 +3029,14 @@ add 1000 \, add2 strtPLAYER_A7 start \;, f 50;
 #X obj 1470 906 list split 1;
 #X obj 1510 942 t b f;
 #X obj 1431 973 select;
-#X obj 1613 721 random 100;
-#X msg 1613 759 set seed \$1;
-#X msg 1517 741 seed 49, f 9;
-#X obj 1586 571 loadbang;
-#X msg 1440 639 menusave;
-#X obj 1586 606 t b b b;
+#X obj 1860 640 random 100;
+#X msg 1860 678 set seed \$1;
+#X obj 1806 490 loadbang;
+#X msg 1837 868 menusave;
 #X text 1578 825 This throws 5 random numbers ranging from 0 to 4 At
 every startup \, a new seed is generated and then the session is saved.
 , f 13;
-#X obj 1440 668 send pd-SVT.djungle3.pd;
-#X obj 1748 846 print Seed number:;
+#X obj 1837 897 send pd-SVT.djungle3.pd;
 #X obj -447 1641 loadbang;
 #X obj -447 1670 delay 1000;
 #X text -562 1665 This starts the raintrack faders on startup, f 14
@@ -3049,6 +3046,17 @@ add /home/pi/jungle/raintrack.wav \, add2 lineINIT6 \, add bang \,
 add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 #X msg -447 1699 5;
 #X obj -475 2050 urn 6;
+#X obj 1784 795 ==;
+#X obj 1784 824 select 1;
+#X obj 1806 525 t b b;
+#X obj 1784 932 print Same seed as random;
+#X obj 1764 724 list split 1;
+#X obj 1860 766 print new seed number:;
+#X msg 1764 660 seed 74, f 9;
+#X text 1987 630 This thing generates new seed number on every new
+startup. If the seed number is the same as the random number \, the
+random object is banged one more time \, to make sure a unique seed
+number is generated on every startup., f 40;
 #X connect 0 0 195 0;
 #X connect 1 0 66 0;
 #X connect 1 0 81 0;
@@ -3143,7 +3151,7 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 #X connect 76 2 142 0;
 #X connect 76 3 143 0;
 #X connect 76 4 144 0;
-#X connect 76 5 212 0;
+#X connect 76 5 209 0;
 #X connect 76 6 194 0;
 #X connect 77 0 15 0;
 #X connect 78 0 32 0;
@@ -3179,8 +3187,8 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 #X connect 105 2 190 0;
 #X connect 106 0 94 0;
 #X connect 107 0 32 0;
-#X connect 110 0 214 0;
-#X connect 111 0 214 0;
+#X connect 110 0 211 0;
+#X connect 111 0 211 0;
 #X connect 112 0 119 0;
 #X connect 112 1 137 0;
 #X connect 112 2 134 0;
@@ -3264,22 +3272,28 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 #X connect 198 1 199 1;
 #X connect 199 1 15 0;
 #X connect 200 0 201 0;
-#X connect 200 0 208 0;
-#X connect 201 0 202 0;
-#X connect 202 0 195 0;
-#X connect 202 0 200 0;
+#X connect 200 0 212 0;
+#X connect 201 0 218 0;
+#X connect 201 0 217 0;
+#X connect 202 0 214 0;
 #X connect 203 0 205 0;
-#X connect 204 0 207 0;
-#X connect 205 0 204 0;
-#X connect 205 1 200 0;
-#X connect 205 2 202 0;
-#X connect 209 0 210 0;
-#X connect 210 0 213 0;
-#X connect 212 0 42 0;
-#X connect 213 0 131 0;
-#X connect 213 0 56 0;
-#X connect 214 0 117 0;
-#X connect 214 0 116 0;
+#X connect 206 0 207 0;
+#X connect 207 0 210 0;
+#X connect 209 0 42 0;
+#X connect 210 0 131 0;
+#X connect 210 0 56 0;
+#X connect 211 0 117 0;
+#X connect 211 0 116 0;
+#X connect 212 0 213 0;
+#X connect 213 0 215 0;
+#X connect 213 0 200 0;
+#X connect 213 1 203 0;
+#X connect 214 0 200 0;
+#X connect 214 1 218 0;
+#X connect 216 1 212 1;
+#X connect 218 0 200 0;
+#X connect 218 0 216 0;
+#X connect 218 0 195 0;
 #X coords 0 0 1 1 1138 1135 0;
 #X restore 27 472 pd makenumbers;
 #X obj 582 339 bng 32 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -3292,7 +3306,7 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 #X obj 1043 185 s stopPlayer4;
 #X text 710 270 Sets how long until next track starts fading in.,
 f 15;
-#N canvas 494 627 617 446 routing 0;
+#N canvas 472 243 617 469 routing 0;
 #X obj 238 217 r fadeout0;
 #X obj 569 213 r fadein0;
 #X obj 110 315 faders3 1;
@@ -3598,7 +3612,7 @@ and playback, f 15;
 value, f 20;
 #X text 628 345 Save and/or load preset, f 12;
 #X text 1390 129 ...;
-#X text 296 1230 ...;
+#X text 296 1350 ...;
 #N canvas 298 100 714 668 testmixer 0;
 #X obj 162 141 qlist;
 #X msg 250 -61 clear;
@@ -3939,7 +3953,6 @@ and switches off the harps [readsf], f 21;
 #X obj 1184 297 s switchOFFHarp;
 #X obj 26 77 declare -lib zexy;
 #X text 263 679 Lägg till en klocka på hemsidan;
-#X text 263 787 Lägg till en reboot på scriptet kl 23?;
 #X msg 426 293 0, f 1;
 #X msg 475 292 1, f 1;
 #X obj 377 85 delay 20000;
@@ -3947,18 +3960,14 @@ and switches off the harps [readsf], f 21;
 #X obj 423 186 r stillNightOut;
 #X text 213 28 The delay is necessary for the server to start up and
 download the sun data to check if the sun is up on startup, f 18;
-#X text 261 827 Gör en bruksamvisning samt en referensmanual;
-#X text 262 629 Snygga till html-sidan \, översätt allt till svenska
-och lägg till "i samarbete med Gustav Ekberg m. fl";
 #X obj 427 388 hradio 38 0 0 3 empty empty empty 0 -8 0 10 -262144
--1 -1 0;
+-1 -1 2;
 #X obj 426 469 route 0 1;
 #X msg 428 339 set \$1;
 #X obj 426 547 s startNightTrack;
 #X msg 356 297 2, f 1;
 #X text 196 289 The radio bar prevents Pd from making sounds unless
 it downloads the sun data., f 20;
-#X text 264 968 Fade ner djungel när det regnar;
 #X text 264 865 Ändra upplösningen för random nummerna så att de
 inte bara landar på heltal \, eller ändra gain strukturen.;
 #X text 263 925 Gör en backup på alla ljudfiler;
@@ -3967,9 +3976,13 @@ inte bara landar på heltal \, eller ändra gain strukturen.;
 pd och node.;
 #X text 263 1117 Ta bort åskan i en av låtarna \, låt 4 eller 1
 ;
-#X text 262 720 Lägg till en geografisk karta under radarbilden;
-#X text 262 753 Fixa bort dubbla z-tal;
 #X text 262 1081 Lägg till internet i listan med startups?;
+#X text 262 1157 Sätt upp en "rör ej" skylt på ljudkortet.;
+#X text 261 1195 Fixa watchdog så att datorn aldrig hänger sig.;
+#X text 262 736 Gör en till hemsida \, port 3001 som fixar all data-fetching
+och lägg till i startup-scriptet.;
+#X text 262 629 Lägg till i samarbete med Gustav Ekberg m. fl på
+html-sidan;
 #X connect 3 0 2 0;
 #X connect 4 0 3 0;
 #X connect 9 0 8 0;
@@ -3988,8 +4001,8 @@ pd och node.;
 #X connect 21 0 40 0;
 #X connect 21 0 56 0;
 #X connect 21 0 55 0;
-#X connect 43 0 63 0;
-#X connect 43 0 73 0;
+#X connect 43 0 62 0;
+#X connect 43 0 70 0;
 #X connect 43 0 15 0;
 #X connect 44 0 7 0;
 #X connect 45 0 16 0;
@@ -4003,14 +4016,14 @@ pd och node.;
 #X connect 55 0 50 0;
 #X connect 55 0 49 0;
 #X connect 55 0 57 0;
-#X connect 61 0 71 0;
-#X connect 62 0 71 0;
-#X connect 63 0 69 0;
-#X connect 64 0 61 0;
-#X connect 64 1 62 0;
-#X connect 65 0 64 0;
-#X connect 69 0 70 0;
-#X connect 70 0 72 0;
-#X connect 70 1 17 0;
-#X connect 71 0 69 0;
-#X connect 73 0 69 0;
+#X connect 60 0 68 0;
+#X connect 61 0 68 0;
+#X connect 62 0 66 0;
+#X connect 63 0 60 0;
+#X connect 63 1 61 0;
+#X connect 64 0 63 0;
+#X connect 66 0 67 0;
+#X connect 67 0 69 0;
+#X connect 67 1 17 0;
+#X connect 68 0 66 0;
+#X connect 70 0 66 0;
