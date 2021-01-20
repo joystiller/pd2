@@ -1,8 +1,5 @@
 // TODO:
-// Is there a way to sort of "run sketch.js" on server startup? Otherwise the user 
-// have to manually hit the refresh button on the html page. 
-
-// Replace slider to another checkbox. 
+// Set up another socket connection. 
 
 var ip = '192.168.1.219';
 // var os = require('os')

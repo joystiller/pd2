@@ -25,6 +25,7 @@
   let c;
   let z;
   var isRaining;
+  var t;
 
 
 
@@ -634,62 +635,68 @@
       //   // Then, if pcat 
       //   //socket.emit('smhiToPd', smhiData);
 
+      t = data.timeSeries[timeIndex].parameters[1].values;
+      console.log(t);
+
+      document.getElementById('celcius').innerHTML = t;
+
+
       Wsymb2 = data.timeSeries[timeIndex].parameters[18].values;
       console.log('Updating weather symbol to: ' + Wsymb2);
       if (Wsymb2 == 1) {
-        document.getElementById('Wsymb2').innerHTML = 'Clear sky';
+        document.getElementById('Wsymb2').innerHTML = 'Klar himmel';
       } else if (Wsymb2 == 2) {
-        document.getElementById('Wsymb2').innerHTML = 'Nearly clear sky';
+        document.getElementById('Wsymb2').innerHTML = 'Nästan klar himmel';
       } else if (Wsymb2 == 3) {
-        document.getElementById('Wsymb2').innerHTML = 'Variable cloudiness';
+        document.getElementById('Wsymb2').innerHTML = 'Varierande molnighet';
       } else if (Wsymb2 == 4) {
-        document.getElementById('Wsymb2').innerHTML = 'Halfclear sky';
+        document.getElementById('Wsymb2').innerHTML = 'Halvklar himmel';
       } else if (Wsymb2 == 5) {
-        document.getElementById('Wsymb2').innerHTML = 'Cloudy sky';
+        document.getElementById('Wsymb2').innerHTML = 'Molnig himmel';
       } else if (Wsymb2 == 6) {
-        document.getElementById('Wsymb2').innerHTML = 'Overcast';
+        document.getElementById('Wsymb2').innerHTML = 'Mulet';
       } else if (Wsymb2 == 7) {
-        document.getElementById('Wsymb2').innerHTML = 'Fog';
+        document.getElementById('Wsymb2').innerHTML = 'Dimma';
       } else if (Wsymb2 == 8) {
-        document.getElementById('Wsymb2').innerHTML = 'Light rain showers';
+        document.getElementById('Wsymb2').innerHTML = 'Lätta regnskurar';
       } else if (Wsymb2 == 9) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate rain showers';
+        document.getElementById('Wsymb2').innerHTML = 'Måttliga regnskurar';
       } else if (Wsymb2 == 10) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy rain showers';
+        document.getElementById('Wsymb2').innerHTML = 'Kraftiga regnskurar';
       } else if (Wsymb2 == 11) {
-        document.getElementById('Wsymb2').innerHTML = 'Thunderstorm';
+        document.getElementById('Wsymb2').innerHTML = 'Åska';
       } else if (Wsymb2 == 12) {
-        document.getElementById('Wsymb2').innerHTML = 'Light sleet showers';
+        document.getElementById('Wsymb2').innerHTML = 'Lätta snöblandade skurar';
       } else if (Wsymb2 == 13) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate sleet showers';
+        document.getElementById('Wsymb2').innerHTML = 'Måttliga snöblandade skurar';
       } else if (Wsymb2 == 14) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy sleet showers';
+        document.getElementById('Wsymb2').innerHTML = 'Kraftiga snöblandade skurar';
       } else if (Wsymb2 == 15) {
-        document.getElementById('Wsymb2').innerHTML = 'Light snow showers';
+        document.getElementById('Wsymb2').innerHTML = 'Lätta snöbyar';
       } else if (Wsymb2 == 16) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate snow showers';
+        document.getElementById('Wsymb2').innerHTML = 'Måttliga snöbyar';
       } else if (Wsymb2 == 17) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy snow showers';
+        document.getElementById('Wsymb2').innerHTML = 'Kraftiga snöbyar';
       } else if (Wsymb2 == 18) {
-        document.getElementById('Wsymb2').innerHTML = 'Light rain';
+        document.getElementById('Wsymb2').innerHTML = 'Lätt regn';
       } else if (Wsymb2 == 19) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate rain';
+        document.getElementById('Wsymb2').innerHTML = 'Måttligt regn';
       } else if (Wsymb2 == 20) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy rain';
+        document.getElementById('Wsymb2').innerHTML = 'Kraftigt regn';
       } else if (Wsymb2 == 21) {
-        document.getElementById('Wsymb2').innerHTML = 'Thunder';
+        document.getElementById('Wsymb2').innerHTML = 'Åska';
       } else if (Wsymb2 == 22) {
-        document.getElementById('Wsymb2').innerHTML = 'Light sleet';
+        document.getElementById('Wsymb2').innerHTML = 'Lätt snöregn';
       } else if (Wsymb2 == 23) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate sleet';
+        document.getElementById('Wsymb2').innerHTML = 'Måttligt snöregn';
       } else if (Wsymb2 == 24) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy sleet';
+        document.getElementById('Wsymb2').innerHTML = 'Kraftigt snöregn';
       } else if (Wsymb2 == 25) {
-        document.getElementById('Wsymb2').innerHTML = 'Light snowfall';
+        document.getElementById('Wsymb2').innerHTML = 'Lätt snöfall';
       } else if (Wsymb2 == 26) {
-        document.getElementById('Wsymb2').innerHTML = 'Moderate snowfall';
+        document.getElementById('Wsymb2').innerHTML = 'Måttligt snöfall';
       } else if (Wsymb2 == 27) {
-        document.getElementById('Wsymb2').innerHTML = 'Heavy snowfall';
+        document.getElementById('Wsymb2').innerHTML = 'Kraftigt snöfall';
       }
 
     }
@@ -756,13 +763,16 @@
   function changeMusicToggle() {
     var data = musictoggle.checked();
     //console.log("calling the changeMusicToggle function " + data);
+    if (data) {
+      document.getElementById("extern").innerHTML = "Extern ljudingång På"
+    } else document.getElementById("extern").innerHTML = "Extern ljudingång Av"
     socket.emit('musicboxToggle', data);
   }
 
   function startCountdown() {
     var counter = 0;
     var distance = 3600000;
-    document.getElementById("demo").innerHTML = "Commencing countdown...";
+    document.getElementById("demo").innerHTML = "Startar timer...";
     var i = setInterval(function () {
       if (toggle.checked()) {
         clearInterval(i);
@@ -774,7 +784,7 @@
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="demo"
-        document.getElementById("demo").innerHTML = "Muted - Fade in begins in: " + (hours).toLocaleString('en-US', {
+        document.getElementById("demo").innerHTML = "Fågelljud Av. Startar igen om: " + (hours).toLocaleString('en-US', {
             minimumIntegerDigits: 2,
             useGrouping: false
           }) + ":" +
@@ -792,7 +802,7 @@
           document.getElementById("toggle").checked = true;
           socket.emit('checkboxToggle', toggle.checked());
           console.log('this is printed from "if counter === 3600"')
-          document.getElementById("demo").innerHTML = "Click toggle to mute";
+          document.getElementById("demo").innerHTML = "Fågelljud På";
           //stopCountdown();
         }
       }
@@ -801,5 +811,5 @@
 
   function stopCountdown() {
     //console.log('pringing from stopCountdown() function')
-    document.getElementById("demo").innerHTML = "Click toggle to mute";
+    document.getElementById("demo").innerHTML = "Fågelljud På";
   }

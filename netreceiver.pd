@@ -1,46 +1,47 @@
 #N canvas 353 98 1022 671 12;
-#X obj 283 251 s toggle;
-#X text 388 425 pcat 0 = no precipitation;
-#X obj 96 188 s hRise;
-#X obj 143 226 s mRise;
-#X obj 188 263 s hSet;
-#X obj 234 204 s mSet;
-#X obj 119 466 s weatherRain;
-#X msg 351 425 0;
-#X msg 351 398 1;
-#X obj 75 506 s weatherNoRain;
-#X obj 226 465 print starts raining;
-#X obj 63 543 print stops raining;
-#X floatatom 168 39 5 0 0 0 - - -, f 5;
-#X obj 26 76 netreceive 3558;
-#X obj 37 632 s musictoggle;
-#X obj 29 659 print musictoggle ON/OFF;
-#X text 213 41 Number of open connections;
-#X msg 566 267 1;
-#X msg 512 267 0;
-#X obj 512 313 tgl 37 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 283 272 s toggle;
+#X text 388 446 pcat 0 = no precipitation;
+#X obj 96 209 s hRise;
+#X obj 143 247 s mRise;
+#X obj 188 284 s hSet;
+#X obj 234 225 s mSet;
+#X obj 119 487 s weatherRain;
+#X msg 351 446 0;
+#X msg 351 419 1;
+#X obj 75 527 s weatherNoRain;
+#X obj 226 486 print starts raining;
+#X obj 63 564 print stops raining;
+#X floatatom 129 97 5 0 0 0 - - -, f 5;
+#X obj 26 33 netreceive 3558;
+#X obj 37 653 s musictoggle;
+#X obj 29 680 print musictoggle ON/OFF;
+#X text 174 99 Number of open connections;
+#X msg 566 288 1;
+#X msg 512 288 0;
+#X obj 512 334 tgl 37 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 512 213 route false true;
-#X text 512 116 This checks if the sun is up on program startup. If
+#X obj 512 234 route false true;
+#X text 512 137 This checks if the sun is up on program startup. If
 is not up \, then it should start to play the night track \, not the
 day tracks., f 27;
-#X obj 75 407 route 0;
-#X text 387 397 pcat anything else but 0 = precipitation;
-#X obj 734 249 print Sun was already up on startup;
-#X obj 742 280 print Still night out up on startup;
-#X obj 328 204 s stillNightOut;
-#X obj 26 132 route musictoggle pcat hoursRise minutesRise hoursSet
+#X obj 75 428 route 0;
+#X text 387 418 pcat anything else but 0 = precipitation;
+#X obj 734 270 print Sun was already up on startup;
+#X obj 742 301 print Still night out up on startup;
+#X obj 328 225 s stillNightOut;
+#X obj 26 153 route musictoggle pcat hoursRise minutesRise hoursSet
 minutesSet toggle sunStatus z;
-#X obj 383 242 s z;
-#X obj 183 92 print number of open connections;
-#X obj 376 308 print new Z!;
+#X obj 383 263 s z;
+#X obj 174 67 print number of open connections;
+#X obj 376 329 print new Z!;
+#X text 424 885 ...;
 #X connect 7 0 9 0;
 #X connect 7 0 11 0;
 #X connect 8 0 6 0;
 #X connect 8 0 10 0;
 #X connect 13 0 27 0;
-#X connect 13 1 12 0;
 #X connect 13 1 29 0;
+#X connect 13 1 12 0;
 #X connect 17 0 19 0;
 #X connect 18 0 19 0;
 #X connect 20 0 18 0;
