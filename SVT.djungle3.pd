@@ -1,6 +1,6 @@
 #N canvas 21 94 1003 674 12;
 #X declare -lib zexy;
-#N canvas 29 184 992 539 mixer 0;
+#N canvas 21 163 992 539 mixer 0;
 #X obj 909 588 dac~ 1 2 3 4;
 #X obj 888 484 *~;
 #X obj 924 484 *~;
@@ -98,7 +98,7 @@ right range., f 19;
 #X msg 201 487 0;
 #X floatatom 236 633 5 0 0 0 - - -;
 #X msg 322 222 60000;
-#X msg 1081 443 0.4;
+#X msg 1080 443 0.27;
 #X connect 1 0 7 0;
 #X connect 1 0 49 0;
 #X connect 2 0 8 0;
@@ -207,7 +207,7 @@ right range., f 19;
 #X restore 25 321 pd mixer;
 #X obj 26 25 loadbang;
 #X msg 27 164 \; pd dsp \$1;
-#X obj 27 135 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 27 135 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 27 102 loadbang;
 #X obj 26 52 import mrpeach;
@@ -1274,163 +1274,163 @@ the mp3.player on or off., f 26;
 #X obj -924 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj -849 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4032 1;
+-1 -1 0 1;
 #X obj -784 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12398 1;
+-1 -1 0 1;
 #X obj -715 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj -646 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9676 1;
+-1 -1 0 1;
 #X obj -574 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj -510 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj -442 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7963 1;
+-1 -1 0 1;
 #X obj -366 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4032 1;
+-1 -1 0 1;
 #X obj -296 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj -231 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7660 1;
+-1 -1 0 1;
 #X obj -160 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 8467 1;
+-1 -1 0 1;
 #X obj -11 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 62 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 128 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 10382 1;
+-1 -1 0 1;
 #X obj 203 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1411 1;
+-1 -1 0 1;
 #X obj 275 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2621 1;
+-1 -1 0 1;
 #X obj 340 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2923 1;
+-1 -1 0 1;
 #X obj 407 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1915 1;
+-1 -1 0 1;
 #X obj 476 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3830 1;
+-1 -1 0 1;
 #X obj 554 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3427 1;
+-1 -1 0 1;
 #X obj 620 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2621 1;
+-1 -1 0 1;
 #X obj 684 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1310 1;
+-1 -1 0 1;
 #X obj 756 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 960 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 1024 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5241 1;
+-1 -1 0 1;
 #X obj 1094 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1161 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3326 1;
+-1 -1 0 1;
 #X obj 1236 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2520 1;
+-1 -1 0 1;
 #X obj 1304 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3225 1;
+-1 -1 0 1;
 #X obj 1369 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3629 1;
+-1 -1 0 1;
 #X obj 1445 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1514 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1584 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2016 1;
+-1 -1 0 1;
 #X obj 1649 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1109 1;
+-1 -1 0 1;
 #X obj 1721 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1843 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 1913 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5342 1;
+-1 -1 0 1;
 #X obj 1981 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2721 1;
+-1 -1 0 1;
 #X obj 2050 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 2122 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3931 1;
+-1 -1 0 1;
 #X obj 2195 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7761 1;
+-1 -1 0 1;
 #X obj 2258 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1814 1;
+-1 -1 0 1;
 #X obj 2325 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9273 1;
+-1 -1 0 1;
 #X obj 2402 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7056 1;
+-1 -1 0 1;
 #X obj 2472 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6753 1;
+-1 -1 0 1;
 #X obj 2540 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 10483 1;
+-1 -1 0 1;
 #X obj 2613 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 10382 1;
+-1 -1 0 1;
 #X obj 2747 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 202 1;
+-1 -1 0 1;
 #X obj 2817 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 504 1;
+-1 -1 0 1;
 #X obj 2881 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1814 1;
+-1 -1 0 1;
 #X obj 2955 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3024 1;
+-1 -1 0 1;
 #X obj 3024 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3528 1;
+-1 -1 0 1;
 #X obj 3092 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4435 1;
+-1 -1 0 1;
 #X obj 3157 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3225 1;
+-1 -1 0 1;
 #X obj 3228 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1814 1;
+-1 -1 0 1;
 #X obj 3304 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2481 1;
+-1 -1 0 1;
 #X obj 3372 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2493 1;
+-1 -1 0 1;
 #X obj 3441 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1915 1;
+-1 -1 0 1;
 #X obj 3517 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1210 1;
+-1 -1 0 1;
 #X obj 3668 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3729 1;
+-1 -1 0 1;
 #X obj 3738 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4939 1;
+-1 -1 0 1;
 #X obj 3802 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5040 1;
+-1 -1 0 1;
 #X obj 3877 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4536 1;
+-1 -1 0 1;
 #X obj 3945 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4013 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2419 1;
+-1 -1 0 1;
 #X obj 4078 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4149 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 4225 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 4293 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 4362 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 4431 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 4616 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1512 1;
+-1 -1 0 1;
 #X obj 4688 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 706 1;
+-1 -1 0 1;
 #X obj 4752 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1210 1;
+-1 -1 0 1;
 #X obj 4827 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1512 1;
+-1 -1 0 1;
 #X obj 4895 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2016 1;
+-1 -1 0 1;
 #X obj 4962 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1512 1;
+-1 -1 0 1;
 #X obj 5028 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3024 1;
+-1 -1 0 1;
 #X obj 5099 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4435 1;
+-1 -1 0 1;
 #X text 1844 634 thunder;
 #X text 2053 639 rain;
 #X text -931 643 thunder;
@@ -2779,7 +2779,7 @@ the mp3.player on or off., f 26;
 #X obj 1337 596 bng 62 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 1763 1649 f;
-#X msg 1195 1552 4;
+#X msg 1195 1552 1;
 #X msg 1198 1458 add2 \$1;
 #X obj 1194 1619 list split 1;
 #X msg 1121 1445 set;
@@ -2804,8 +2804,8 @@ the mp3.player on or off., f 26;
 #X obj 1393 2225 qlist;
 #X msg 1249 2172 bang;
 #X obj 1763 2213 qlist;
-#X msg 1761 2091 add2 fadeout3 \, add \$1 \, add 5000;
-#X msg 1393 2094 add2 fadein4 \, add \$1 \, add 5000;
+#X msg 1761 2091 add2 fadeout6 \, add \$1 \, add 120000;
+#X msg 1393 2094 add2 fadein1 \, add \$1 \, add 120000;
 #X obj 936 577 t b b;
 #X obj 940 1617 delay 100;
 #X msg 936 453 stop;
@@ -2828,7 +2828,7 @@ the mp3.player on or off., f 26;
 #X text 1056 1834 Randomize 12 numbers. Send to "turn on" and "turn
 off"., f 30;
 #X msg 1036 2094 add2 \$1;
-#X msg 1036 2196 5 0 6 4 8 7 10 1 9 3 2 11;
+#X msg 1036 2196 2 0 6 9 3 5 8 1 7 11 4 10;
 #X text 915 2166 This is the order in which the faders fade, f 15
 ;
 #X obj 1063 2126 r rSET;
@@ -2869,9 +2869,9 @@ played, f 15;
 #X obj 1060 350 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X msg 1194 1663 set \$1;
-#X msg 1194 1692 3;
+#X msg 1194 1692 6;
 #X msg 1800 1706 set \$1;
-#X msg 1800 1735 3;
+#X msg 1800 1735 6;
 #X text 1798 1637 Bangs previous number. Counts from 0, f 21;
 #X obj 2532 1797 r mixDuration;
 #X msg 2555 1883 set \$1;
@@ -2992,7 +2992,7 @@ during a fade #;
 #X obj 1768 1577 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X msg 1549 1671 set \$1;
-#X msg 1549 1700 4;
+#X msg 1549 1700 1;
 #X obj 2378 2107 spigot;
 #X msg 2462 1992 1;
 #X msg 2414 1990 0;
@@ -3053,7 +3053,7 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 #X obj 1784 932 print Same seed as random;
 #X obj 1764 724 list split 1;
 #X obj 1860 766 print new seed number:;
-#X msg 1764 660 seed 58, f 9;
+#X msg 1764 660 seed 30, f 9;
 #X text 1987 630 This thing generates new seed number on every new
 startup. If the seed number is the same as the random number \, the
 random object is banged one more time \, to make sure a unique seed
@@ -3614,7 +3614,7 @@ value, f 20;
 #X text 628 345 Save and/or load preset, f 12;
 #X text 1390 129 ...;
 #X text 296 1350 ...;
-#N canvas 298 100 714 668 testmixer 1;
+#N canvas 251 100 714 668 testmixer 0;
 #X obj 162 141 qlist;
 #X msg 250 -61 clear;
 #X obj 56 -101 bng 82 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -3801,6 +3801,7 @@ and switches off the harps [readsf], f 21;
 #X msg 207 164 open /home/pi/jungle/harpa_sjatte_massutdoendet.wav
 ;
 #X msg 100 463 0.519;
+#X msg 347 314 clear;
 #X connect 0 0 2 0;
 #X connect 0 1 21 0;
 #X connect 1 0 0 0;
@@ -3823,6 +3824,7 @@ and switches off the harps [readsf], f 21;
 #X connect 21 0 3 0;
 #X connect 22 0 17 1;
 #X connect 22 0 16 1;
+#X connect 23 0 3 0;
 #X restore 258 656 pd readHarp;
 #X obj 305 591 r switchONHarp;
 #X msg 305 622 1;
@@ -3960,7 +3962,7 @@ and switches off the harps [readsf], f 21;
 #X text 213 28 The delay is necessary for the server to start up and
 download the sun data to check if the sun is up on startup, f 18;
 #X obj 427 388 hradio 38 0 0 3 empty empty empty 0 -8 0 10 -262144
--1 -1 2;
+-1 -1 0;
 #X obj 426 469 route 0 1;
 #X msg 428 339 set \$1;
 #X obj 426 547 s startNightTrack;
