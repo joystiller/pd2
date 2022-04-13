@@ -215,11 +215,11 @@ right range., f 19;
 #X restore 25 321 pd mixer;
 #X obj 26 25 loadbang;
 #X msg 27 164 \; pd dsp \$1;
-#X obj 27 135 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 27 135 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 27 102 loadbang;
 #X obj 26 52 import mrpeach;
-#N canvas 80 108 875 645 mp3player 1;
+#N canvas 80 108 875 645 mp3player 0;
 #X obj 451 299 adc~, f 5;
 #X obj 521 540 s volumemp3player;
 #X obj 521 497 pvu~;
@@ -245,13 +245,13 @@ the mp3.player on or off., f 26;
 #X floatatom 321 461 5 0 0 0 - - -;
 #X floatatom 153 406 5 0 0 0 - - -;
 #X obj 219 230 line;
-#X floatatom 219 255 5 0 0 0 - - -;
 #X obj 218 365 moses 52;
-#X msg 219 199 set 1 \, 0 30000;
 #X text 178 48 This is a fail switch. So if anyone leaves the musictoggle
 to true \, there will be an audible hum \, but as long as it's between
 52 or 56 env~ value \, the line counter will count down \, and after
 30 seconds \, it will turn the toggle back to false., f 34;
+#X obj 206 269 select 0;
+#X msg 219 199 set 1 \, 0 4000;
 #X connect 0 0 13 0;
 #X connect 0 0 16 0;
 #X connect 0 1 14 0;
@@ -260,7 +260,7 @@ to true \, there will be an audible hum \, but as long as it's between
 #X connect 9 0 11 0;
 #X connect 9 1 12 0;
 #X connect 11 0 10 0;
-#X connect 11 0 25 0;
+#X connect 11 0 26 0;
 #X connect 12 0 10 0;
 #X connect 13 0 2 0;
 #X connect 13 0 3 0;
@@ -270,16 +270,17 @@ to true \, there will be an audible hum \, but as long as it's between
 #X connect 14 0 6 0;
 #X connect 15 0 13 1;
 #X connect 15 0 14 1;
-#X connect 16 0 24 0;
+#X connect 16 0 23 0;
 #X connect 17 0 19 0;
 #X connect 17 1 20 0;
-#X connect 17 1 25 0;
-#X connect 22 0 23 0;
-#X connect 24 0 21 0;
-#X connect 24 0 25 0;
-#X connect 24 1 18 0;
-#X connect 24 1 17 0;
-#X connect 25 0 22 0;
+#X connect 17 1 26 0;
+#X connect 22 0 25 0;
+#X connect 23 0 21 0;
+#X connect 23 0 26 0;
+#X connect 23 1 18 0;
+#X connect 23 1 17 0;
+#X connect 25 0 12 0;
+#X connect 26 0 22 0;
 #X restore 24 248 pd mp3player;
 #X obj 608 218 s mixDuration;
 #X obj 938 116 s mixStop;
@@ -1430,17 +1431,17 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj 3517 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 3668 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 11 1;
+-1 -1 0 1;
 #X obj 3738 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2537 1;
+-1 -1 0 1;
 #X obj 3802 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 3949 1;
+-1 -1 0 1;
 #X obj 3877 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2853 1;
+-1 -1 0 1;
 #X obj 3945 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4013 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1307 1;
+-1 -1 0 1;
 #X obj 4078 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4149 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -3091,7 +3092,7 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 #X obj 1784 932 print Same seed as random;
 #X obj 1764 724 list split 1;
 #X obj 1860 766 print new seed number:;
-#X msg 1764 660 seed 30, f 9;
+#X msg 1764 660 seed 5, f 9;
 #X text 1987 630 This thing generates new seed number on every new
 startup. If the seed number is the same as the random number \, the
 random object is banged one more time \, to make sure a unique seed
