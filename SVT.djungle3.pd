@@ -215,11 +215,11 @@ right range., f 19;
 #X restore 25 321 pd mixer;
 #X obj 26 25 loadbang;
 #X msg 27 164 \; pd dsp \$1;
-#X obj 27 135 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 27 135 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 27 102 loadbang;
 #X obj 26 52 import mrpeach;
-#N canvas 80 108 875 645 mp3player 0;
+#N canvas 80 108 875 645 mp3player 1;
 #X obj 451 299 adc~, f 5;
 #X obj 521 540 s volumemp3player;
 #X obj 521 497 pvu~;
@@ -251,7 +251,7 @@ to true \, there will be an audible hum \, but as long as it's between
 52 or 56 env~ value \, the line counter will count down \, and after
 30 seconds \, it will turn the toggle back to false., f 34;
 #X obj 206 269 select 0;
-#X msg 219 199 set 1 \, 0 4000;
+#X msg 219 199 set 1 \, 0 30000;
 #X connect 0 0 13 0;
 #X connect 0 0 16 0;
 #X connect 0 1 14 0;
@@ -1441,7 +1441,7 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj 3945 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4013 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+-1 -1 91 1;
 #X obj 4078 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 4149 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
@@ -3092,7 +3092,7 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 #X obj 1784 932 print Same seed as random;
 #X obj 1764 724 list split 1;
 #X obj 1860 766 print new seed number:;
-#X msg 1764 660 seed 5, f 9;
+#X msg 1764 660 seed 74, f 9;
 #X text 1987 630 This thing generates new seed number on every new
 startup. If the seed number is the same as the random number \, the
 random object is banged one more time \, to make sure a unique seed
