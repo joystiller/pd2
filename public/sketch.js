@@ -12,8 +12,8 @@
   var musictoggle;
 
   // this is the raspberry pi's IP: 
-  //const url = '192.168.1.219';
-  const url = '0.0.0.0';
+  const url = '192.168.1.219';
+  //const url = '0.0.0.0';
 
   var Wsymb2;
   var pcat;
