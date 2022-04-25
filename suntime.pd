@@ -1,17 +1,17 @@
-#N canvas 180 32 1222 696 12;
+#N canvas 180 32 866 696 12;
 #X obj 293 27 loadbang;
 #X obj 293 104 time;
-#X floatatom 294 203 5 0 0 0 - - -, f 5;
-#X floatatom 307 170 5 0 0 0 - - -, f 5;
-#X floatatom 321 143 5 0 0 0 - - -, f 5;
+#X floatatom 294 203 5 0 0 0 - - - 0;
+#X floatatom 307 170 5 0 0 0 - - - 0;
+#X floatatom 321 143 5 0 0 0 - - - 0;
 #X obj 402 54 r hRise;
 #X obj 471 54 r mRise;
 #X obj 36 62 r hSet;
 #X obj 93 66 r mSet;
-#X floatatom 402 83 5 0 0 0 - - -, f 5;
-#X floatatom 471 83 5 0 0 0 - - -, f 5;
-#X floatatom 36 91 5 0 0 0 - - -, f 5;
-#X floatatom 93 95 5 0 0 0 - - -, f 5;
+#X floatatom 402 83 5 0 0 0 - - - 0;
+#X floatatom 471 83 5 0 0 0 - - - 0;
+#X floatatom 36 91 5 0 0 0 - - - 0;
+#X floatatom 93 95 5 0 0 0 - - - 0;
 #X obj 398 275 ==;
 #X obj 454 275 ==;
 #X obj 398 345 +;
@@ -23,19 +23,19 @@
 #X msg 228 508 0;
 #X msg 266 508 1;
 #X obj 247 542 s sunStatus;
-#X obj 180 381 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 304 378 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
+#X obj 180 381 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 304 378 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
 #X obj 398 528 s startMetro;
 #X obj 32 513 print Sun is setting...;
 #X obj 342 579 print Sun is rising!;
 #X obj 412 426 loadbang;
-#X obj 87 466 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
+#X obj 87 466 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
 #X obj 293 65 metro 60000;
-#X obj 1197 1551 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
+#X obj 1197 1551 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
 #X obj 351 676 s startHarp;
 #X obj 405 632 s switchONHarp;
 #X text 148 25 Once every minute this timer checks for sunrise and
@@ -48,23 +48,14 @@ minutes \, the fade will be completed when the sun has set., f 33
 ;
 #X text 145 351 Test night time;
 #X text 284 353 Test day time;
-#X obj 579 273 == 22;
-#X obj 650 272 == 36;
-#X obj 578 314 +;
-#X obj 578 357 select 2;
-#X obj 578 394 s turnOff;
-#X text 674 356 This fades out Pd before computer reboot and shutdown
-at 23:00, f 27;
 #X connect 0 0 31 0;
 #X connect 1 0 2 0;
 #X connect 1 1 3 0;
 #X connect 1 2 4 0;
 #X connect 2 0 13 0;
 #X connect 2 0 17 0;
-#X connect 2 0 39 0;
 #X connect 3 0 14 0;
 #X connect 3 0 18 0;
-#X connect 3 0 40 0;
 #X connect 5 0 9 0;
 #X connect 6 0 10 0;
 #X connect 7 0 11 0;
@@ -98,7 +89,3 @@ at 23:00, f 27;
 #X connect 25 0 33 0;
 #X connect 29 0 22 0;
 #X connect 31 0 1 0;
-#X connect 39 0 41 0;
-#X connect 40 0 41 0;
-#X connect 41 0 42 0;
-#X connect 42 0 43 0;

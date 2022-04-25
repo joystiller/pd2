@@ -3,58 +3,27 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Sockets Example</title>
+  <title>Vinterträdgården ljudinstallation</title>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
   <script type="text/javascript" src="sketch.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // var checkbox = document.querySelector('input[type="checkbox"]');
       var checkbox = document.querySelector('#toggle');
-
       checkbox.checked = true;
-
-      // checkbox.addEventListener('change', function () {
-      //   if (checkbox.checked) {
-      //     // do this
-      //     console.log('checkbox checked');
-      //   } else {
-      //     // Mute audio and display a countdown timer
-      //     console.log('checkbox not checked');
-      //   }
-      // });
     });
 
     document.addEventListener('DOMContentLoaded', function () {
-      //var musicbox = document.querySelector('input[type="checkbox"]');
       var musicbox = document.querySelector('#musictoggle');
-
       musicbox.checked = false;
-
-      // musicbox.addEventListener('change', function () {
-      //   if (musicbox.checked) {
-      //     // do this
-      //     console.log('Musicbox checked');
-      //   } else {
-      //     // Mute audio and display a countdown timer
-      //     console.log('Musicbox not checked');
-      //   }
-      // });
     });
 
   </script>
-
   <script>
-
-
-
   </script>
 
   <p id="demo"> Fågelljud På </p>
-  <!-- <p id="demo"> Tryck på knappen för att tillfälligt stänga av ljudinstallationen</p> -->
-
-
   <style>
     .switch {
       position: relative;
@@ -121,24 +90,16 @@
     <span class="slider"></span>
   </label>
 
-
-
   <p> </p>
 
   <p id="extern"> Extern ljudingång Av</p>
-
-
 
   <label class="switch">
     <input id="musictoggle" type="checkbox">
     <span class="slider"></span>
   </label>
 
-
-
-
-  <!-- <h1>Aktuellt väder</h1> -->
-
+  <span id='hint'> </span>
 
   <p>Aktuellt väder: <span id='Wsymb2'></span>, <span id='celcius'></span> ˚C </p>
 
