@@ -1,11 +1,11 @@
-var express = require('express')
+const express = require('express')
 const fetch = require("node-fetch");
-var socket = require('socket.io');
+const socket = require('socket.io');
 
-var http = require('http');
-var fs = require('fs');
-var osc = require('osc-min');
-var dgram = require('dgram');
+//var http = require('http');
+//var fs = require('fs');
+const osc = require('osc-min');
+const dgram = require('dgram');
 
 
 // this is the raspberry pi's IP:
@@ -24,7 +24,7 @@ var timeIndex = 0;
 const api_url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.102919/lat/59.336600/data.json';
 const sun_url = 'https://api.sunrise-sunset.org/json?lat=59.336600&lng=18.102919'
 
-var socket;
+//var socket;
 var pcat;
 var dtRise = new Date();
 var dtSet = new Date();
@@ -45,6 +45,7 @@ app.use(express.static(__dirname + '/public'));
 
 console.log("Server up and running!");
 
+/*
 // not sure if this is doing anything... For the new http update this doesn't work.
 var io = socket(server, {
 	handlePreflightRequest: (req, res) => {
@@ -57,6 +58,8 @@ var io = socket(server, {
 		res.end();
 	}
 });
+*/
+const io = socket(server);
 
 // Register a callback function to run when we have an individual connection
 // This is run for each individual user that connects
@@ -324,13 +327,14 @@ function newConnection(socket) {
 			data = 45;
 		}
 		console.log('rainfall updated, z = ' + data);
+		let data_int = parseInt(data, 10);
 
 		var osc_msg = osc.toBuffer({
 			oscType: 'message',
 			address: '/z',
 			args: [{
 				type: 'integer',
-				value: data
+				value: data_int
 			}]
 		});
 		udp_server.send(osc_msg, 0, osc_msg.length, 9999);

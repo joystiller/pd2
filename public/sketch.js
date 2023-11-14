@@ -13,7 +13,9 @@
 
   // this is the raspberry pi's IP: 
   const url = '192.168.1.219';
-  //const url = '0.0.0.0';
+
+  // Use this to try out things on Mac
+  // const url = '0.0.0.0';
 
   var Wsymb2;
   var pcat;
@@ -32,7 +34,7 @@
   function setup() {
     createCanvas(471, 887);
     socket = io.connect(url + ':3000');
-    socket2 = io.connect(url + ':3001');
+    //socket2 = io.connect(url + ':3001');
 
     const api_url = 'https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/18.102919/lat/59.336600/data.json';
 
@@ -436,6 +438,7 @@
             if (z != rgbArray[i].z) { // Overwrite previous Z and sends it to socket.
               console.log('Z value changed, isRaining set to true, emitting data to node');
               z = rgbArray[i].z;
+              console.log("z value is: " + z);
               socket.emit('rainfall', z);
             }
             break; // Found a true, breaking out of the loop
