@@ -1,15 +1,15 @@
-#N canvas 338 167 845 674 12;
+#N canvas 104 116 845 674 12;
 #X declare -lib zexy;
 #X declare -lib mrpeach;
-#N canvas 263 230 992 539 mixer 0;
+#N canvas 2 151 992 539 mixer 0;
 #X obj 909 588 dac~ 1 2 3 4;
 #X obj 888 484 *~;
 #X obj 924 484 *~;
 #X obj 958 485 *~;
 #X obj 995 485 *~;
 #X obj 1081 407 loadbang;
-#X obj 839 364 vsl 36 137 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj 839 364 vsl 36 137 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 13600 1;
 #X obj 888 540 *~;
 #X obj 924 540 *~;
 #X obj 961 541 *~;
@@ -23,8 +23,8 @@
 #X obj 979 743 catch~ mx2;
 #X obj 1019 774 catch~ mx3;
 #X obj 1053 807 catch~ mx4;
-#X obj 896 705 vsl 36 137 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj 896 705 vsl 36 137 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 8160 1;
 #X obj 943 882 *~;
 #X obj 980 882 *~;
 #X obj 1018 882 *~;
@@ -44,10 +44,10 @@
 #X text 443 426 Volume Rain;
 #X obj 383 73 loadbang;
 #X obj 600 32 r toggle;
-#X obj 610 99 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000;
-#X obj 662 95 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000;
+#X obj 610 99 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 662 95 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
 #X obj 601 213 line;
 #X msg 656 168 0 5000;
 #X msg 601 143 1 30000;
@@ -55,7 +55,7 @@
 #X msg 895 674 0.6;
 #X msg 544 176 1;
 #X obj 833 601 env~;
-#X floatatom 833 626 5 0 0 0 - - - 0;
+#X floatatom 833 626 5 0 0 0 - - -;
 #X obj 730 662 f;
 #X obj 730 602 metro 300000;
 #X obj 729 568 loadbang;
@@ -65,10 +65,10 @@ sound installation temporarily., f 30;
 #X msg 720 174 0 1.44e+06;
 #X obj 938 170 osc~;
 #X obj 938 195 env~;
-#X floatatom 938 220 5 0 0 0 - - - 0;
-#X floatatom 949 125 5 0 0 0 - - - 0;
+#X floatatom 938 220 5 0 0 0 - - -;
+#X floatatom 949 125 5 0 0 0 - - -;
 #X obj 297 133 r z;
-#X floatatom 297 178 5 0 0 0 - - - 0;
+#X floatatom 297 178 5 0 0 0 - - -;
 #X obj 297 305 line;
 #X obj 297 261 pack;
 #X obj 435 665 *~;
@@ -86,7 +86,7 @@ sound installation temporarily., f 30;
 right range., f 19;
 #X obj 201 380 select 0;
 #X obj 366 715 env~;
-#X floatatom 366 740 5 0 0 0 - - - 0;
+#X floatatom 366 740 5 0 0 0 - - -;
 #X obj 263 776 f;
 #X obj 263 716 metro 300000;
 #X obj 262 682 loadbang;
@@ -96,13 +96,13 @@ right range., f 19;
 #X obj 201 524 s switchOFF6;
 #X msg 255 432 1;
 #X msg 201 487 0;
-#X floatatom 236 633 5 0 0 0 - - - 0;
-#X msg 322 222 60000;
-#X obj 1211 377 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X floatatom 1211 513 5 0 0 0 - - - 0;
+#X floatatom 236 633 5 0 0 0 - - -;
+#X obj 1211 377 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 1211 513 5 0 0 0 - - -;
 #X msg 1080 443 0.503;
 #X obj 600 64 route 1 0;
+#X msg 322 222 60000;
 #X connect 1 0 7 0;
 #X connect 1 0 48 0;
 #X connect 2 0 8 0;
@@ -111,7 +111,7 @@ right range., f 19;
 #X connect 3 0 48 0;
 #X connect 4 0 10 0;
 #X connect 4 0 48 0;
-#X connect 5 0 91 0;
+#X connect 5 0 90 0;
 #X connect 6 0 7 1;
 #X connect 6 0 8 1;
 #X connect 6 0 9 1;
@@ -146,8 +146,8 @@ right range., f 19;
 #X connect 36 0 30 0;
 #X connect 38 0 47 0;
 #X connect 38 0 70 0;
-#X connect 38 0 88 0;
-#X connect 39 0 92 0;
+#X connect 38 0 92 0;
+#X connect 39 0 91 0;
 #X connect 42 0 6 0;
 #X connect 42 0 71 0;
 #X connect 43 0 42 0;
@@ -199,27 +199,27 @@ right range., f 19;
 #X connect 80 0 79 0;
 #X connect 85 0 83 0;
 #X connect 86 0 84 0;
-#X connect 88 0 63 1;
-#X connect 89 0 90 0;
-#X connect 89 0 4 1;
-#X connect 89 0 3 1;
-#X connect 89 0 2 1;
-#X connect 89 0 1 1;
-#X connect 91 0 1 1;
-#X connect 91 0 2 1;
-#X connect 91 0 3 1;
-#X connect 91 0 4 1;
-#X connect 92 0 40 0;
-#X connect 92 0 44 0;
-#X connect 92 1 41 0;
-#X connect 92 1 43 0;
+#X connect 88 0 89 0;
+#X connect 88 0 4 1;
+#X connect 88 0 3 1;
+#X connect 88 0 2 1;
+#X connect 88 0 1 1;
+#X connect 90 0 1 1;
+#X connect 90 0 2 1;
+#X connect 90 0 3 1;
+#X connect 90 0 4 1;
+#X connect 91 0 40 0;
+#X connect 91 0 44 0;
+#X connect 91 1 41 0;
+#X connect 91 1 43 0;
+#X connect 92 0 63 1;
 #X restore 25 321 pd mixer;
 #X obj 26 25 loadbang;
 #X msg 27 164 \; pd dsp \$1;
-#X obj 27 135 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 27 135 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X obj 27 102 loadbang;
-#N canvas 532 107 875 645 mp3player 0;
+#N canvas 44 108 875 645 mp3player 0;
 #X obj 451 299 adc~, f 5;
 #X obj 521 540 s volumemp3player;
 #X obj 521 497 pvu~;
@@ -236,32 +236,37 @@ the mp3.player on or off., f 26;
 #X obj 453 431 *~ 1;
 #X obj 494 431 *~ 1;
 #X obj 279 276 env~;
-#X obj 270 425 moses 56;
-#X floatatom 303 392 5 0 0 0 - - - 0;
-#X floatatom 219 463 5 0 0 0 - - - 0;
-#X floatatom 321 461 5 0 0 0 - - - 0;
-#X floatatom 153 406 5 0 0 0 - - - 0;
+#X floatatom 303 392 5 0 0 0 - - -;
+#X floatatom 219 463 5 0 0 0 - - -;
+#X floatatom 321 461 5 0 0 0 - - -;
+#X floatatom 153 406 5 0 0 0 - - -;
 #X obj 219 230 line;
 #X obj 218 365 moses 52;
-#X obj 206 267 select 0;
+#X obj 217 264 select 0;
 #X obj 68 342 send mp3gate;
 #X text 38 248 Send a zero to the netreceiver patch, f 18;
 #X msg 68 306 symbol close;
-#X obj 114 188 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 114 188 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X msg 219 199 set 1 \, 0 5000;
 #X text 178 48 This is a fail switch. So if anyone leaves the musictoggle
 to true \, there will be an audible hum \, but as long as it's between
 52 or 56 env~ value \, the line counter will count down \, and after
 5 seconds \, it will turn the toggle back to false., f 34;
 #X obj 547 117 route 1 0;
+#X obj 9 388 print closing mp3;
+#X obj 333 275 env~;
+#X floatatom 347 327 5 0 0 0 - - -;
+#X floatatom 295 325 5 0 0 0 - - -;
+#X obj 270 425 moses 55;
 #X connect 0 0 12 0;
 #X connect 0 0 14 0;
 #X connect 0 1 13 0;
+#X connect 0 1 30 0;
 #X connect 2 0 1 0;
-#X connect 8 0 29 0;
+#X connect 8 0 28 0;
 #X connect 10 0 9 0;
-#X connect 10 0 27 0;
+#X connect 10 0 26 0;
 #X connect 11 0 9 0;
 #X connect 12 0 2 0;
 #X connect 12 0 3 0;
@@ -269,32 +274,35 @@ to true \, there will be an audible hum \, but as long as it's between
 #X connect 13 0 2 0;
 #X connect 13 0 4 0;
 #X connect 13 0 6 0;
-#X connect 14 0 21 0;
-#X connect 15 0 17 0;
-#X connect 15 1 18 0;
-#X connect 15 1 27 0;
-#X connect 20 0 22 0;
-#X connect 21 0 19 0;
-#X connect 21 0 27 0;
-#X connect 21 1 16 0;
-#X connect 21 1 15 0;
-#X connect 22 0 25 0;
-#X connect 22 0 11 0;
-#X connect 25 0 23 0;
-#X connect 26 0 25 0;
-#X connect 27 0 20 0;
-#X connect 29 0 10 0;
-#X connect 29 1 11 0;
+#X connect 14 0 32 0;
+#X connect 14 0 20 0;
+#X connect 19 0 21 0;
+#X connect 20 0 18 0;
+#X connect 20 0 26 0;
+#X connect 20 1 15 0;
+#X connect 20 1 33 0;
+#X connect 21 0 24 0;
+#X connect 21 0 11 0;
+#X connect 24 0 22 0;
+#X connect 24 0 29 0;
+#X connect 25 0 24 0;
+#X connect 26 0 19 0;
+#X connect 28 0 10 0;
+#X connect 28 1 11 0;
+#X connect 30 0 31 0;
+#X connect 33 0 16 0;
+#X connect 33 1 17 0;
+#X connect 33 1 26 0;
 #X restore 24 248 pd mp3player;
 #X obj 608 218 s mixDuration;
 #X obj 938 116 s mixStop;
-#X obj 939 26 bng 70 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000;
+#X obj 939 26 bng 70 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
 #X obj 571 378 s MP;
 #X text 939 145 Stop all automation, f 11;
 #X obj 552 445 s bringZero;
-#X obj 573 408 bng 30 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 573 408 bng 30 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X text 614 398 Bring all faders to 0, f 12;
 #X obj 528 95 t b b b b b;
 #X obj 590 313 s trackDuration;
@@ -360,13 +368,13 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj 3372 294 r f58 \$2;
 #X obj 3441 294 r f59 \$2;
 #X obj 3517 294 r f60 \$2;
-#X floatatom -925 674 5 0 0 0 - - - 0;
+#X floatatom -925 674 5 0 0 0 - - -;
 #X msg -925 743 set \$1;
 #X msg -924 871 0;
 #X obj -985 778 r MP;
 #X obj -925 963 s mPrst1;
 #X text -1183 1212 ...;
-#X floatatom -925 704 5 0 0 0 - - - 0;
+#X floatatom -925 704 5 0 0 0 - - -;
 #X obj -925 993 s add1;
 #X msg -925 840 set \$1;
 #X msg -924 903 9;
@@ -374,28 +382,28 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj -925 808 t b b;
 #X text -980 704 Lower;
 #X text -986 673 Higher;
-#X floatatom -853 674 5 0 0 0 - - - 0;
+#X floatatom -853 674 5 0 0 0 - - -;
 #X msg -853 742 set \$1;
 #X msg -852 871 102;
-#X floatatom -853 704 5 0 0 0 - - - 0;
+#X floatatom -853 704 5 0 0 0 - - -;
 #X msg -853 840 set \$1;
 #X msg -852 903 62;
 #X obj -853 932 -;
 #X obj -853 808 t b b;
 #X obj -854 963 s mPrst2;
 #X obj -853 993 s add2;
-#X floatatom -786 673 5 0 0 0 - - - 0;
+#X floatatom -786 673 5 0 0 0 - - -;
 #X msg -786 741 set \$1;
 #X msg -785 870 123;
-#X floatatom -786 703 5 0 0 0 - - - 0;
+#X floatatom -786 703 5 0 0 0 - - -;
 #X msg -786 839 set \$1;
 #X msg -785 902 0;
 #X obj -786 931 -;
 #X obj -786 807 t b b;
-#X floatatom -714 673 5 0 127 0 - - - 0;
+#X floatatom -714 673 5 0 127 0 - - -;
 #X msg -714 741 set \$1;
 #X msg -713 870 127;
-#X floatatom -714 703 5 0 0 0 - - - 0;
+#X floatatom -714 703 5 0 0 0 - - -;
 #X msg -714 839 set \$1;
 #X msg -713 902 0;
 #X obj -714 931 -;
@@ -404,34 +412,34 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj -715 962 s mPrst4;
 #X obj -786 993 s add3;
 #X obj -714 991 s add4;
-#X floatatom -647 673 5 0 127 0 - - - 0;
+#X floatatom -647 673 5 0 127 0 - - -;
 #X msg -647 742 set \$1;
 #X msg -646 870 96;
-#X floatatom -647 703 5 0 0 0 - - - 0;
+#X floatatom -647 703 5 0 0 0 - - -;
 #X msg -647 839 set \$1;
 #X msg -646 902 0;
 #X obj -647 931 -;
 #X obj -647 807 t b b;
-#X floatatom -575 673 5 0 127 0 - - - 0;
+#X floatatom -575 673 5 0 127 0 - - -;
 #X msg -575 741 set \$1;
 #X msg -574 870 127;
-#X floatatom -575 703 5 0 0 0 - - - 0;
+#X floatatom -575 703 5 0 0 0 - - -;
 #X msg -575 839 set \$1;
 #X msg -574 902 0;
 #X obj -575 931 -;
 #X obj -575 807 t b b;
-#X floatatom -508 672 5 0 127 0 - - - 0;
+#X floatatom -508 672 5 0 127 0 - - -;
 #X msg -508 740 set \$1;
 #X msg -507 869 127;
-#X floatatom -508 702 5 0 0 0 - - - 0;
+#X floatatom -508 702 5 0 0 0 - - -;
 #X msg -508 838 set \$1;
 #X msg -507 901 0;
 #X obj -508 930 -;
 #X obj -508 806 t b b;
-#X floatatom -436 672 5 0 127 0 - - - 0;
+#X floatatom -436 672 5 0 127 0 - - -;
 #X msg -436 740 set \$1;
 #X msg -435 869 79;
-#X floatatom -436 702 5 0 0 0 - - - 0;
+#X floatatom -436 702 5 0 0 0 - - -;
 #X msg -436 838 set \$1;
 #X msg -435 901 0;
 #X obj -436 930 -;
@@ -444,34 +452,34 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj -575 992 s add6;
 #X obj -508 992 s add7;
 #X obj -436 990 s add8;
-#X floatatom -366 670 5 0 127 0 - - - 0;
+#X floatatom -366 670 5 0 127 0 - - -;
 #X msg -366 739 set \$1;
 #X msg -365 867 40;
-#X floatatom -366 700 5 0 0 0 - - - 0;
+#X floatatom -366 700 5 0 0 0 - - -;
 #X msg -366 836 set \$1;
 #X msg -365 899 0;
 #X obj -366 928 -;
 #X obj -366 804 t b b;
-#X floatatom -294 670 5 0 127 0 - - - 0;
+#X floatatom -294 670 5 0 127 0 - - -;
 #X msg -294 738 set \$1;
 #X msg -293 867 127;
-#X floatatom -294 700 5 0 0 0 - - - 0;
+#X floatatom -294 700 5 0 0 0 - - -;
 #X msg -294 836 set \$1;
 #X msg -293 899 0;
 #X obj -294 928 -;
 #X obj -294 804 t b b;
-#X floatatom -227 669 5 0 127 0 - - - 0;
+#X floatatom -227 669 5 0 127 0 - - -;
 #X msg -227 737 set \$1;
 #X msg -226 866 76;
-#X floatatom -227 699 5 0 0 0 - - - 0;
+#X floatatom -227 699 5 0 0 0 - - -;
 #X msg -227 835 set \$1;
 #X msg -226 898 0;
 #X obj -227 927 -;
 #X obj -227 803 t b b;
-#X floatatom -155 669 5 0 127 0 - - - 0;
+#X floatatom -155 669 5 0 127 0 - - -;
 #X msg -155 737 set \$1;
 #X msg -154 866 84;
-#X floatatom -155 699 5 0 0 0 - - - 0;
+#X floatatom -155 699 5 0 0 0 - - -;
 #X msg -155 835 set \$1;
 #X msg -154 898 0;
 #X obj -155 927 -;
@@ -484,98 +492,98 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj -294 989 s add10;
 #X obj -227 989 s add11;
 #X obj -155 987 s add12;
-#X floatatom -10 667 5 0 0 0 - - - 0;
+#X floatatom -10 667 5 0 0 0 - - -;
 #X msg -10 736 set \$1;
 #X msg -9 864 135;
-#X floatatom -10 697 5 0 0 0 - - - 0;
+#X floatatom -10 697 5 0 0 0 - - -;
 #X msg -10 833 set \$1;
 #X msg -9 896 0;
 #X obj -10 925 -;
 #X obj -10 801 t b b;
-#X floatatom 62 667 5 0 0 0 - - - 0;
+#X floatatom 62 667 5 0 0 0 - - -;
 #X msg 62 735 set \$1;
 #X msg 63 864 149;
-#X floatatom 62 697 5 0 0 0 - - - 0;
+#X floatatom 62 697 5 0 0 0 - - -;
 #X msg 62 833 set \$1;
 #X msg 63 896 0;
 #X obj 62 925 -;
 #X obj 62 801 t b b;
-#X floatatom 129 666 5 0 127 0 - - - 0;
+#X floatatom 129 666 5 0 127 0 - - -;
 #X msg 129 734 set \$1;
 #X msg 130 863 103;
-#X floatatom 129 696 5 0 0 0 - - - 0;
+#X floatatom 129 696 5 0 0 0 - - -;
 #X msg 129 832 set \$1;
 #X msg 130 895 0;
 #X obj 129 924 -;
 #X obj 129 800 t b b;
-#X floatatom 201 666 5 0 127 0 - - - 0;
+#X floatatom 201 666 5 0 127 0 - - -;
 #X msg 201 734 set \$1;
 #X msg 202 863 14;
-#X floatatom 201 696 5 0 0 0 - - - 0;
+#X floatatom 201 696 5 0 0 0 - - -;
 #X msg 201 832 set \$1;
 #X msg 202 895 0;
 #X obj 201 924 -;
 #X obj 201 800 t b b;
-#X floatatom 268 666 5 0 127 0 - - - 0;
+#X floatatom 268 666 5 0 127 0 - - -;
 #X msg 268 735 set \$1;
 #X msg 269 863 26;
-#X floatatom 268 696 5 0 0 0 - - - 0;
+#X floatatom 268 696 5 0 0 0 - - -;
 #X msg 268 832 set \$1;
 #X msg 269 895 0;
 #X obj 268 924 -;
 #X obj 268 800 t b b;
-#X floatatom 340 666 5 0 127 0 - - - 0;
+#X floatatom 340 666 5 0 127 0 - - -;
 #X msg 340 734 set \$1;
 #X msg 341 863 29;
-#X floatatom 340 696 5 0 0 0 - - - 0;
+#X floatatom 340 696 5 0 0 0 - - -;
 #X msg 340 832 set \$1;
 #X msg 341 895 0;
 #X obj 340 924 -;
 #X obj 340 800 t b b;
-#X floatatom 407 665 5 0 127 0 - - - 0;
+#X floatatom 407 665 5 0 127 0 - - -;
 #X msg 407 733 set \$1;
 #X msg 408 862 19;
-#X floatatom 407 695 5 0 0 0 - - - 0;
+#X floatatom 407 695 5 0 0 0 - - -;
 #X msg 407 831 set \$1;
 #X msg 408 894 0;
 #X obj 407 923 -;
 #X obj 407 799 t b b;
-#X floatatom 479 665 5 0 127 0 - - - 0;
+#X floatatom 479 665 5 0 127 0 - - -;
 #X msg 479 733 set \$1;
 #X msg 480 862 38;
-#X floatatom 479 695 5 0 0 0 - - - 0;
+#X floatatom 479 695 5 0 0 0 - - -;
 #X msg 479 831 set \$1;
 #X msg 480 894 0;
 #X obj 479 923 -;
 #X obj 479 799 t b b;
-#X floatatom 549 663 5 0 127 0 - - - 0;
+#X floatatom 549 663 5 0 127 0 - - -;
 #X msg 549 732 set \$1;
 #X msg 550 860 34;
-#X floatatom 549 693 5 0 0 0 - - - 0;
+#X floatatom 549 693 5 0 0 0 - - -;
 #X msg 549 829 set \$1;
 #X msg 550 892 0;
 #X obj 549 921 -;
 #X obj 549 797 t b b;
-#X floatatom 621 663 5 0 127 0 - - - 0;
+#X floatatom 621 663 5 0 127 0 - - -;
 #X msg 621 731 set \$1;
 #X msg 622 860 26;
-#X floatatom 621 693 5 0 0 0 - - - 0;
+#X floatatom 621 693 5 0 0 0 - - -;
 #X msg 621 829 set \$1;
 #X msg 622 892 0;
 #X obj 621 921 -;
 #X obj 621 797 t b b;
-#X floatatom 688 662 5 0 127 0 - - - 0;
+#X floatatom 688 662 5 0 127 0 - - -;
 #X msg 688 730 set \$1;
 #X msg 689 859 13;
-#X floatatom 688 692 5 0 0 0 - - - 0;
+#X floatatom 688 692 5 0 0 0 - - -;
 #X msg 688 828 set \$1;
 #X msg 689 891 0;
 #X obj 688 920 -;
 #X obj 688 796 t b b;
-#X floatatom 760 662 5 0 0 0 - - - 0;
+#X floatatom 760 662 5 0 0 0 - - -;
 #X msg 760 730 set \$1;
 #X msg 761 859 0;
-#X floatatom 760 692 5 0 0 0 - - - 0;
+#X floatatom 760 692 5 0 0 0 - - -;
 #X msg 760 828 set \$1;
 #X msg 761 891 0;
 #X obj 760 920 -;
@@ -603,98 +611,98 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj 621 982 s add22;
 #X obj 688 982 s add23;
 #X obj 760 980 s add24;
-#X floatatom 954 661 5 0 0 0 - - - 0;
+#X floatatom 954 661 5 0 0 0 - - -;
 #X msg 954 730 set \$1;
 #X msg 955 858 262;
-#X floatatom 954 691 5 0 0 0 - - - 0;
+#X floatatom 954 691 5 0 0 0 - - -;
 #X msg 954 827 set \$1;
 #X msg 955 890 0;
 #X obj 954 919 -;
 #X obj 954 795 t b b;
-#X floatatom 1026 661 5 0 127 0 - - - 0;
+#X floatatom 1026 661 5 0 127 0 - - -;
 #X msg 1026 729 set \$1;
 #X msg 1027 858 52;
-#X floatatom 1026 691 5 0 0 0 - - - 0;
+#X floatatom 1026 691 5 0 0 0 - - -;
 #X msg 1026 827 set \$1;
 #X msg 1027 890 0;
 #X obj 1026 919 -;
 #X obj 1026 795 t b b;
-#X floatatom 1093 660 5 0 127 0 - - - 0;
+#X floatatom 1093 660 5 0 127 0 - - -;
 #X msg 1093 728 set \$1;
 #X msg 1094 857 0;
-#X floatatom 1093 690 5 0 0 0 - - - 0;
+#X floatatom 1093 690 5 0 0 0 - - -;
 #X msg 1093 826 set \$1;
 #X msg 1094 889 0;
 #X obj 1093 918 -;
 #X obj 1093 794 t b b;
-#X floatatom 1165 660 5 0 127 0 - - - 0;
+#X floatatom 1165 660 5 0 127 0 - - -;
 #X msg 1165 728 set \$1;
 #X msg 1166 857 33;
-#X floatatom 1165 690 5 0 0 0 - - - 0;
+#X floatatom 1165 690 5 0 0 0 - - -;
 #X msg 1165 826 set \$1;
 #X msg 1166 889 0;
 #X obj 1165 918 -;
 #X obj 1165 794 t b b;
-#X floatatom 1232 660 5 0 127 0 - - - 0;
+#X floatatom 1232 660 5 0 127 0 - - -;
 #X msg 1232 729 set \$1;
 #X msg 1233 857 25;
-#X floatatom 1232 690 5 0 0 0 - - - 0;
+#X floatatom 1232 690 5 0 0 0 - - -;
 #X msg 1232 826 set \$1;
 #X msg 1233 889 0;
 #X obj 1232 918 -;
 #X obj 1232 794 t b b;
-#X floatatom 1304 660 5 0 127 0 - - - 0;
+#X floatatom 1304 660 5 0 127 0 - - -;
 #X msg 1304 728 set \$1;
 #X msg 1305 857 32;
-#X floatatom 1304 690 5 0 0 0 - - - 0;
+#X floatatom 1304 690 5 0 0 0 - - -;
 #X msg 1304 826 set \$1;
 #X msg 1305 889 0;
 #X obj 1304 918 -;
 #X obj 1304 794 t b b;
-#X floatatom 1371 659 5 0 127 0 - - - 0;
+#X floatatom 1371 659 5 0 127 0 - - -;
 #X msg 1371 727 set \$1;
 #X msg 1372 856 36;
-#X floatatom 1371 689 5 0 0 0 - - - 0;
+#X floatatom 1371 689 5 0 0 0 - - -;
 #X msg 1371 825 set \$1;
 #X msg 1372 888 0;
 #X obj 1371 917 -;
 #X obj 1371 793 t b b;
-#X floatatom 1443 659 5 0 127 0 - - - 0;
+#X floatatom 1443 659 5 0 127 0 - - -;
 #X msg 1443 727 set \$1;
 #X msg 1444 856 0;
-#X floatatom 1443 689 5 0 0 0 - - - 0;
+#X floatatom 1443 689 5 0 0 0 - - -;
 #X msg 1443 825 set \$1;
 #X msg 1444 888 0;
 #X obj 1443 917 -;
 #X obj 1443 793 t b b;
-#X floatatom 1513 657 5 0 127 0 - - - 0;
+#X floatatom 1513 657 5 0 127 0 - - -;
 #X msg 1513 726 set \$1;
 #X msg 1514 854 0;
-#X floatatom 1513 687 5 0 0 0 - - - 0;
+#X floatatom 1513 687 5 0 0 0 - - -;
 #X msg 1513 823 set \$1;
 #X msg 1514 886 0;
 #X obj 1513 915 -;
 #X obj 1513 791 t b b;
-#X floatatom 1585 657 5 0 127 0 - - - 0;
+#X floatatom 1585 657 5 0 127 0 - - -;
 #X msg 1585 725 set \$1;
 #X msg 1586 854 20;
-#X floatatom 1585 687 5 0 0 0 - - - 0;
+#X floatatom 1585 687 5 0 0 0 - - -;
 #X msg 1585 823 set \$1;
 #X msg 1586 886 0;
 #X obj 1585 915 -;
 #X obj 1585 791 t b b;
-#X floatatom 1652 656 5 0 127 0 - - - 0;
+#X floatatom 1652 656 5 0 127 0 - - -;
 #X msg 1652 724 set \$1;
 #X msg 1653 853 11;
-#X floatatom 1652 686 5 0 0 0 - - - 0;
+#X floatatom 1652 686 5 0 0 0 - - -;
 #X msg 1652 822 set \$1;
 #X msg 1653 885 0;
 #X obj 1652 914 -;
 #X obj 1652 790 t b b;
-#X floatatom 1724 656 5 0 127 0 - - - 0;
+#X floatatom 1724 656 5 0 127 0 - - -;
 #X msg 1724 724 set \$1;
 #X msg 1725 853 0;
-#X floatatom 1724 686 5 0 0 0 - - - 0;
+#X floatatom 1724 686 5 0 0 0 - - -;
 #X msg 1724 822 set \$1;
 #X msg 1725 885 0;
 #X obj 1724 914 -;
@@ -722,98 +730,98 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj 1585 976 s add34;
 #X obj 1652 976 s add35;
 #X obj 1724 974 s add36;
-#X floatatom 1842 659 5 0 0 0 - - - 0;
+#X floatatom 1842 659 5 0 0 0 - - -;
 #X msg 1842 728 set \$1;
 #X msg 1843 856 0;
-#X floatatom 1842 689 5 0 0 0 - - - 0;
+#X floatatom 1842 689 5 0 0 0 - - -;
 #X msg 1842 825 set \$1;
 #X msg 1843 888 0;
 #X obj 1842 917 -;
 #X obj 1842 793 t b b;
-#X floatatom 1914 659 5 0 127 0 - - - 0;
+#X floatatom 1914 659 5 0 127 0 - - -;
 #X msg 1914 727 set \$1;
 #X msg 1915 856 53;
-#X floatatom 1914 689 5 0 0 0 - - - 0;
+#X floatatom 1914 689 5 0 0 0 - - -;
 #X msg 1914 825 set \$1;
 #X msg 1915 888 0;
 #X obj 1914 917 -;
 #X obj 1914 793 t b b;
-#X floatatom 1981 658 5 0 127 0 - - - 0;
+#X floatatom 1981 658 5 0 127 0 - - -;
 #X msg 1981 726 set \$1;
 #X msg 1982 855 27;
-#X floatatom 1981 688 5 0 0 0 - - - 0;
+#X floatatom 1981 688 5 0 0 0 - - -;
 #X msg 1981 824 set \$1;
 #X msg 1982 887 0;
 #X obj 1981 916 -;
 #X obj 1981 792 t b b;
-#X floatatom 2053 658 5 0 127 0 - - - 0;
+#X floatatom 2053 658 5 0 127 0 - - -;
 #X msg 2053 726 set \$1;
 #X msg 2054 855 0;
-#X floatatom 2053 688 5 0 0 0 - - - 0;
+#X floatatom 2053 688 5 0 0 0 - - -;
 #X msg 2053 824 set \$1;
 #X msg 2054 887 0;
 #X obj 2053 916 -;
 #X obj 2053 792 t b b;
-#X floatatom 2120 658 5 0 0 0 - - - 0;
+#X floatatom 2120 658 5 0 0 0 - - -;
 #X msg 2120 727 set \$1;
 #X msg 2121 855 39;
-#X floatatom 2120 688 5 0 0 0 - - - 0;
+#X floatatom 2120 688 5 0 0 0 - - -;
 #X msg 2120 824 set \$1;
 #X msg 2121 887 0;
 #X obj 2120 916 -;
 #X obj 2120 792 t b b;
-#X floatatom 2192 658 5 0 0 0 - - - 0;
+#X floatatom 2192 658 5 0 0 0 - - -;
 #X msg 2192 726 set \$1;
 #X msg 2193 855 77;
-#X floatatom 2192 688 5 0 0 0 - - - 0;
+#X floatatom 2192 688 5 0 0 0 - - -;
 #X msg 2192 824 set \$1;
 #X msg 2193 887 0;
 #X obj 2192 916 -;
 #X obj 2192 792 t b b;
-#X floatatom 2259 657 5 0 127 0 - - - 0;
+#X floatatom 2259 657 5 0 127 0 - - -;
 #X msg 2259 725 set \$1;
 #X msg 2260 854 18;
-#X floatatom 2259 687 5 0 0 0 - - - 0;
+#X floatatom 2259 687 5 0 0 0 - - -;
 #X msg 2259 823 set \$1;
 #X msg 2260 886 0;
 #X obj 2259 915 -;
 #X obj 2259 791 t b b;
-#X floatatom 2331 657 5 0 127 0 - - - 0;
+#X floatatom 2331 657 5 0 127 0 - - -;
 #X msg 2331 725 set \$1;
 #X msg 2332 854 92;
-#X floatatom 2331 687 5 0 0 0 - - - 0;
+#X floatatom 2331 687 5 0 0 0 - - -;
 #X msg 2331 823 set \$1;
 #X msg 2332 886 0;
 #X obj 2331 915 -;
 #X obj 2331 791 t b b;
-#X floatatom 2401 655 5 0 127 0 - - - 0;
+#X floatatom 2401 655 5 0 127 0 - - -;
 #X msg 2401 724 set \$1;
 #X msg 2402 852 70;
-#X floatatom 2401 685 5 0 0 0 - - - 0;
+#X floatatom 2401 685 5 0 0 0 - - -;
 #X msg 2401 821 set \$1;
 #X msg 2402 884 0;
 #X obj 2401 913 -;
 #X obj 2401 789 t b b;
-#X floatatom 2473 655 5 0 127 0 - - - 0;
+#X floatatom 2473 655 5 0 127 0 - - -;
 #X msg 2473 723 set \$1;
 #X msg 2474 852 67;
-#X floatatom 2473 685 5 0 0 0 - - - 0;
+#X floatatom 2473 685 5 0 0 0 - - -;
 #X msg 2473 821 set \$1;
 #X msg 2474 884 0;
 #X obj 2473 913 -;
 #X obj 2473 789 t b b;
-#X floatatom 2540 654 5 0 127 0 - - - 0;
+#X floatatom 2540 654 5 0 127 0 - - -;
 #X msg 2540 722 set \$1;
 #X msg 2541 851 104;
-#X floatatom 2540 684 5 0 0 0 - - - 0;
+#X floatatom 2540 684 5 0 0 0 - - -;
 #X msg 2540 820 set \$1;
 #X msg 2541 883 0;
 #X obj 2540 912 -;
 #X obj 2540 788 t b b;
-#X floatatom 2612 654 5 0 127 0 - - - 0;
+#X floatatom 2612 654 5 0 127 0 - - -;
 #X msg 2612 722 set \$1;
 #X msg 2613 851 103;
-#X floatatom 2612 684 5 0 0 0 - - - 0;
+#X floatatom 2612 684 5 0 0 0 - - -;
 #X msg 2612 820 set \$1;
 #X msg 2613 883 0;
 #X obj 2612 912 -;
@@ -841,95 +849,95 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj 2473 974 s add46;
 #X obj 2540 974 s add47;
 #X obj 2612 972 s add48;
-#X floatatom 2745 650 5 0 0 0 - - - 0;
+#X floatatom 2745 650 5 0 0 0 - - -;
 #X msg 2745 719 set \$1;
 #X msg 2746 847 2;
-#X floatatom 2745 680 5 0 0 0 - - - 0;
+#X floatatom 2745 680 5 0 0 0 - - -;
 #X msg 2745 816 set \$1;
 #X obj 2745 908 -;
 #X obj 2745 784 t b b;
-#X floatatom 2817 650 5 0 127 0 - - - 0;
+#X floatatom 2817 650 5 0 127 0 - - -;
 #X msg 2817 718 set \$1;
 #X msg 2818 847 5;
-#X floatatom 2817 680 5 0 0 0 - - - 0;
+#X floatatom 2817 680 5 0 0 0 - - -;
 #X msg 2817 816 set \$1;
 #X obj 2817 908 -;
 #X obj 2817 784 t b b;
-#X floatatom 2884 649 5 0 127 0 - - - 0;
+#X floatatom 2884 649 5 0 127 0 - - -;
 #X msg 2884 717 set \$1;
 #X msg 2885 846 18;
-#X floatatom 2884 679 5 0 0 0 - - - 0;
+#X floatatom 2884 679 5 0 0 0 - - -;
 #X msg 2884 815 set \$1;
 #X obj 2884 907 -;
 #X obj 2884 783 t b b;
-#X floatatom 2956 649 5 0 127 0 - - - 0;
+#X floatatom 2956 649 5 0 127 0 - - -;
 #X msg 2956 717 set \$1;
 #X msg 2957 846 30;
-#X floatatom 2956 679 5 0 0 0 - - - 0;
+#X floatatom 2956 679 5 0 0 0 - - -;
 #X msg 2956 815 set \$1;
 #X msg 2957 878 0;
 #X obj 2956 907 -;
 #X obj 2956 783 t b b;
-#X floatatom 3023 649 5 0 127 0 - - - 0;
+#X floatatom 3023 649 5 0 127 0 - - -;
 #X msg 3023 718 set \$1;
 #X msg 3024 846 35;
-#X floatatom 3023 679 5 0 0 0 - - - 0;
+#X floatatom 3023 679 5 0 0 0 - - -;
 #X msg 3023 815 set \$1;
 #X msg 3024 878 0;
 #X obj 3023 907 -;
 #X obj 3023 783 t b b;
-#X floatatom 3095 649 5 0 127 0 - - - 0;
+#X floatatom 3095 649 5 0 127 0 - - -;
 #X msg 3095 717 set \$1;
 #X msg 3096 846 44;
-#X floatatom 3095 679 5 0 0 0 - - - 0;
+#X floatatom 3095 679 5 0 0 0 - - -;
 #X msg 3095 815 set \$1;
 #X msg 3096 878 0;
 #X obj 3095 907 -;
 #X obj 3095 783 t b b;
-#X floatatom 3162 648 5 0 127 0 - - - 0;
+#X floatatom 3162 648 5 0 127 0 - - -;
 #X msg 3162 716 set \$1;
 #X msg 3163 845 32;
-#X floatatom 3162 678 5 0 0 0 - - - 0;
+#X floatatom 3162 678 5 0 0 0 - - -;
 #X msg 3162 814 set \$1;
 #X msg 3163 877 0;
 #X obj 3162 906 -;
 #X obj 3162 782 t b b;
-#X floatatom 3234 648 5 0 127 0 - - - 0;
+#X floatatom 3234 648 5 0 127 0 - - -;
 #X msg 3234 716 set \$1;
 #X msg 3235 845 18;
-#X floatatom 3234 678 5 0 0 0 - - - 0;
+#X floatatom 3234 678 5 0 0 0 - - -;
 #X msg 3234 814 set \$1;
 #X msg 3235 877 0;
 #X obj 3234 906 -;
 #X obj 3234 782 t b b;
-#X floatatom 3304 646 5 0 127 0 - - - 0;
+#X floatatom 3304 646 5 0 127 0 - - -;
 #X msg 3304 715 set \$1;
 #X msg 3305 843 24.61;
-#X floatatom 3304 676 5 0 0 0 - - - 0;
+#X floatatom 3304 676 5 0 0 0 - - -;
 #X msg 3304 812 set \$1;
 #X msg 3305 875 0;
 #X obj 3304 904 -;
 #X obj 3304 780 t b b;
-#X floatatom 3376 646 5 0 127 0 - - - 0;
+#X floatatom 3376 646 5 0 127 0 - - -;
 #X msg 3376 714 set \$1;
 #X msg 3377 843 24.73;
-#X floatatom 3376 676 5 0 0 0 - - - 0;
+#X floatatom 3376 676 5 0 0 0 - - -;
 #X msg 3376 812 set \$1;
 #X msg 3377 875 0;
 #X obj 3376 904 -;
 #X obj 3376 780 t b b;
-#X floatatom 3443 645 5 0 127 0 - - - 0;
+#X floatatom 3443 645 5 0 127 0 - - -;
 #X msg 3443 713 set \$1;
 #X msg 3444 842 19;
-#X floatatom 3443 675 5 0 0 0 - - - 0;
+#X floatatom 3443 675 5 0 0 0 - - -;
 #X msg 3443 811 set \$1;
 #X msg 3444 874 0;
 #X obj 3443 903 -;
 #X obj 3443 779 t b b;
-#X floatatom 3515 645 5 0 127 0 - - - 0;
+#X floatatom 3515 645 5 0 127 0 - - -;
 #X msg 3515 713 set \$1;
 #X msg 3516 842 12;
-#X floatatom 3515 675 5 0 0 0 - - - 0;
+#X floatatom 3515 675 5 0 0 0 - - -;
 #X msg 3515 811 set \$1;
 #X msg 3516 874 0;
 #X obj 3515 903 -;
@@ -961,95 +969,95 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj 1442 948 s mPrst32;
 #X obj 2330 946 s mPrst44;
 #X obj 3233 937 s mPrst56;
-#X floatatom 3705 650 5 0 0 0 - - - 0;
+#X floatatom 3705 650 5 0 0 0 - - -;
 #X msg 3705 719 set \$1;
 #X msg 3706 847 37;
-#X floatatom 3705 680 5 0 0 0 - - - 0;
+#X floatatom 3705 680 5 0 0 0 - - -;
 #X msg 3705 816 set \$1;
 #X obj 3705 908 -;
 #X obj 3705 784 t b b;
-#X floatatom 3777 650 5 0 127 0 - - - 0;
+#X floatatom 3777 650 5 0 127 0 - - -;
 #X msg 3777 718 set \$1;
 #X msg 3778 847 49;
-#X floatatom 3777 680 5 0 0 0 - - - 0;
+#X floatatom 3777 680 5 0 0 0 - - -;
 #X msg 3777 816 set \$1;
 #X obj 3777 908 -;
 #X obj 3777 784 t b b;
-#X floatatom 3844 649 5 0 127 0 - - - 0;
+#X floatatom 3844 649 5 0 127 0 - - -;
 #X msg 3844 717 set \$1;
 #X msg 3845 846 50;
-#X floatatom 3844 679 5 0 0 0 - - - 0;
+#X floatatom 3844 679 5 0 0 0 - - -;
 #X msg 3844 815 set \$1;
 #X obj 3844 907 -;
 #X obj 3844 783 t b b;
-#X floatatom 3916 649 5 0 127 0 - - - 0;
+#X floatatom 3916 649 5 0 127 0 - - -;
 #X msg 3916 717 set \$1;
 #X msg 3917 846 45;
-#X floatatom 3916 679 5 0 0 0 - - - 0;
+#X floatatom 3916 679 5 0 0 0 - - -;
 #X msg 3916 815 set \$1;
 #X msg 3917 878 0;
 #X obj 3916 907 -;
 #X obj 3916 783 t b b;
-#X floatatom 3983 649 5 0 127 0 - - - 0;
+#X floatatom 3983 649 5 0 127 0 - - -;
 #X msg 3983 718 set \$1;
 #X msg 3984 846 0;
-#X floatatom 3983 679 5 0 0 0 - - - 0;
+#X floatatom 3983 679 5 0 0 0 - - -;
 #X msg 3983 815 set \$1;
 #X msg 3984 878 0;
 #X obj 3983 907 -;
 #X obj 3983 783 t b b;
-#X floatatom 4055 649 5 0 127 0 - - - 0;
+#X floatatom 4055 649 5 0 127 0 - - -;
 #X msg 4055 717 set \$1;
 #X msg 4056 846 24;
-#X floatatom 4055 679 5 0 0 0 - - - 0;
+#X floatatom 4055 679 5 0 0 0 - - -;
 #X msg 4055 815 set \$1;
 #X msg 4056 878 0;
 #X obj 4055 907 -;
 #X obj 4055 783 t b b;
-#X floatatom 4122 648 5 0 127 0 - - - 0;
+#X floatatom 4122 648 5 0 127 0 - - -;
 #X msg 4122 716 set \$1;
 #X msg 4123 845 0;
-#X floatatom 4122 678 5 0 0 0 - - - 0;
+#X floatatom 4122 678 5 0 0 0 - - -;
 #X msg 4122 814 set \$1;
 #X msg 4123 877 0;
 #X obj 4122 906 -;
 #X obj 4122 782 t b b;
-#X floatatom 4194 648 5 0 127 0 - - - 0;
+#X floatatom 4194 648 5 0 127 0 - - -;
 #X msg 4194 716 set \$1;
 #X msg 4195 845 127;
-#X floatatom 4194 678 5 0 0 0 - - - 0;
+#X floatatom 4194 678 5 0 0 0 - - -;
 #X msg 4194 814 set \$1;
 #X msg 4195 877 0;
 #X obj 4194 906 -;
 #X obj 4194 782 t b b;
-#X floatatom 4264 646 5 0 127 0 - - - 0;
+#X floatatom 4264 646 5 0 127 0 - - -;
 #X msg 4264 715 set \$1;
 #X msg 4265 843 127;
-#X floatatom 4264 676 5 0 0 0 - - - 0;
+#X floatatom 4264 676 5 0 0 0 - - -;
 #X msg 4264 812 set \$1;
 #X msg 4265 875 0;
 #X obj 4264 904 -;
 #X obj 4264 780 t b b;
-#X floatatom 4336 646 5 0 127 0 - - - 0;
+#X floatatom 4336 646 5 0 127 0 - - -;
 #X msg 4336 714 set \$1;
 #X msg 4337 843 127;
-#X floatatom 4336 676 5 0 0 0 - - - 0;
+#X floatatom 4336 676 5 0 0 0 - - -;
 #X msg 4336 812 set \$1;
 #X msg 4337 875 0;
 #X obj 4336 904 -;
 #X obj 4336 780 t b b;
-#X floatatom 4403 645 5 0 127 0 - - - 0;
+#X floatatom 4403 645 5 0 127 0 - - -;
 #X msg 4403 713 set \$1;
 #X msg 4404 842 127;
-#X floatatom 4403 675 5 0 0 0 - - - 0;
+#X floatatom 4403 675 5 0 0 0 - - -;
 #X msg 4403 811 set \$1;
 #X msg 4404 874 0;
 #X obj 4403 903 -;
 #X obj 4403 779 t b b;
-#X floatatom 4475 645 5 0 127 0 - - - 0;
+#X floatatom 4475 645 5 0 127 0 - - -;
 #X msg 4475 713 set \$1;
 #X msg 4476 842 127;
-#X floatatom 4475 675 5 0 0 0 - - - 0;
+#X floatatom 4475 675 5 0 0 0 - - -;
 #X msg 4475 811 set \$1;
 #X msg 4476 874 0;
 #X obj 4475 903 -;
@@ -1066,88 +1074,88 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj 4293 294 r f70 \$2;
 #X obj 4362 294 r f71 \$2;
 #X obj 4431 294 r f72 \$2;
-#X floatatom 4688 646 5 0 127 0 - - - 0;
+#X floatatom 4688 646 5 0 127 0 - - -;
 #X msg 4688 714 set \$1;
-#X msg 4689 843 7;
-#X floatatom 4688 676 5 0 0 0 - - - 0;
+#X msg 4689 843 10;
+#X floatatom 4688 676 5 0 0 0 - - -;
 #X msg 4688 812 set \$1;
 #X obj 4688 904 -;
 #X obj 4688 780 t b b;
-#X floatatom 4755 645 5 0 127 0 - - - 0;
+#X floatatom 4755 645 5 0 127 0 - - -;
 #X msg 4755 713 set \$1;
-#X msg 4756 842 12;
-#X floatatom 4755 675 5 0 0 0 - - - 0;
+#X msg 4756 842 15;
+#X floatatom 4755 675 5 0 0 0 - - -;
 #X msg 4755 811 set \$1;
 #X obj 4755 903 -;
 #X obj 4755 779 t b b;
-#X floatatom 4827 645 5 0 127 0 - - - 0;
+#X floatatom 4827 645 5 0 127 0 - - -;
 #X msg 4827 713 set \$1;
-#X msg 4828 842 15;
-#X floatatom 4827 675 5 0 0 0 - - - 0;
+#X msg 4828 842 14;
+#X floatatom 4827 675 5 0 0 0 - - -;
 #X msg 4827 811 set \$1;
 #X msg 4828 874 0;
 #X obj 4827 903 -;
 #X obj 4827 779 t b b;
-#X floatatom 4894 645 5 0 127 0 - - - 0;
+#X floatatom 4894 645 5 0 127 0 - - -;
 #X msg 4894 714 set \$1;
-#X msg 4895 842 20;
-#X floatatom 4894 675 5 0 0 0 - - - 0;
+#X msg 4895 842 15;
+#X floatatom 4894 675 5 0 0 0 - - -;
 #X msg 4894 811 set \$1;
 #X msg 4895 874 0;
 #X obj 4894 903 -;
 #X obj 4894 779 t b b;
-#X floatatom 4966 645 5 0 127 0 - - - 0;
+#X floatatom 4966 645 5 0 127 0 - - -;
 #X msg 4966 713 set \$1;
-#X msg 4967 842 15;
-#X floatatom 4966 675 5 0 0 0 - - - 0;
+#X msg 4967 842 11;
+#X floatatom 4966 675 5 0 0 0 - - -;
 #X msg 4966 811 set \$1;
 #X msg 4967 874 0;
 #X obj 4966 903 -;
 #X obj 4966 779 t b b;
-#X floatatom 5033 644 5 0 127 0 - - - 0;
+#X floatatom 5033 644 5 0 127 0 - - -;
 #X msg 5033 712 set \$1;
-#X msg 5034 841 30;
-#X floatatom 5033 674 5 0 0 0 - - - 0;
+#X msg 5034 841 13;
+#X floatatom 5033 674 5 0 0 0 - - -;
 #X msg 5033 810 set \$1;
 #X msg 5034 873 0;
 #X obj 5033 902 -;
 #X obj 5033 778 t b b;
-#X floatatom 5105 644 5 0 127 0 - - - 0;
+#X floatatom 5105 644 5 0 127 0 - - -;
 #X msg 5105 712 set \$1;
-#X msg 5106 841 44;
-#X floatatom 5105 674 5 0 0 0 - - - 0;
+#X msg 5106 841 54;
+#X floatatom 5105 674 5 0 0 0 - - -;
 #X msg 5105 810 set \$1;
 #X msg 5106 873 0;
 #X obj 5105 902 -;
 #X obj 5105 778 t b b;
-#X floatatom 5175 642 5 0 127 0 - - - 0;
+#X floatatom 5175 642 5 0 127 0 - - -;
 #X msg 5175 711 set \$1;
 #X msg 5176 839 0;
-#X floatatom 5175 672 5 0 0 0 - - - 0;
+#X floatatom 5175 672 5 0 0 0 - - -;
 #X msg 5175 808 set \$1;
 #X msg 5176 871 0;
 #X obj 5175 900 -;
 #X obj 5175 776 t b b;
-#X floatatom 5247 642 5 0 127 0 - - - 0;
+#X floatatom 5247 642 5 0 127 0 - - -;
 #X msg 5247 710 set \$1;
 #X msg 5248 839 0;
-#X floatatom 5247 672 5 0 0 0 - - - 0;
+#X floatatom 5247 672 5 0 0 0 - - -;
 #X msg 5247 808 set \$1;
 #X msg 5248 871 0;
 #X obj 5247 900 -;
 #X obj 5247 776 t b b;
-#X floatatom 5314 641 5 0 127 0 - - - 0;
+#X floatatom 5314 641 5 0 127 0 - - -;
 #X msg 5314 709 set \$1;
 #X msg 5315 838 0;
-#X floatatom 5314 671 5 0 0 0 - - - 0;
+#X floatatom 5314 671 5 0 0 0 - - -;
 #X msg 5314 807 set \$1;
 #X msg 5315 870 0;
 #X obj 5314 899 -;
 #X obj 5314 775 t b b;
-#X floatatom 5386 641 5 0 127 0 - - - 0;
+#X floatatom 5386 641 5 0 127 0 - - -;
 #X msg 5386 709 set \$1;
 #X msg 5387 838 0;
-#X floatatom 5386 671 5 0 0 0 - - - 0;
+#X floatatom 5386 671 5 0 0 0 - - -;
 #X msg 5386 807 set \$1;
 #X msg 5387 870 0;
 #X obj 5386 899 -;
@@ -1218,262 +1226,262 @@ to true \, there will be an audible hum \, but as long as it's between
 #X msg 2746 879 0;
 #X msg 2818 879 0;
 #X msg 2885 878 0;
-#X floatatom -923 339 5 0 0 0 - - - 0;
-#X floatatom -849 339 5 0 0 0 - - - 0;
-#X floatatom -784 339 5 0 0 0 - - - 0;
-#X floatatom -715 339 5 0 0 0 - - - 0;
-#X floatatom -646 339 5 0 0 0 - - - 0;
-#X floatatom -574 339 5 0 0 0 - - - 0;
-#X floatatom -510 339 5 0 0 0 - - - 0;
-#X floatatom -442 339 5 0 0 0 - - - 0;
-#X floatatom -366 339 5 0 0 0 - - - 0;
-#X floatatom -296 339 5 0 0 0 - - - 0;
-#X floatatom -231 339 5 0 0 0 - - - 0;
-#X floatatom -160 339 5 0 0 0 - - - 0;
-#X floatatom -11 339 5 0 0 0 - - - 0;
-#X floatatom 62 339 5 0 0 0 - - - 0;
-#X floatatom 128 339 5 0 0 0 - - - 0;
-#X floatatom 203 339 5 0 0 0 - - - 0;
-#X floatatom 275 339 5 0 0 0 - - - 0;
-#X floatatom 340 339 5 0 0 0 - - - 0;
-#X floatatom 407 339 5 0 0 0 - - - 0;
-#X floatatom 476 339 5 0 0 0 - - - 0;
-#X floatatom 554 339 5 0 0 0 - - - 0;
-#X floatatom 620 339 5 0 0 0 - - - 0;
-#X floatatom 684 339 5 0 0 0 - - - 0;
-#X floatatom 756 339 5 0 0 0 - - - 0;
-#X floatatom 960 339 5 0 0 0 - - - 0;
-#X floatatom 1024 339 5 0 0 0 - - - 0;
-#X floatatom 1094 339 5 0 0 0 - - - 0;
-#X floatatom 1161 339 5 0 0 0 - - - 0;
-#X floatatom 1236 339 5 0 0 0 - - - 0;
-#X floatatom 1304 339 5 0 0 0 - - - 0;
-#X floatatom 1369 339 5 0 0 0 - - - 0;
-#X floatatom 1445 339 5 0 0 0 - - - 0;
-#X floatatom 1514 339 5 0 0 0 - - - 0;
-#X floatatom 1584 339 5 0 0 0 - - - 0;
-#X floatatom 1649 339 5 0 0 0 - - - 0;
-#X floatatom 1721 339 5 0 0 0 - - - 0;
-#X floatatom 1843 339 5 0 0 0 - - - 0;
-#X floatatom 1913 339 5 0 0 0 - - - 0;
-#X floatatom 1981 339 5 0 0 0 - - - 0;
-#X floatatom 2050 339 5 0 0 0 - - - 0;
-#X floatatom 2122 339 5 0 0 0 - - - 0;
-#X floatatom 2195 339 5 0 0 0 - - - 0;
-#X floatatom 2258 339 5 0 0 0 - - - 0;
-#X floatatom 2325 339 5 0 0 0 - - - 0;
-#X floatatom 2402 339 5 0 0 0 - - - 0;
-#X floatatom 2472 339 5 0 0 0 - - - 0;
-#X floatatom 2540 339 5 0 0 0 - - - 0;
-#X floatatom 2613 339 5 0 0 0 - - - 0;
-#X floatatom 2747 339 5 0 0 0 - - - 0;
-#X floatatom 2817 339 5 0 0 0 - - - 0;
-#X floatatom 2881 339 5 0 0 0 - - - 0;
-#X floatatom 2955 339 5 0 0 0 - - - 0;
-#X floatatom 3024 339 5 0 0 0 - - - 0;
-#X floatatom 3092 339 5 0 0 0 - - - 0;
-#X floatatom 3157 339 5 0 0 0 - - - 0;
-#X floatatom 3228 339 5 0 0 0 - - - 0;
-#X floatatom 3304 339 5 0 0 0 - - - 0;
-#X floatatom 3372 339 5 0 0 0 - - - 0;
-#X floatatom 3441 339 5 0 0 0 - - - 0;
-#X floatatom 3517 339 5 0 0 0 - - - 0;
-#X floatatom 3668 339 5 0 0 0 - - - 0;
-#X floatatom 3738 339 5 0 0 0 - - - 0;
-#X floatatom 3802 339 5 0 0 0 - - - 0;
-#X floatatom 3877 339 5 0 0 0 - - - 0;
-#X floatatom 3945 339 5 0 0 0 - - - 0;
-#X floatatom 4013 339 5 0 0 0 - - - 0;
-#X floatatom 4078 339 5 0 0 0 - - - 0;
-#X floatatom 4149 339 5 0 0 0 - - - 0;
-#X floatatom 4225 339 5 0 0 0 - - - 0;
-#X floatatom 4293 339 5 0 0 0 - - - 0;
-#X floatatom 4362 339 5 0 0 0 - - - 0;
-#X floatatom 4431 339 5 0 0 0 - - - 0;
-#X floatatom 4616 339 5 0 0 0 - - - 0;
-#X floatatom 4688 339 5 0 0 0 - - - 0;
-#X floatatom 4752 339 5 0 0 0 - - - 0;
-#X floatatom 4827 339 5 0 0 0 - - - 0;
-#X floatatom 4895 339 5 0 0 0 - - - 0;
-#X floatatom 4962 339 5 0 0 0 - - - 0;
-#X floatatom 5028 339 5 0 0 0 - - - 0;
-#X floatatom 5099 339 5 0 0 0 - - - 0;
-#X floatatom 5174 339 5 0 0 0 - - - 0;
-#X floatatom 5245 339 5 0 0 0 - - - 0;
-#X floatatom 5315 339 5 0 0 0 - - - 0;
-#X floatatom 5386 339 5 0 0 0 - - - 0;
+#X floatatom -923 339 5 0 0 0 - - -;
+#X floatatom -849 339 5 0 0 0 - - -;
+#X floatatom -784 339 5 0 0 0 - - -;
+#X floatatom -715 339 5 0 0 0 - - -;
+#X floatatom -646 339 5 0 0 0 - - -;
+#X floatatom -574 339 5 0 0 0 - - -;
+#X floatatom -510 339 5 0 0 0 - - -;
+#X floatatom -442 339 5 0 0 0 - - -;
+#X floatatom -366 339 5 0 0 0 - - -;
+#X floatatom -296 339 5 0 0 0 - - -;
+#X floatatom -231 339 5 0 0 0 - - -;
+#X floatatom -160 339 5 0 0 0 - - -;
+#X floatatom -11 339 5 0 0 0 - - -;
+#X floatatom 62 339 5 0 0 0 - - -;
+#X floatatom 128 339 5 0 0 0 - - -;
+#X floatatom 203 339 5 0 0 0 - - -;
+#X floatatom 275 339 5 0 0 0 - - -;
+#X floatatom 340 339 5 0 0 0 - - -;
+#X floatatom 407 339 5 0 0 0 - - -;
+#X floatatom 476 339 5 0 0 0 - - -;
+#X floatatom 554 339 5 0 0 0 - - -;
+#X floatatom 620 339 5 0 0 0 - - -;
+#X floatatom 684 339 5 0 0 0 - - -;
+#X floatatom 756 339 5 0 0 0 - - -;
+#X floatatom 960 339 5 0 0 0 - - -;
+#X floatatom 1024 339 5 0 0 0 - - -;
+#X floatatom 1094 339 5 0 0 0 - - -;
+#X floatatom 1161 339 5 0 0 0 - - -;
+#X floatatom 1236 339 5 0 0 0 - - -;
+#X floatatom 1304 339 5 0 0 0 - - -;
+#X floatatom 1369 339 5 0 0 0 - - -;
+#X floatatom 1445 339 5 0 0 0 - - -;
+#X floatatom 1514 339 5 0 0 0 - - -;
+#X floatatom 1584 339 5 0 0 0 - - -;
+#X floatatom 1649 339 5 0 0 0 - - -;
+#X floatatom 1721 339 5 0 0 0 - - -;
+#X floatatom 1843 339 5 0 0 0 - - -;
+#X floatatom 1913 339 5 0 0 0 - - -;
+#X floatatom 1981 339 5 0 0 0 - - -;
+#X floatatom 2050 339 5 0 0 0 - - -;
+#X floatatom 2122 339 5 0 0 0 - - -;
+#X floatatom 2195 339 5 0 0 0 - - -;
+#X floatatom 2258 339 5 0 0 0 - - -;
+#X floatatom 2325 339 5 0 0 0 - - -;
+#X floatatom 2402 339 5 0 0 0 - - -;
+#X floatatom 2472 339 5 0 0 0 - - -;
+#X floatatom 2540 339 5 0 0 0 - - -;
+#X floatatom 2613 339 5 0 0 0 - - -;
+#X floatatom 2747 339 5 0 0 0 - - -;
+#X floatatom 2817 339 5 0 0 0 - - -;
+#X floatatom 2881 339 5 0 0 0 - - -;
+#X floatatom 2955 339 5 0 0 0 - - -;
+#X floatatom 3024 339 5 0 0 0 - - -;
+#X floatatom 3092 339 5 0 0 0 - - -;
+#X floatatom 3157 339 5 0 0 0 - - -;
+#X floatatom 3228 339 5 0 0 0 - - -;
+#X floatatom 3304 339 5 0 0 0 - - -;
+#X floatatom 3372 339 5 0 0 0 - - -;
+#X floatatom 3441 339 5 0 0 0 - - -;
+#X floatatom 3517 339 5 0 0 0 - - -;
+#X floatatom 3668 339 5 0 0 0 - - -;
+#X floatatom 3738 339 5 0 0 0 - - -;
+#X floatatom 3802 339 5 0 0 0 - - -;
+#X floatatom 3877 339 5 0 0 0 - - -;
+#X floatatom 3945 339 5 0 0 0 - - -;
+#X floatatom 4013 339 5 0 0 0 - - -;
+#X floatatom 4078 339 5 0 0 0 - - -;
+#X floatatom 4149 339 5 0 0 0 - - -;
+#X floatatom 4225 339 5 0 0 0 - - -;
+#X floatatom 4293 339 5 0 0 0 - - -;
+#X floatatom 4362 339 5 0 0 0 - - -;
+#X floatatom 4431 339 5 0 0 0 - - -;
+#X floatatom 4616 339 5 0 0 0 - - -;
+#X floatatom 4688 339 5 0 0 0 - - -;
+#X floatatom 4752 339 5 0 0 0 - - -;
+#X floatatom 4827 339 5 0 0 0 - - -;
+#X floatatom 4895 339 5 0 0 0 - - -;
+#X floatatom 4962 339 5 0 0 0 - - -;
+#X floatatom 5028 339 5 0 0 0 - - -;
+#X floatatom 5099 339 5 0 0 0 - - -;
+#X floatatom 5174 339 5 0 0 0 - - -;
+#X floatatom 5245 339 5 0 0 0 - - -;
+#X floatatom 5315 339 5 0 0 0 - - -;
+#X floatatom 5386 339 5 0 0 0 - - -;
 #X msg 4689 876 0;
 #X msg 4756 874 0;
-#X floatatom 4612 646 5 0 127 0 - - - 0;
+#X floatatom 4612 646 5 0 127 0 - - -;
 #X msg 4612 714 set \$1;
-#X msg 4613 843 15;
-#X floatatom 4612 676 5 0 0 0 - - - 0;
+#X msg 4613 843 17;
+#X floatatom 4612 676 5 0 0 0 - - -;
 #X msg 4612 812 set \$1;
 #X obj 4612 904 -;
 #X obj 4612 780 t b b;
 #X msg 4613 876 0;
 #X obj 4611 935 s mPrst73;
 #X obj 4612 965 s add73;
-#X obj -924 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -849 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -784 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -715 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -646 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -574 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -510 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -442 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -366 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -296 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -231 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -160 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj -11 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 62 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 128 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 203 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 275 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 340 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 407 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 476 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 554 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 620 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 684 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 756 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 960 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1024 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1094 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1161 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1236 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1304 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1369 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1445 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1514 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1584 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1649 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1721 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1843 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1913 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 1981 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2050 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2122 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2195 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2258 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2325 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2402 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2472 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2540 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2613 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2747 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2817 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2881 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 2955 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3024 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3092 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3157 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3228 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3304 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3372 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3441 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3517 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3668 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3738 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3802 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3877 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 3945 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4013 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4078 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4149 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4225 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4293 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4362 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4431 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4616 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4688 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4752 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4827 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4895 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 4962 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 5028 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X obj 5099 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj -924 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj -849 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4032 1;
+#X obj -784 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12398 1;
+#X obj -715 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj -646 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 9676 1;
+#X obj -574 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj -510 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj -442 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 7963 1;
+#X obj -366 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4032 1;
+#X obj -296 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj -231 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 7660 1;
+#X obj -160 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 8467 1;
+#X obj -11 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 62 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 128 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 10382 1;
+#X obj 203 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1411 1;
+#X obj 275 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2621 1;
+#X obj 340 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2923 1;
+#X obj 407 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1915 1;
+#X obj 476 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3830 1;
+#X obj 554 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3427 1;
+#X obj 620 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2621 1;
+#X obj 684 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1310 1;
+#X obj 756 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 960 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 1024 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 5241 1;
+#X obj 1094 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 1161 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3326 1;
+#X obj 1236 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2520 1;
+#X obj 1304 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3225 1;
+#X obj 1369 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3629 1;
+#X obj 1445 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 1514 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 1584 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2016 1;
+#X obj 1649 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1109 1;
+#X obj 1721 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 1843 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 1913 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 5342 1;
+#X obj 1981 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2721 1;
+#X obj 2050 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 2122 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3931 1;
+#X obj 2195 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 7761 1;
+#X obj 2258 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1814 1;
+#X obj 2325 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 9273 1;
+#X obj 2402 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 7056 1;
+#X obj 2472 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6753 1;
+#X obj 2540 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 10483 1;
+#X obj 2613 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 10382 1;
+#X obj 2747 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 202 1;
+#X obj 2817 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 504 1;
+#X obj 2881 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1814 1;
+#X obj 2955 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3024 1;
+#X obj 3024 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3528 1;
+#X obj 3092 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4435 1;
+#X obj 3157 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3225 1;
+#X obj 3228 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1814 1;
+#X obj 3304 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2481 1;
+#X obj 3372 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2493 1;
+#X obj 3441 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1915 1;
+#X obj 3517 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1210 1;
+#X obj 3668 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3290 1;
+#X obj 3738 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 706 1;
+#X obj 3802 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2211 1;
+#X obj 3877 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 2336 1;
+#X obj 3945 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 4013 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1713 1;
+#X obj 4078 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 4149 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 4225 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 4293 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 4362 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 4431 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 12700 1;
+#X obj 4616 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1713 1;
+#X obj 4688 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1008 1;
+#X obj 4752 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1512 1;
+#X obj 4827 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1411 1;
+#X obj 4895 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1512 1;
+#X obj 4962 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1109 1;
+#X obj 5028 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1310 1;
+#X obj 5099 398 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 5443 1;
 #X text 1844 634 thunder;
 #X text 2053 639 rain;
 #X text -931 643 thunder;
@@ -2818,9 +2826,9 @@ to true \, there will be an audible hum \, but as long as it's between
 #X connect 1011 0 1009 1;
 #X connect 1011 0 1013 0;
 #X restore 27 434 pd faders;
-#N canvas 418 110 881 601 makenumbers 0;
-#X obj 1337 596 bng 62 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#N canvas 140 109 881 601 makenumbers 0;
+#X obj 1337 596 bng 62 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X obj 1763 1649 f;
 #X msg 1195 1552 3;
 #X msg 1198 1458 add2 \$1;
@@ -2837,8 +2845,8 @@ to true \, there will be an audible hum \, but as long as it's between
 #X obj 1336 1220 select 1;
 #X obj 1337 948 t f f f f;
 #X obj 1273 552 delay 10;
-#X obj 1389 1256 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 1389 1256 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X text 1316 2227 Turns on;
 #X text 1686 2214 Turns off;
 #X obj 1331 1999 until;
@@ -2854,7 +2862,7 @@ to true \, there will be an audible hum \, but as long as it's between
 #X msg 936 453 stop;
 #X obj 936 414 r mixStop;
 #X obj 936 536 metro \$1;
-#X floatatom 989 492 10 0 0 0 - - - 0;
+#X floatatom 989 492 10 0 0 0 - - -;
 #X obj 989 452 r trackDuration;
 #X obj 872 351 r startAutomation;
 #X text 1035 2523 ...;
@@ -2880,7 +2888,7 @@ off"., f 30;
 #X msg 1537 2153 clear;
 #X msg 1063 2157 set;
 #X obj 327 1673 t b b f b;
-#X floatatom 583 1558 5 0 0 0 - - - 0;
+#X floatatom 583 1558 5 0 0 0 - - -;
 #X text 1421 1154 If the same number appears again \, bang [urn],
 f 14;
 #X obj 1176 983 list append;
@@ -2909,8 +2917,8 @@ played, f 15;
 #X msg 585 1645 set \$1 \$2 \$3 \$4 \$5 \$6;
 #X obj 452 1759 route 0 1 2 3 4 5 6;
 #X msg 1168 893 6;
-#X obj 1060 350 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 1060 350 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X msg 1194 1663 set \$1;
 #X msg 1194 1692 6;
 #X msg 1800 1706 set \$1;
@@ -2922,8 +2930,8 @@ played, f 15;
 #X msg 2555 1912 1440;
 #X obj 2416 1799 metro 1000;
 #X msg 2355 1766 stop;
-#X obj 2416 1765 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 2416 1765 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X obj 1275 282 r sunStatus;
 #X obj 1275 319 route 0 1;
 #X obj 2448 1633 r trackDuration;
@@ -2931,9 +2939,9 @@ played, f 15;
 #X obj 2532 1852 / 1000;
 #X obj 2416 1853 counter;
 #X obj 2416 1897 select;
-#X floatatom 2291 1831 5 0 0 0 - - - 0;
-#X obj 2416 1946 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X floatatom 2291 1831 5 0 0 0 - - -;
+#X obj 2416 1946 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X obj 2416 1596 r startAutomation;
 #X msg 2361 1616 stop;
 #X obj 2361 1568 r stopMetro;
@@ -2998,10 +3006,10 @@ add 1000 \, add2 strtPLAYER_A4 start \;, f 50;
 #X msg 446 2227 add switchON5 1 \, add2 openFile5 \, add2 symbol \,
 add /home/pi/jungle/day_scene_5.wav \, add2 lineINIT5 \, add bang \,
 add 1000 \, add2 strtPLAYER_A5 start \;, f 50;
-#X obj 1275 365 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
-#X obj 1304 365 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 1275 365 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1304 365 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X obj 2696 2212 qlist;
 #X obj 2697 1557 list append;
 #X msg 2737 1643 0;
@@ -3020,10 +3028,10 @@ faders) begins to fade in/fade out., f 38;
 #X obj 2190 2054 spigot;
 #X obj 2128 1751 r sunStatus;
 #X obj 2128 1788 route 0 1;
-#X obj 2128 1834 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
-#X obj 2158 1834 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 2128 1834 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 2158 1834 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X msg 2128 1871 1;
 #X msg 2158 1871 0;
 #X text 2804 1825 Fade out previous previous track in case sunset happens
@@ -3032,15 +3040,15 @@ during a fade #;
 #X obj 2196 1834 loadbang;
 #X obj 2159 2180 spigot;
 #X msg 2789 2168 print;
-#X obj 1768 1577 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 1768 1577 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X msg 1549 1671 set \$1;
 #X msg 1549 1700 3;
 #X obj 2378 2107 spigot;
 #X msg 2462 1992 1;
 #X msg 2414 1990 0;
-#X obj 2441 2046 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 2441 2046 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
 #X obj 2376 2206 spigot;
 #X text 2226 1566 This thing makes sure that the previous previous
 track do not fade out if sunset does NOT happen during a fade., f
@@ -3050,13 +3058,13 @@ track do not fade out if sunset does NOT happen during a fade., f
 #X obj 1185 620 print banging delay;
 #X msg 1272 1426 0;
 #X msg 1110 1294 0;
-#X obj 1266 1500 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
-#X obj 1046 1328 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 1266 1500 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1046 1328 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X msg 1455 1834 0;
-#X obj 1318 1777 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 1318 1777 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X text 1374 286 Receiving a 0 from "suntime" subpatch means that the
 sun is setting..., f 17;
 #X obj 1428 448 print stopping metro because the sun is setting.,
@@ -3096,7 +3104,7 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 #X obj 1784 932 print Same seed as random;
 #X obj 1764 724 list split 1;
 #X obj 1860 766 print new seed number:;
-#X msg 1764 660 seed 93, f 9;
+#X msg 1764 660 seed 49, f 9;
 #X text 1987 630 This thing generates new seed number on every new
 startup. If the seed number is the same as the random number \, the
 random object is banged one more time \, to make sure a unique seed
@@ -3340,17 +3348,17 @@ number is generated on every startup., f 40;
 #X connect 218 0 195 0;
 #X coords 0 0 1 1 1138 1135 0;
 #X restore 27 472 pd makenumbers;
-#X obj 582 339 bng 32 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
-#X obj 1043 27 bng 68 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 582 339 bng 32 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1043 27 bng 68 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X obj 1042 102 s stopPlayer1;
 #X obj 1042 129 s stopPlayer2;
 #X obj 1043 157 s stopPlayer3;
 #X obj 1043 185 s stopPlayer4;
 #X text 710 270 Sets how long until next track starts fading in.,
 f 15;
-#N canvas 472 243 617 469 routing 0;
+#N canvas 100 239 617 469 routing 0;
 #X obj 238 217 r fadeout0;
 #X obj 569 213 r fadein0;
 #X obj 110 315 faders3 1;
@@ -3657,11 +3665,11 @@ value, f 20;
 #X text 628 345 Save and/or load preset, f 12;
 #X text 1390 129 ...;
 #X text 296 1350 ...;
-#N canvas 212 204 714 668 testmixer 0;
+#N canvas 212 204 714 668 testmixer 1;
 #X obj 162 141 qlist;
 #X msg 250 -61 clear;
-#X obj 56 -101 bng 82 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 56 -101 bng 82 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
 #X text 177 -211 ...;
 #X msg 176 -25 print;
 #X msg 445 2314 add switchON6 1 \, add2 openFile6 \, add2 symbol \,
@@ -3829,7 +3837,7 @@ f 14;
 #X obj 289 78 inlet;
 #X obj 153 389 env~;
 #X msg 272 407 0;
-#X floatatom 153 427 5 0 0 0 - - - 0;
+#X floatatom 153 427 5 0 0 0 - - -;
 #X obj 272 440 s switchOFFHarp;
 #X obj 212 654 throw~ fx1;
 #X obj 242 535 throw~ fx2;
@@ -4003,8 +4011,8 @@ and switches off the harps [readsf], f 21;
 #X obj 423 186 r stillNightOut;
 #X text 213 28 The delay is necessary for the server to start up and
 download the sun data to check if the sun is up on startup, f 18;
-#X obj 427 388 hradio 38 0 0 3 empty empty empty 0 -8 0 10 #fcfcfc
-#000000 #000000 0;
+#X obj 427 388 hradio 38 0 0 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 2;
 #X obj 426 469 route 0 1;
 #X msg 428 339 set \$1;
 #X obj 426 547 s startNightTrack;

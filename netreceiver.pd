@@ -1,4 +1,4 @@
-#N canvas 123 141 849 671 12;
+#N canvas 88 76 849 671 12;
 #X obj 758 352 s toggle;
 #X obj 598 350 s musictoggle;
 #X msg 857 568 1;
