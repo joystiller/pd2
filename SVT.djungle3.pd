@@ -3096,7 +3096,7 @@ add 1000 \, add2 strtPLAYER_A6 start \;, f 50;
 #X obj 1784 932 print Same seed as random;
 #X obj 1764 724 list split 1;
 #X obj 1860 766 print new seed number:;
-#X msg 1764 660 seed 49, f 9;
+#X msg 1764 660 seed 74, f 9;
 #X text 1987 630 This thing generates new seed number on every new
 startup. If the seed number is the same as the random number \, the
 random object is banged one more time \, to make sure a unique seed
